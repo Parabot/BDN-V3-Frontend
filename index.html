@@ -21,15 +21,28 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" media="screen">
     <link rel="stylesheet" type="text/css" href="assets/css/homepage1.css" media="screen">
     <link rel="stylesheet" type="text/css" href="assets/css/responsive.css" media="screen">
-    <link href="assets/css/skin.less" rel="stylesheet/less">
-
-    <script type="text/javascript" src="assets/js/angular.js"></script>
+    <link rel="stylesheet/less" href="assets/css/skin.less">
     <!--[if lt IE 9]>
     <script src="assets/js/html5shiv.min.js"></script>
     <![endif]-->
+
+    <script type="text/javascript" src="assets/js/angular.js"></script>
 </head>
 <body class="ng-cloak">
-<div class="ng-cloak" ng-view ng-include="'views/parts/header/loader.html'"></div>
+<div class="ng-cloak" ng-view>
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+                <div class="object" id="object_four"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<header class="header1" id="header" ng-include="'views/parts/header/header.html'"></header>
 
 <script type="text/javascript" src="assets/js/jquery-1.12.0.min.js"></script>
 <script type="text/javascript" src="assets/js/jquery.selectbox-0.2.js"></script>
