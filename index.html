@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Look</title>
+    <title>Parabot BDN</title>
+    <base href="/">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700%7CPlayfair+Display:400italic,400,900%7COpen+Sans'
           rel='stylesheet' type='text/css'>
@@ -29,6 +30,7 @@
     <script type="text/javascript" src="assets/js/angular.js"></script>
 </head>
 <body class="ng-cloak">
+<!-- //Loader// -->
 <div class="ng-cloak" ng-view>
     <div id="loading">
         <div id="loading-center">
@@ -41,8 +43,10 @@
         </div>
     </div>
 </div>
+<!-- //Loader// -->
 
 <header class="header1" id="header" ng-include="'views/parts/header/header.html'"></header>
+<div ui-view=""></div>
 
 <script type="text/javascript" src="assets/js/jquery-1.12.0.min.js"></script>
 <script type="text/javascript" src="assets/js/jquery.selectbox-0.2.js"></script>
@@ -54,6 +58,8 @@
 <script type="text/javascript" src="assets/js/jquery.themepunch.tools.min.js"></script>
 <script type="text/javascript" src="assets/js/jquery.themepunch.revolution.min.js"></script>
 <script type="text/javascript" src="assets/js/jquery.revolution.js"></script>
+<script type="text/javascript" src="assets/js/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="assets/js/angular-resource.min.js"></script>
 
 <script type="text/javascript" src="assets/js/site.js"></script>
 <script type="text/javascript" src="assets/js/app.js"></script>

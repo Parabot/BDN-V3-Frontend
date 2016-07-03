@@ -1,0 +1,41 @@
+<div class="news-block container" ng-module="downloadModule">
+    <div class="row">
+        <div class="block-heading">
+            <h2>LATEST RELEASES</h2>
+                    <span class="border-image"> <img src="assets/svg/shape.svg" alt="image" class="svg" width="200"
+                                                     height="200"/> </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12 news-block-image">
+            <figure class="news-image">
+                <img src="assets/images/img4.jpg" alt="image"/>
+                <div class="news-info">
+                    <span class="news-date"><strong>22</strong> MAY </span>
+                    <div class="news-text">
+                        <h4><a href="#" class="news-text-heading">Made by Hand : Tailor Card Holder</a></h4>
+                        <div class="news-social">
+                            <a href="#" class="comment"><i class="icon_comment"></i><span>12+</span></a>
+                            <a href="#" class="like"><i class="icon_heart"></i><span>33+</span></a>
+                            <a href="#" class="author"><i class="icon_profile"></i> <span> Nanoevil </span></a>
+                        </div>
+                    </div>
+                </div>
+            </figure>
+        </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12 news-block-content">
+            <div class="news-information clearfix" ng-repeat="client in clients" ng-show="$index < 7">
+                <span class="news-date"> <strong>{{client.release_day}}</strong> MAY </span>
+                <div class="news-text">
+                    <h4><a href="#" class="news-text-heading">New Cllection for Men 2015</a></h4>
+                    <div class="news-social">
+                        <a href="#" class="comment"><i class="icon_comment"></i><span>12+</span></a>
+                        <a href="#" class="like"><i class="icon_heart"></i><span>33+</span></a>
+                        <a href="#" class="author"><i class="icon_profile"></i> <span> Nanoevil </span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

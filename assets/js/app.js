@@ -39,4 +39,62 @@ headerModule.controller('headerCtrl',
     }
 );
 
-var websiteApp = angular.module('websiteApp', ['headerModule', 'websiteModule']);
+var downloadModule = angular.module('downloadModule', ['ngResource']);
+downloadModule.factory('Client', function ($resource) {
+    return $resource('http://v3.bdn.parabot.org/api/bot/list/client?nightly=true');
+});
+
+downloadModule.controller('downloadCtrl',
+    function ($scope, Client) {
+        var clients = Client.get({});
+
+        var response = Client.query({}, function(res) {
+            console.log(res);
+        });
+
+        $scope.clients = clients;
+    }
+);
+
+var websiteApp = angular.module('websiteApp', ['headerModule', 'websiteModule', 'downloadModule', 'ui.router'])
+    .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
+        function ($stateProvider, $urlRouterProvider, $locationProvider) {
+
+            $urlRouterProvider.otherwise('/404');
+
+            $stateProvider
+                .state('404', {
+                    url: '/404',
+                    templateUrl: '/views/tpls/404.tpl.html'
+                })
+                .state('home', {
+                    url: '/',
+                    templateUrl: '/views/tpls/home.tpl.html'
+                })
+                .state('downloads', {
+                    url: '/downloads',
+                    templateUrl: '/views/tpls/downloads.tpl.html',
+                    controller: 'downloadCtrl'
+                });
+
+            $locationProvider.html5Mode({
+                enabled: true
+            });
+        }
+    ])
+    .run(['$rootScope', '$state', '$stateParams',
+        function ($rootScope, $state, $stateParams) {
+            $rootScope.$state = $state;
+            $rootScope.$stateParams = $stateParams;
+        }
+    ])
+    .run(['$rootScope', '$state',
+        function ($rootScope, $state) {
+            $rootScope.$on('$stateChangeStart', function (evt, to, params) {
+                if (to.redirectTo) {
+                    evt.preventDefault();
+                    $state.go(to.redirectTo, params)
+                }
+            });
+        }
+    ]);
