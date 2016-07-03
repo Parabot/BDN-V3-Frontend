@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Look</title>
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+		<!-- Google Font -->
+		<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700%7CPlayfair+Display:400italic,400,900%7COpen+Sans' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="assets/css/jquery.selectbox.css" media="screen">
+		<!-- Linea Icons -->
+		<link rel="stylesheet" type="text/css" href="assets/css/linea.css" media="screen">
+		<!-- Elegant Icons -->
+		<link rel="stylesheet" type="text/css" href="assets/css/eleganticon.css" media="screen">
+		<!-- Font Awesome -->
+		<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css" media="screen">
+
+		<!-- Bootstrap -->
+		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="assets/css/jquery-ui.css" media="screen">
+
+		<link rel="stylesheet" type="text/css" href="assets/css/dropdown.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="assets/css/global.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="assets/css/responsive.css" media="screen">
+		<link href="assets/css/skin.less" rel="stylesheet/less">
+		<!--[if lt IE 9]>
+		<script src="assets/js/html5shiv.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<!-- Loader -->
+		<div id="loading">
+			<div id="loading-center">
+				<div id="loading-center-absolute">
+					<div class="object" id="object_one"></div>
+					<div class="object" id="object_two"></div>
+					<div class="object" id="object_three"></div>
+					<div class="object" id="object_four"></div>
+				</div>
+			</div>
+		</div>
+		<!-- Loader -->
+		<!--Page Wrapper Start-->
+		<div id="wrapper" class="categories shopping-cart">
+			<!--container Start-->
+			<!--Header Section Start-->
+			<header class="header1" id="header">
+				<div class="top-header hidden-xs">
+					<div class="container">
+						<div class="row clearfix">
+							<div class="col-xs-12">
+								<ul class="top-header-left clearfix">
+									<li class="register-link clearfix">
+										<i class="lock-icon icon_lock"> </i><a href="login.html" class="login">Log In</a>
+										<span>/</span><a href="#" class="register">Register </a>
+									</li>
+									<li class="select-wrapper">
+										<select class="select">
+											<option> English </option>
+											<option> Spanish </option>
+											<option> French </option>
+											<option> German </option>
+										</select><i class="arrow_carrot-down"></i>
+									</li>
+									<li class="select-wrapper">
+										<select class="select">
+											<option> USD </option>
+										</select><i class="arrow_carrot-down"></i>
+									</li>
+								</ul>
+								<ul class="top-header-right clearfix">
+									<li class="profile">
+										<a href="#"><i class="icon_profile"></i>My Account </a>
+									</li>
+									<li class="gift">
+										<a href="#"><i class="icon_gift"></i> My Wishlist</a>
+									</li>
+									<li class="checkout">
+										<a href="#"><i class="icon_check_alt"></i>Checkout</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="middle-header">
+					<div class="container">
+						<div class="row clearfix">
+							<div class="col-xs-12 middle-header-content">
+								<div class="middle-header-left">
+									<form class="clearfix">
+										<input type="text" name="search" placeholder="Search... " />
+										<button type="submit">
+											<i class="icon_search"></i>
+										</button>
+									</form>
+								</div>
+								<div class="middle-header-right clearfix">
+									<div class="open-cart">
+										<i class="icon_bag_alt"></i>
+										<span class="item-count"> 0 Item(s) - <strong>$0.00</strong> <i class="arrow_carrot-down"></i></span>
+									</div>
+									<div class="item-block">
+										<ul class="item-list">
+											<li>
+												<figure class="item-image">
+													<a href="#"><img src="assets/images/img-one.jpg" alt="t-shirt" /></a>
+												</figure>
+												<div class="item-description">
+													<h4><a href="#" class="item-name">T-Shirt Retro Black</a></h4>
+													<span class="review-icon clearfix"> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star"></i> </span>
+													<span class="price">$ 70.00</span>
+												</div>
+												<span class="delete fa fa-trash"> </span>
+											</li>
+											<li>
+												<figure class="item-image">
+													<a href="#"><img src="assets/images/img-two.jpg" alt="t-shirt" /></a>
+												</figure>
+												<div class="item-description">
+													<h4><a href="#" class="item-name">T-Shirt Retro Black</a></h4>
+													<span class="review-icon clearfix"> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star"></i> </span>
+													<span class="price">$ 70.00</span>
+												</div>
+												<span class="delete fa fa-trash"> </span>
+											</li>
+											<li>
+												<figure class="item-image">
+													<a href="#"><img src="assets/images/img-three.jpg" alt="t-shirt" /></a>
+												</figure>
+												<div class="item-description">
+													<h4><a href="#" class="item-name">T-Shirt Retro White</a></h4>
+													<span class="review-icon clearfix"> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star"></i> </span>
+													<span class="price">$ 70.00</span>
+												</div>
+												<span class="delete fa fa-trash"> </span>
+											</li>
+										</ul>
+										<div class="total-amount clearfix">
+											<span class="total">Total</span>
+											<span class="amount">€1145.00</span>
+										</div>
+										<div class="butn-group clearfix">
+											<a href="#" class="cart">VIEW CART</a>
+											<a href="#" class="checkout">CHECKOUT</a>
+										</div>
+									</div>
+								</div>
+								<a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LOOK" /></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<nav class="navigation">
+					<div class="container">
+						<div id="cssmenu">
+							<a href="javascript:void(0);" class="main-menu menu-image"></a>
+							<ul class="menu-links">
+								<li class="active has-sub">
+									<a href="javascript:void(0);">Home</a>
+									<i class="fs1 mmenu eicon visible-xs" data-icon="3"></i>
+									<ul class="sub-menu">
+										<li>
+											<a href="index.html">homepage 1</a>
+										</li>
+										<li>
+											<a href="homepage-two.html">homepage 2</a>
+										</li>
+										<li>
+											<a href="homepage-three.html">homepage 3</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">FASHION</a>
+								</li>
+								<li>
+									<a href="#">ELECTRONICS</a>
+								</li>
+								<li class="multi-level">
+									<a href="#">MULTI LEVEL</a>
+									<div class="multi-sub-menu clearfix">
+										<div class="left-menu-block">
+											<div class="top-menu clearfix">
+												<div class="menu-block">
+													<h3> STYLIEST BAG </h3>
+													<ul class="sub-menu-links">
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Clutch Handbags</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Diaper Bags</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Bags</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Hobo Handbags</a>
+														</li>
+													</ul>
+												</div>
+												<div class="menu-block">
+													<h3> MATERIAL BAG </h3>
+													<ul class="sub-menu-links">
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Beaded Handbags</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Fabric Handbags</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Handbags</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Leather Handbags</a>
+														</li>
+													</ul>
+												</div>
+												<div class="menu-block">
+													<h3> SHOES </h3>
+													<ul class="sub-menu-links">
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Flat Shoes</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Flat Sandals</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Boots</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Heels</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<div class="bottom-menu clearfix">
+												<div class="menu-block">
+													<h3> JWELLERY </h3>
+													<ul class="sub-menu-links">
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Bracelets</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Necklaces &amp; Pendants</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Pendants</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Pins &amp; Brooches</a>
+														</li>
+													</ul>
+												</div>
+												<div class="menu-block">
+													<h3> DRESSES </h3>
+													<ul class="sub-menu-links">
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Casual Dresses</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Evening</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Designer</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Party</a>
+														</li>
+													</ul>
+												</div>
+												<div class="menu-block">
+													<h3> SWIMWEAR </h3>
+													<ul class="sub-menu-links">
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Swimsuits</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Beach Clothing</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Clothing</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Bikinis</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<figure class="right-menu-block">
+											<img src="assets/images/img-four.jpg" alt="image" />
+										</figure>
+									</div>
+								</li>
+								<li>
+									<a href="javascript:void(0);">Shop</a>
+									<i class="fs1 mmenu eicon visible-xs" data-icon="3"></i>
+									<ul class="sub-menu">
+										<li>
+											<a href="categories.html">categories</a>
+										</li>
+										<li>
+											<a href="categories-grid-left.html">categories grid left</a>
+										</li>
+										<li>
+											<a href="categories-list-sidebar.html">categories list sidebar</a>
+										</li>
+										<li>
+											<a href="product-page.html">product</a>
+										</li>
+										<li>
+											<a href="shopping-cart.html">shopping cart</a>
+										</li>
+									</ul>
+								</li>
+								<li class="has-sub">
+									<a href="javascript:void(0);">BLOG</a>
+									<i class="fs1 mmenu eicon visible-xs" data-icon="3"></i>
+									<ul class="sub-menu">
+										<li>
+											<a href="blog-grid-sidebar.html">Blog grid sidebar</a>
+										</li>
+										<li>
+											<a href="blog-list-sidebar.html">Blog list sidebar</a>
+										</li>
+										<li>
+											<a href="blog-detail.html">blog detail</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="contact.html">Contact us</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</header>
+			<!--Header Section End-->
+			<div class="common-banner forcefullwidth_wrapper_tp_banner">
+				<div class="container">
+					<div class="row">
+						<div class="main-banner-text">
+							<span>Shopping Cart</span>
+							<ul class="banner-nav">
+								<li>
+									<a href="index.html">Home</a>
+								</li>
+								<li>
+									<a href="#">Shop</a>
+								</li>
+								<li class="active">
+									<a href="#">Shopoing Cart</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Content Area Start-->
+			<div class="content">
+				<!-- Cart Section Starts Here -->
+				<div class="cart-section">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- Cart Items Starts Here -->
+								<div class="cart-item">
+									<h3>your cart items</h3>
+									<table class="table custom-table">
+										<thead>
+											<tr>
+												<th colspan="1">product name</th>
+												<th>price</th>
+												<th>quantity</th>
+												<th colspan="2">total</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td data-product="product name" class="cart-fig">
+												<figure>
+													<img src="assets/images/cart-1.jpg" alt="" />
+												</figure>
+												<div class="cart-description">
+													<h4>Samurai T-Shirt</h4>
+													<span><sub>5</sub> Color : <strong>White</strong></span>
+													<span><sub>5</sub> Size : <strong>XL</strong></span>
+												</div></td>
+												<td data-price="price" class="cart-price-head"><span class="cart-price">$45.05</span></td>
+												<td data-quantity="quantity" class="cart-quantity">
+												<input type="text" placeholder="1" />
+												</td>
+												<td data-total="total" class="cart-total"><span class="cart-price">$45.05</span></td>
+												<td class="cart-btn"><a href="#" class="trash"><i class="fa fa-trash"></i></a><a href="#" class="pencil"><span class="icon_pencil" aria-hidden="true"></span></a></td>
+											</tr>
+											<tr>
+												<td data-product="product name" class="cart-fig">
+												<figure>
+													<img src="assets/images/cart-2.jpg" alt="" />
+												</figure>
+												<div class="cart-description">
+													<h4>Typograpy T-Shirt</h4>
+													<span><sub>5</sub> Color : <strong>Black</strong></span>
+													<span><sub>5</sub> Size : <strong>XXL</strong></span>
+												</div></td>
+												<td data-price="price" class="cart-price-head"><span class="cart-price">$45.05</span></td>
+												<td data-quantity="quantity" class="cart-quantity">
+												<input type="text" placeholder="1" />
+												</td>
+												<td data-total="total" class="cart-total"><span class="cart-price">$45.05</span></td>
+												<td class="cart-btn"><a href="#" class="trash"><i class="fa fa-trash"></i></a><a href="#" class="pencil"><span class="icon_pencil" aria-hidden="true"></span></a></td>
+											</tr>
+											<tr>
+												<td data-product="product name" class="cart-fig">
+												<figure>
+													<img src="assets/images/cart-3.jpg" alt="" />
+												</figure>
+												<div class="cart-description">
+													<h4>Jean T-Shirt</h4>
+													<span><sub>5</sub> Color : <strong>Black</strong></span>
+													<span><sub>5</sub> Size : <strong>XXL</strong></span>
+												</div></td>
+												<td data-price="price" class="cart-price-head"><span class="cart-price">$45.05</span></td>
+												<td data-quantity="quantity" class="cart-quantity">
+												<input type="text" placeholder="1" />
+												</td>
+												<td data-total="total" class="cart-total"><span class="cart-price">$45.05</span></td>
+												<td class="cart-btn"><a href="#" class="trash"><i class="fa fa-trash"></i></a><a href="#" class="pencil"><span class="icon_pencil" aria-hidden="true"></span></a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<!-- Cart Items Starts Here -->
+							</div>
+							<div class="col-xs-12 col-sm-4 col-md-3">
+								<span class="shopping-btn"><a href="#">clear shopping cart</a></span>
+							</div>
+							<div class="col-xs-12 col-sm-4 col-md-3">
+								<span class="shopping-btn"><a href="#">update shopping cart</a></span>
+							</div>
+							<div class="col-xs-12 col-sm-4 col-md-3 col-md-offset-3">
+								<span class="shopping-btn continue"><a href="#">continue shopping</a></span>
+							</div>
+							<div class="col-xs-12 col-sm-4">
+								<div class="cart-form">
+									<h3>calculate shipping <span class="after-icon"><span class="icon_minus-06" aria-hidden="true"></span></span></h3>
+									<form>
+										<select class="select">
+											<option value="">united kingdom (UK)</option>
+											<option value="1">germany</option>
+											<option value="2">france</option>
+											<option value="3">italy</option>
+										</select>
+										<input type="text" placeholder="State / Country" />
+										<input type="text" placeholder="Postcode / Zip" />
+										<input type="submit" value="GET A QUOTE" />
+									</form>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-4">
+								<div class="cart-form">
+									<h3>coupon discount <span class="after-icon"><span class="icon_minus-06" aria-hidden="true"></span></span></h3>
+									<span class="enter-coupon">Enter your coupon code if you have one.</span>
+									<form>
+										<input type="text" placeholder="Enter your code here !" />
+										<input type="submit" value="APPLY Coupon" />
+									</form>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-4">
+								<div class="cart-checkout">
+									<div class="total">
+										<span class="sub-total">sub total <strong>$126.00</strong></span>
+										<span class="grand-total">grand total <strong>$126.00</strong></span>
+									</div>
+									<a href="#" class="cart-proceed">proceed to checkout</a>
+									<a href="#" class="checkout-with">Checkout with Mutilple Adresses</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Cart Section Ends Here -->
+			</div>
+			<!--Content Area End-->
+			<!--Footer Section Start-->
+			<footer class="footer">
+				<div class="primary-footer">
+					<div class="container">
+						<div class="row">
+							<div class="footer-content col-md-3 col-sm-3 col-xs-12">
+								<div class="footer-border">
+									<h4> STORE </h4>
+									<ul class="footer-nav">
+										<li>
+											<a href="#">New York</a>
+										</li>
+										<li>
+											<a href="#">Paris</a>
+										</li>
+										<li>
+											<a href="#">London</a>
+										</li>
+										<li>
+											<a href="#">Madrid</a>
+										</li>
+										<li>
+											<a href="#">Tokio</a>
+										</li>
+										<li>
+											<a href="#">Milan</a>
+										</li>
+										<li>
+											<a href="#">Hong Kong</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="footer-content col-md-3 col-sm-3 col-xs-12">
+								<div class="footer-border">
+									<h4> OUR OFFER </h4>
+									<ul class="footer-nav">
+										<li>
+											<a href="#">New products</a>
+										</li>
+										<li>
+											<a href="#">Top sellers</a>
+										</li>
+										<li>
+											<a href="#">Specials</a>
+										</li>
+										<li>
+											<a href="#">Manufacturers</a>
+										</li>
+										<li>
+											<a href="#">Suppliers</a>
+										</li>
+										<li>
+											<a href="#">Specials</a>
+										</li>
+										<li>
+											<a href="#">Customer Service</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="footer-content col-md-3 col-sm-3 col-xs-12">
+								<div class="footer-border">
+									<h4> OUR SERVICES </h4>
+									<ul class="footer-nav">
+										<li>
+											<a href="#">Order tracking</a>
+										</li>
+										<li>
+											<a href="#">Privacy Policy</a>
+										</li>
+										<li>
+											<a href="#">Gift Cards</a>
+										</li>
+										<li>
+											<a href="#">Shipping Information</a>
+										</li>
+										<li>
+											<a href="#">Returns &amp; refunds</a>
+										</li>
+										<li>
+											<a href="#">Personalised Cards</a>
+										</li>
+										<li>
+											<a href="#">Delivery information</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="footer-content col-md-3 col-sm-3 col-xs-12">
+								<div class="footer-border">
+									<h4> OUR CONTACT </h4>
+									<div class="info-block">
+										<address class="address-info">
+											United Kingdom, London
+											<br />
+											Simple Street 15A
+										</address>
+										<span class="call-info"> <a href="callto:1231234567890">(123) 123.456.7890 </a> <a href="callto:1231234567890">(123) 123.456.7890</a> </span>
+										<span class="mail-info"> <a href="mailto:megashop@info.com">megashop@info.com</a> <a href="mailto:megashop@holding.com">megashop@holding.com</a> </span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="secondary-footer">
+					<span class="copy-right">Copyright © 2016 PSD Themes by Themeon. All rights reserved.</span>
+				</div>
+			</footer>
+			<!--Footer Section End-->
+			<!--container End-->
+		</div>
+		<!--Page Wrapper End-->
+		<script type="text/javascript" src="assets/js/jquery-1.12.0.min.js"></script>
+		<script src="assets/js/less.js"></script>
+		<script type="text/javascript" src="assets/js/jquery.selectbox-0.2.js"></script>
+		<script type="text/javascript" src="assets/js/bootstrap.js"></script>
+		<script type="text/javascript" src="assets/js/jquery-ui.js"></script>
+		<!-- RS5.0 Core JS Files -->
+
+		<script type="text/javascript" src="assets/js/site.js"></script>
+
+	</body>
+</html>

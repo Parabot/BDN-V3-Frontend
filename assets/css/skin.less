@@ -1,0 +1,40 @@
+/*!
+ * Theme v1.0.0 
+ * Copyright 2015-2016 Theemon.com
+ */
+@skinColor:#d3b800; //Change here your theme Color
+
+
+.transition_effect{
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+//TEXT COLOR
+.information-block .info-item .information, .news-social a, .price, .top-header a:hover, .top-header a:hover i, .top-header-left .select-wrapper:hover .arrow_carrot-down, .banner-section .read-story:hover, .item-name:hover, .news-text .news-text-heading:hover, .footer a:hover, .footer-nav li:hover,.footer-nav li:hover a, .top-header .select-wrapper:hover .sbSelector, .banner-text .read-more-content:hover, .more-news .read-more:hover, .post-links a:hover, .about-post .read-post:hover, .full-width-block .post-details h3 a:hover, .subscribe-content .subsribe-offer, .information-block .info-item .information, .collection-links figure .collection-text:hover, .sale-offer h2 strong, .blog-post .blog-post-link a:hover, .middle-header-right i.icon_bag_alt:hover, .information-block .info-item:hover i, .news-block-wrapper:hover .more-news h4 a, .news-block-wrapper:hover .read-more, .contact-info strong a:hover, .contact-info .icon_mobile:hover, .contact-info .icon_pin_alt:hover, .contact-info .icon_mail_alt:hover, .post-details-section:hover .post-details h3 a, .post-details-section:hover .post-details .read-post, .view-tweets:hover, .post-content li:hover .post-text {
+  color:@skinColor !important; .transition_effect;
+}
+
+.news-social a:hover {
+  color:lighten(@skinColor ,6%) !important ; .transition_effect;
+}
+
+//BACKGROUND COLOR
+.product-view a:hover, .news-block-image:hover .news-date, .news-information:hover .news-date, .subscribe-form button:hover, .add-cart:hover, .comment-form .comment-block li button:hover, .contact-form .comment-submit:hover, .register-now-form input[type="submit"]:hover, .pop-up-box input[type="submit"]:hover, .cart-proceed:hover, .banner #slider1 .banner-btn a:hover, .check-it:hover, .check-offer:hover, .cart-form input[type="submit"]:hover, .shopping-btn a:hover, .login-account-form input[type="submit"]:hover {
+  background-color:@skinColor !important; .transition_effect;
+}
+
+//BORDER
+.banner #slider1 .banner-btn a:hover {
+  border: 2px solid @skinColor !important; .transition_effect;
+}
+.check-it:hover, .check-offer:hover, .cart-form input[type="submit"]:hover, .shopping-btn a:hover, .login-account-form input[type="submit"]:hover, .product-view a:hover, .news-block-image:hover .news-date, .news-information:hover .news-date, .subscribe-form button:hover {
+  border: 1px solid @skinColor !important; .transition_effect;
+}
+// svg Icon color
+svg path{
+    fill:@skinColor; .transition_effect;
+}

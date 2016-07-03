@@ -1,0 +1,104 @@
+
+.sbHolder {
+	background-color: #ffffff;
+	border: solid 1px #656565;
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	height: 23px;
+	position: relative;
+	width: 220px;
+}
+.sbHolder:focus .sbSelector {
+}
+.sbSelector {
+	display: block;
+	height: 21px;
+	left: 0;
+	line-height: 20px;
+	outline: none;
+	overflow: hidden;
+	position: absolute;
+	text-indent: 10px;
+	top: 0;
+	width: 170px;
+}
+.sbSelector:link, .sbSelector:visited, .sbSelector:hover {
+	color: #666666;
+	outline: none;
+	text-decoration: none;
+}
+.sbToggle {
+	display: block;
+	height: 7px;
+	outline: none;
+	position: absolute;
+	right: 6px;
+	top: 8px;
+	width: 14px;
+}
+.sbToggle:hover {
+	/*background: url(../images/select-icons.png) 0 -167px no-repeat;*/
+}
+.sbToggleOpen {
+	/*background: url(../images/select-icons.png) 0 -16px no-repeat;*/
+}
+.sbToggleOpen:hover {
+	/*background: url(../images/select-icons.png) 0 -66px no-repeat;*/
+}
+.sbHolderDisabled {
+	background-color: #3C3C3C;
+	border: solid 1px #515151;
+}
+.sbHolderDisabled .sbHolder {
+}
+.sbHolderDisabled .sbToggle {
+}
+.sbOptions {
+	background-color: #ffffff;
+	border: solid 1px #656565;
+	list-style: none;
+	left: -1px;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 30px;
+	width: 100%;
+	z-index: 1;
+	overflow-y: auto;
+}
+.sbOptions li {
+	padding: 0;
+}
+.sbOptions a {
+	border-bottom: 1px solid #515151;
+	display: block;
+	outline: none;
+	padding: 7px 0 7px 3px;
+}
+.sbOptions a:link, .sbOptions a:visited {
+	color: #666666;
+	text-decoration: none;
+}
+.sbOptions a:hover, .sbOptions a:focus, .sbOptions a.sbFocus {
+	color: #666666;
+}
+.sbOptions li.last a {
+	border-bottom: none;
+}
+.sbOptions .sbDisabled {
+	border-bottom: dotted 1px #515151;
+	color: #999;
+	display: block;
+	padding: 7px 0 7px 3px;
+}
+.sbOptions .sbGroup {
+	border-bottom: dotted 1px #515151;
+	color: #EBB52D;
+	display: block;
+	font-weight: bold;
+	padding: 7px 0 7px 3px;
+}
+.sbOptions .sbSub {
+	padding-left: 17px;
+}

@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="websiteApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Look</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700%7CPlayfair+Display:400italic,400,900%7COpen+Sans'
+          rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.selectbox.css" media="screen">
+
+    <!-- Linea Icons -->
+    <link rel="stylesheet" type="text/css" href="assets/css/linea.css" media="screen">
+
+    <!-- Elegant Icons -->
+    <link rel="stylesheet" type="text/css" href="assets/css/eleganticon.css" media="screen">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css" media="screen">
+
+    <!-- RS5.0 Main Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="assets/css/settings.css">
+
+    <!-- RS5.0 Layers and Navigation Styles -->
+    <link rel="stylesheet" type="text/css" href="assets/css/layers.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/navigation.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" media="screen">
+
+    <!-- owl carousel -->
+    <link rel="stylesheet" type="text/css" href="assets/css/owl.carousel.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.fancybox.css" media="screen">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/dropdown.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="assets/css/global.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="assets/css/homepage1.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="assets/css/responsive.css" media="screen">
+    <link href="assets/css/skin.less" rel="stylesheet/less">
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="assets/js/angular.js"></script>
+</head>
+<body class="ng-cloak">
+<div “ng-cloak” ng-view ng-include="'views/parts/header/loader.html'"></div>
+<!--Page Wrapper Start-->
+<div id="wrapper">
+    <!--container Start-->
+    <!--Header Section Start-->
+    <header class="header1" id="header">
+        <div class="top-header hidden-xs">
+            <div class="container">
+                <div class="row clearfix">
+                    <div class="col-xs-12">
+                        <ul class="top-header-left clearfix">
+                            <li class="register-link clearfix">
+                                <i class="lock-icon icon_lock"> </i><a href="login.html" class="login">Log In</a>
+                                <span>/</span><a href="#" class="register">Register </a>
+                            </li>
+                            <li class="select-wrapper">
+                                <select class="select">
+                                    <option> English</option>
+                                    <option> Spanish</option>
+                                    <option> French</option>
+                                    <option> German</option>
+                                </select><i class="arrow_carrot-down"></i>
+                            </li>
+                            <li class="select-wrapper">
+                                <select class="select">
+                                    <option> USD</option>
+                                </select><i class="arrow_carrot-down"></i>
+                            </li>
+                        </ul>
+                        <ul class="top-header-right clearfix">
+                            <li class="profile">
+                                <a href="#"><i class="icon_profile"></i>My Account </a>
+                            </li>
+                            <li class="gift">
+                                <a href="#"><i class="icon_gift"></i> My Wishlist</a>
+                            </li>
+                            <li class="checkout">
+                                <a href="#"><i class="icon_check_alt"></i>Checkout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="middle-header">
+            <div class="container">
+                <div class="row clearfix">
+                    <div class="col-xs-12 middle-header-content">
+                        <div class="middle-header-left">
+                            <form class="clearfix">
+                                <input type="text" name="search" placeholder="Search... "/>
+                                <button type="submit">
+                                    <i class="icon_search"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="middle-header-right clearfix">
+                            <div class="open-cart">
+                                <i class="icon_bag_alt"></i>
+                                <span class="item-count"> 1 Item(s) - <strong>$99.00</strong> <i
+                                        class="arrow_carrot-down"></i></span>
+                            </div>
+                            <div class="item-block">
+                                <ul class="item-list">
+                                    <li>
+                                        <figure class="item-image">
+                                            <a href="#"><img src="assets/images/img-one.jpg" alt="t-shirt"/></a>
+                                        </figure>
+                                        <div class="item-description">
+                                            <h4><a href="#" class="item-name">T-Shirt Retro Black</a></h4>
+                                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                                            <span class="price">$ 70.00</span>
+                                        </div>
+                                        <span class="delete fa fa-trash"> </span>
+                                    </li>
+                                    <li>
+                                        <figure class="item-image">
+                                            <a href="#"><img src="assets/images/img-two.jpg" alt="t-shirt"/></a>
+                                        </figure>
+                                        <div class="item-description">
+                                            <h4><a href="#" class="item-name">T-Shirt Retro Black</a></h4>
+                                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                                            <span class="price">$ 70.00</span>
+                                        </div>
+                                        <span class="delete fa fa-trash"> </span>
+                                    </li>
+                                    <li>
+                                        <figure class="item-image">
+                                            <a href="#"><img src="assets/images/img-three.jpg" alt="t-shirt"/></a>
+                                        </figure>
+                                        <div class="item-description">
+                                            <h4><a href="#" class="item-name">T-Shirt Retro White</a></h4>
+                                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                                            <span class="price">$ 70.00</span>
+                                        </div>
+                                        <span class="delete fa fa-trash"> </span>
+                                    </li>
+                                </ul>
+                                <div class="total-amount clearfix">
+                                    <span class="total">Total</span>
+                                    <span class="amount">€1145.00</span>
+                                </div>
+                                <div class="butn-group clearfix">
+                                    <a href="#" class="cart">VIEW CART</a>
+                                    <a href="#" class="checkout">CHECKOUT</a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LOOK"/></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navigation">
+            <div class="container">
+                <div id="cssmenu">
+                    <a href="javascript:void(0);" class="main-menu menu-image"></a>
+                    <ul class="menu-links">
+                        <li class="active has-sub">
+                            <a href="javascript:void(0);">Home</a>
+                            <i class="fs1 mmenu eicon visible-xs" data-icon="3"></i>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="index.html">homepage 1</a>
+                                </li>
+                                <li>
+                                    <a href="homepage-two.html">homepage 2</a>
+                                </li>
+                                <li>
+                                    <a href="homepage-three.html">homepage 3</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">FASHION</a>
+                        </li>
+                        <li>
+                            <a href="#">ELECTRONICS</a>
+                        </li>
+                        <li class="multi-level">
+                            <a href="#">MULTI LEVEL</a>
+                            <div class="multi-sub-menu clearfix">
+                                <div class="left-menu-block">
+                                    <div class="top-menu clearfix">
+                                        <div class="menu-block">
+                                            <h3> STYLIEST BAG </h3>
+                                            <ul class="sub-menu-links">
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Clutch Handbags</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Diaper Bags</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Bags</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Hobo Handbags</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="menu-block">
+                                            <h3> MATERIAL BAG </h3>
+                                            <ul class="sub-menu-links">
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Beaded Handbags</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Fabric Handbags</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Handbags</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Leather Handbags</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="menu-block">
+                                            <h3> SHOES </h3>
+                                            <ul class="sub-menu-links">
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Flat Shoes</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Flat Sandals</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Boots</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Heels</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="bottom-menu clearfix">
+                                        <div class="menu-block">
+                                            <h3> JWELLERY </h3>
+                                            <ul class="sub-menu-links">
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Bracelets</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Necklaces &amp;
+                                                        Pendants</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Pendants</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Pins &amp; Brooches</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="menu-block">
+                                            <h3> DRESSES </h3>
+                                            <ul class="sub-menu-links">
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Casual Dresses</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Evening</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Designer</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Party</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="menu-block">
+                                            <h3> SWIMWEAR </h3>
+                                            <ul class="sub-menu-links">
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Swimsuits</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Beach Clothing</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Clothing</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-angle-right"></i>Bikinis</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <figure class="right-menu-block">
+                                    <img src="assets/images/img-four.jpg" alt="image"/>
+                                </figure>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">Shop</a>
+                            <i class="fs1 mmenu eicon visible-xs" data-icon="3"></i>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="categories.html">categories</a>
+                                </li>
+                                <li>
+                                    <a href="categories-grid-left.html">categories grid left</a>
+                                </li>
+                                <li>
+                                    <a href="categories-list-sidebar.html">categories list sidebar</a>
+                                </li>
+                                <li>
+                                    <a href="product-page.html">product</a>
+                                </li>
+                                <li>
+                                    <a href="shopping-cart.html">shopping cart</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a href="javascript:void(0);">BLOG</a>
+                            <i class="fs1 mmenu eicon visible-xs" data-icon="3"></i>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="blog-grid-sidebar.html">Blog grid sidebar</a>
+                                </li>
+                                <li>
+                                    <a href="blog-list-sidebar.html">Blog list sidebar</a>
+                                </li>
+                                <li>
+                                    <a href="blog-detail.html">blog detail</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="contact.html">Contact us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!--Header Section End-->
+    <div class="banner forcefullwidth_wrapper_tp_banner">
+        <div class="rev_slider_wrapper">
+            <div id="slider1" class="rev_slider" data-version="5.0">
+                <ul>
+                    <li data-transition="cube">
+                        <!-- MAIN IMAGE -->
+                        <img src="assets/images/banner-image.jpg" alt="" width="1920" height="1280">
+                        <div class="banner-content">
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption NotGeneric-Title   tp-resizeme title" data-x="left"
+                                 data-hoffset="-100px" data-y="center" data-voffset="-50"
+                                 data-width="['auto','auto','auto','auto']"
+                                 data-height="['auto','auto','auto','auto']"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power3.easeInOut;"
+                                 data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
+                                 data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                                 data-start="1000" data-splitin="none"
+                                 data-splitout="none"
+                                 data-responsive_offset="on">
+                                DESIGN &amp; FASHION
+                            </div>
+                            <div class="tp-caption NotGeneric-Title tp-resizeme banner-text" data-x="left"
+                                 data-hoffset="-100px" data-y="center" data-voffset="-150"
+                                 data-width="['auto','auto','auto','auto']"
+                                 data-height="['auto','auto','auto','auto']"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power3.easeInOut;"
+                                 data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
+                                 data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                                 data-start="1500" data-splitin="none"
+                                 data-splitout="none"
+                                 data-responsive_offset="on">
+                                Transformer theme is an elegant, powerful and fully responsive prestashop theme with
+                                modern design. Suitable for every type of store.
+                            </div>
+                            <div class="tp-caption NotGeneric-Title   tp-resizeme banner-btn" data-x="center"
+                                 data-hoffset="-100px" data-y="center" data-voffset="150"
+                                 data-width="['auto','auto','auto','auto']"
+                                 data-height="['auto','auto','auto','auto']"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power3.easeInOut;"
+                                 data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
+                                 data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                                 data-start="1900" data-splitin="none"
+                                 data-splitout="none"
+                                 data-responsive_offset="on">
+                                <a href="#">View Collection</a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li data-transition="cube">
+                        <!-- MAIN IMAGE -->
+                        <img src="assets/images/banner-image.jpg" alt="" width="1920" height="1280">
+                        <div class="banner-content">
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption NotGeneric-Title   tp-resizeme title" data-x="left"
+                                 data-hoffset="-100px" data-y="center" data-voffset="-50"
+                                 data-width="['auto','auto','auto','auto']"
+                                 data-height="['auto','auto','auto','auto']"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power3.easeInOut;"
+                                 data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
+                                 data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                                 data-start="1000" data-splitin="none"
+                                 data-splitout="none"
+                                 data-responsive_offset="on">
+                                DESIGN &amp; FASHION
+                            </div>
+                            <div class="tp-caption NotGeneric-Title tp-resizeme banner-text" data-x="left"
+                                 data-hoffset="-100px" data-y="center" data-voffset="-150"
+                                 data-width="['auto','auto','auto','auto']"
+                                 data-height="['auto','auto','auto','auto']"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power3.easeInOut;"
+                                 data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
+                                 data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                                 data-start="1500" data-splitin="none"
+                                 data-splitout="none"
+                                 data-responsive_offset="on">
+                                Transformer theme is an elegant, powerful and fully responsive prestashop theme with
+                                modern design. Suitable for every type of store.
+                            </div>
+                            <div class="tp-caption NotGeneric-Title   tp-resizeme banner-btn" data-x="center"
+                                 data-hoffset="-100px" data-y="center" data-voffset="150"
+                                 data-width="['auto','auto','auto','auto']"
+                                 data-height="['auto','auto','auto','auto']"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power3.easeInOut;"
+                                 data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
+                                 data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                                 data-start="1900" data-splitin="none"
+                                 data-splitout="none"
+                                 data-responsive_offset="on">
+                                <a href="#">View Collection</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li data-transition="cube">
+                        <!-- MAIN IMAGE -->
+                        <img src="assets/images/banner-image.jpg" alt="" width="1920" height="1280">
+                        <div class="banner-content">
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption NotGeneric-Title   tp-resizeme title" data-x="left"
+                                 data-hoffset="-100px" data-y="center" data-voffset="-50"
+                                 data-width="['auto','auto','auto','auto']"
+                                 data-height="['auto','auto','auto','auto']"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power3.easeInOut;"
+                                 data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
+                                 data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                                 data-start="1000" data-splitin="none"
+                                 data-splitout="none"
+                                 data-responsive_offset="on">
+                                DESIGN &amp; FASHION
+                            </div>
+                            <div class="tp-caption NotGeneric-Title tp-resizeme banner-text" data-x="left"
+                                 data-hoffset="-100px" data-y="center" data-voffset="-150"
+                                 data-width="['auto','auto','auto','auto']"
+                                 data-height="['auto','auto','auto','auto']"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power3.easeInOut;"
+                                 data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
+                                 data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                                 data-start="1500" data-splitin="none"
+                                 data-splitout="none"
+                                 data-responsive_offset="on">
+                                Transformer theme is an elegant, powerful and fully responsive prestashop theme with
+                                modern design. Suitable for every type of store.
+                            </div>
+                            <div class="tp-caption NotGeneric-Title   tp-resizeme banner-btn" data-x="center"
+                                 data-hoffset="-100px" data-y="center" data-voffset="150"
+                                 data-width="['auto','auto','auto','auto']"
+                                 data-height="['auto','auto','auto','auto']"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power3.easeInOut;"
+                                 data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
+                                 data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                                 data-start="1900" data-splitin="none"
+                                 data-splitout="none"
+                                 data-responsive_offset="on">
+                                <a href="#">View Collection</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li data-transition="cube">
+                        <!-- MAIN IMAGE -->
+                        <img src="assets/images/banner-image.jpg" alt="" width="1920" height="1280">
+                        <div class="banner-content">
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption NotGeneric-Title   tp-resizeme title" data-x="left"
+                                 data-hoffset="-100px" data-y="center" data-voffset="-50"
+                                 data-width="['auto','auto','auto','auto']"
+                                 data-height="['auto','auto','auto','auto']"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power3.easeInOut;"
+                                 data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
+                                 data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                                 data-start="1000" data-splitin="none"
+                                 data-splitout="none"
+                                 data-responsive_offset="on">
+                                DESIGN &amp; FASHION
+                            </div>
+                            <div class="tp-caption NotGeneric-Title tp-resizeme banner-text" data-x="left"
+                                 data-hoffset="-100px" data-y="center" data-voffset="-150"
+                                 data-width="['auto','auto','auto','auto']"
+                                 data-height="['auto','auto','auto','auto']"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power3.easeInOut;"
+                                 data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
+                                 data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                                 data-start="1500" data-splitin="none"
+                                 data-splitout="none"
+                                 data-responsive_offset="on">
+                                Transformer theme is an elegant, powerful and fully responsive prestashop theme with
+                                modern design. Suitable for every type of store.
+                            </div>
+                            <div class="tp-caption NotGeneric-Title   tp-resizeme banner-btn" data-x="center"
+                                 data-hoffset="-100px" data-y="center" data-voffset="150"
+                                 data-width="['auto','auto','auto','auto']"
+                                 data-height="['auto','auto','auto','auto']"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power3.easeInOut;"
+                                 data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
+                                 data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                                 data-start="1900" data-splitin="none"
+                                 data-splitout="none"
+                                 data-responsive_offset="on">
+                                <a href="#">View Collection</a>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div><!-- END REVOLUTION SLIDER -->
+        </div>
+    </div>
+    <!--Content Area Start-->
+    <div class="content">
+        <div class="banner-section container">
+            <div class="row">
+                <figure class="hero-image center-block col-md-6 col-sm-6 col-xs-12">
+                    <img src="assets/images/img-five.jpg" alt="image"/>
+                </figure>
+                <div class="col-md-12 col-sm-12 hidden-xs banner-block-one"></div>
+                <div class="col-md-8 col-sm-8 hidden-xs banner-block-two"></div>
+                <span class="lookbook">Lookbook 2015</span>
+                <span class="collection">Collection 2015</span>
+                <a href="#" class="read-story">Read More Story</a>
+            </div>
+        </div>
+        <div class="information-block container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="info-item">
+                        <a href="#"><i class="icon-line" data-icon=">"></i> <strong>FREE SHIPPING WORLDWIDE</strong>
+                            <span class="information">Guaranteed Delivery In 7 Days</span></a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="info-item">
+                        <a href="#"><i class="icon icon-basic-life-buoy"></i> <strong>24/24 SUPPORT SERVICES</strong>
+                            <span class="information">Call Hotline 1900-888999</span></a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="info-item">
+                        <a href="#"><i class="icon icon-basic-anticlockwise"></i> <strong>MONEY BACK GUARANTEE</strong>
+                            <span class="information">Send Within 30 Days</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="featured-block container">
+            <div class="row">
+                <div class="block-heading">
+                    <h2>FEATURED PRODUCTS</h2>
+                    <span class="border-image"> <img src="assets/svg/shape.svg" alt="image" class="svg"/> </span>
+                </div>
+                <ul class="product-block center-block" id="project-terms">
+                    <li id="all">
+                        <a href="javascript:void(0)">ALL</a>
+                    </li>
+                    <li id="cat1">
+                        <a href="javascript:void(0)">HOT</a>
+                    </li>
+                    <li id="cat2">
+                        <a href="javascript:void(0)">BEST</a>
+                    </li>
+                    <li id="cat3">
+                        <a href="javascript:void(0)">NEW</a>
+                    </li>
+                </ul>
+                <div class="product-section main" id="product-section">
+                    <div class="product-section-content product-description main-item cat1">
+                        <figure class="product-image">
+                            <img src="assets/images/img-six.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-six.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">T-Shirt Retro White</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span></span>
+                        </div>
+                    </div>
+                    <div class="product-section-content product-description main-item cat2">
+                        <figure class="product-image">
+                            <img src="assets/images/img-seven.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-seven.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">T-Shirt Retro Black</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span></span>
+                        </div>
+                    </div>
+                    <div class="product-section-content product-description main-item cat3">
+                        <figure class="product-image">
+                            <img src="assets/images/img-eight.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-eight.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">T-Shirt Retro White</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span>&nbsp; <del> $ 97.00</del></span>
+                        </div>
+                    </div>
+                    <div class="product-section-content product-description main-item cat1">
+                        <figure class="product-image">
+                            <img src="assets/images/img-nine.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-nine.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">T-Shirt Retro Mounth</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span></span>
+                        </div>
+                    </div>
+                    <div class="product-section-content product-description main-item cat2">
+                        <figure class="product-image">
+                            <img src="assets/images/img-six.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-six.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">T-Shirt Retro White</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span></span>
+                        </div>
+                    </div>
+                    <div class="product-section-content product-description main-item cat3">
+                        <figure class="product-image">
+                            <img src="assets/images/img-seven.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-seven.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">T-Shirt Retro Black</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span></span>
+                        </div>
+                    </div>
+                    <div class="product-section-content product-description main-item cat1">
+                        <figure class="product-image">
+                            <img src="assets/images/img-eight.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-eight.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">T-Shirt Retro White</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span>&nbsp; <del> $ 97.00</del></span>
+                        </div>
+                    </div>
+                    <div class="product-section-content product-description main-item cat2">
+                        <figure class="product-image">
+                            <img src="assets/images/img-nine.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-nine.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">T-Shirt Retro Mounth</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span></span>
+                        </div>
+                    </div>
+                    <div class="product-section-content product-description main-item cat3">
+                        <figure class="product-image">
+                            <img src="assets/images/img-six.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-six.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">T-Shirt Retro White</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span></span>
+                        </div>
+                    </div>
+                    <div class="product-section-content product-description main-item cat1">
+                        <figure class="product-image">
+                            <img src="assets/images/img-seven.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-seven.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">T-Shirt Retro Black</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span></span>
+                        </div>
+                    </div>
+                    <div class="product-section-content product-description main-item cat2">
+                        <figure class="product-image">
+                            <img src="assets/images/img-eight.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-eight.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">T-Shirt Retro White</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span>&nbsp; <del> $ 97.00</del></span>
+                        </div>
+                    </div>
+                    <div class="product-section-content product-description main-item cat3">
+                        <figure class="product-image">
+                            <img src="assets/images/img-nine.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-nine.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">T-Shirt Retro Mounth</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span></span>
+                        </div>
+                    </div>
+                    <div class="product-section-content product-description main-item cat1">
+                        <figure class="product-image">
+                            <img src="assets/images/img-six.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-six.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">T-Shirt Retro White</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span></span>
+                        </div>
+                    </div>
+                    <div class="product-section-content product-description main-item cat2">
+                        <figure class="product-image">
+                            <img src="assets/images/img-seven.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-seven.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">T-Shirt Retro Black</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span></span>
+                        </div>
+                    </div>
+                    <div class="product-section-content product-description main-item cat3">
+                        <figure class="product-image">
+                            <img src="assets/images/img-eight.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-eight.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">T-Shirt Retro White</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span>&nbsp; <del> $ 97.00</del></span>
+                        </div>
+                    </div>
+                    <div class="product-section-content product-description main-item cat1">
+                        <figure class="product-image">
+                            <img src="assets/images/img-nine.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-nine.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">T-Shirt Retro Mounth</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div id="projects-copy" class="hide"></div>
+            </div>
+        </div>
+        <div class="product-collection clearfix">
+            <div class="collection-block">
+                <figure class="image">
+                    <img src="assets/images/img1.jpg" alt="image"/>
+                </figure>
+                <div class="image-text">
+                    <span class="product-number"> 01 </span>
+                    <h3>BAG COLLECTION</h3>
+                </div>
+            </div>
+            <div class="collection-block">
+                <figure class="image">
+                    <img src="assets/images/img2.jpg" alt="image"/>
+                </figure>
+                <div class="image-text">
+                    <span class="product-number"> 02 </span>
+                    <h3>HANDMADE HAT</h3>
+                </div>
+            </div>
+            <div class="collection-block">
+                <figure class="image">
+                    <img src="assets/images/img3.jpg" alt="image"/>
+                </figure>
+                <div class="image-text">
+                    <span class="product-number"> 03 </span>
+                    <h3>accessorize</h3>
+                </div>
+            </div>
+        </div>
+        <div class="new-product container">
+            <div class="row">
+                <div class="block-heading">
+                    <h2>NEW PRODCUTS</h2>
+                    <span class="border-image"> <img src="assets/svg/shape.svg" alt="image" class="svg"/> </span>
+                </div>
+                <div class="product-section">
+                    <div class="col-md-3 col-sm-3 col-xs-12 product-description">
+                        <figure class="product-image">
+                            <img src="assets/images/img-six.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-six.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">T-Shirt Retro White</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span>&nbsp; <del> $ 97.00</del></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12 product-description">
+                        <figure class="product-image">
+                            <img src="assets/images/img-seven.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-seven.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                            <span class="badge-info left"> NEW </span>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">T-Shirt Retro Black</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12 product-description">
+                        <figure class="product-image">
+                            <img src="assets/images/img-eight.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-eight.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">T-Shirt Retro White</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12 product-description">
+                        <figure class="product-image">
+                            <img src="assets/images/img-nine.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-nine.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                            <span class="badge-info right"> SALE </span>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">T-Shirt Retro Mounth</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span>&nbsp; <del> $ 97.00</del></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12 product-description">
+                        <figure class="product-image">
+                            <img src="assets/images/img-ten.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-ten.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">The Wild Ones Raglan</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12 product-description">
+                        <figure class="product-image">
+                            <img src="assets/images/img-eleven.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-eleven.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">DBD Skull Long Sleeve</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12 product-description">
+                        <figure class="product-image">
+                            <img src="assets/images/img-twelve.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-twelve.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                            <span class="badge-info right"> NEW </span>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">Death is Fearful Raglan</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span>&nbsp; <del> $ 97.00</del></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12 product-description">
+                        <figure class="product-image">
+                            <img src="assets/images/img-thirteen.jpg" alt="product"/>
+                            <div class="overlay">
+                                <div class="product-view-block">
+                                    <div class="product-view clearfix">
+                                        <a href="assets/images/img-thirteen.jpg"
+                                           class="zoom icon_zoom-in_alt single_image"></a><a href="#"
+                                                                                             class="data-report icon_datareport"></a><a
+                                            href="#" class="heart icon_heart_alt"></a>
+                                    </div>
+                                    <a href="#" class="btn add-cart">ADD TO CART</a>
+                                </div>
+                            </div>
+                        </figure>
+                        <div class="about-product">
+                            <h4><a href="#" class="item-name">Liberty or Death</a></h4>
+                            <span class="review-icon clearfix"> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star active"></i> <i
+                                    class="icon_star active"></i> <i class="icon_star"></i> </span>
+                            <span class="price"><span>$ 70.00</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="parallax testimonial-section">
+            <div class="container">
+                <div id="owl-demo" class="owl-carousel owl-theme">
+                    <div class="item">
+                        <div class="testimonial-block">
+                            <figure class="author-image">
+                                <img src="assets/images/round-image.png" alt="image"/>
+                            </figure>
+                            <blockquote class="author-text">
+                                <p>
+                                    Vivamus suscipit tortor eget felis porttitor volutpat. Nulla quis lorem ut libero
+                                    malesuada feugiat. Proin eget tortor volutpat.Nulla quis lorem ut libero malesuada
+                                    lorem feugiat.
+                                </p>
+                                <span class="author-name">MR.JONE DOE</span>
+                                <span class="author-work">Creative Desginer</span>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimonial-block">
+                            <figure class="author-image">
+                                <img src="assets/images/round-image.png" alt="image"/>
+                            </figure>
+                            <blockquote class="author-text">
+                                <p>
+                                    Vivamus suscipit tortor eget felis porttitor volutpat. Nulla quis lorem ut libero
+                                    malesuada feugiat. Proin eget tortor volutpat.Nulla quis lorem ut libero malesuada
+                                    lorem feugiat.
+                                </p>
+                                <span class="author-name">MR.JONE DOE</span>
+                                <span class="author-work">Creative Desginer</span>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimonial-block">
+                            <figure class="author-image">
+                                <img src="assets/images/round-image.png" alt="image"/>
+                            </figure>
+                            <blockquote class="author-text">
+                                <p>
+                                    Vivamus suscipit tortor eget felis porttitor volutpat. Nulla quis lorem ut libero
+                                    malesuada feugiat. Proin eget tortor volutpat.Nulla quis lorem ut libero malesuada
+                                    lorem feugiat.
+                                </p>
+                                <span class="author-name">MR.JONE DOE</span>
+                                <span class="author-work">Creative Desginer</span>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="news-block container">
+            <div class="row">
+                <div class="block-heading">
+                    <h2>LATEST NEWS</h2>
+                    <span class="border-image"> <img src="assets/svg/shape.svg" alt="image" class="svg" width="200"
+                                                     height="200"/> </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12 news-block-image">
+                    <figure class="news-image">
+                        <img src="assets/images/img4.jpg" alt="image"/>
+                        <div class="news-info">
+                            <span class="news-date"> <strong>22</strong> MAY </span>
+                            <div class="news-text">
+                                <h4><a href="#" class="news-text-heading">Made by Hand : Tailor Card Holder</a></h4>
+                                <div class="news-social">
+                                    <a href="#" class="comment"><i class="icon_comment"></i><span>12+</span></a>
+                                    <a href="#" class="like"><i class="icon_heart"></i><span>33+</span></a>
+                                    <a href="#" class="author"><i class="icon_profile"></i> <span> Nanoevil </span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </figure>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 news-block-content">
+                    <div class="news-information clearfix">
+                        <span class="news-date"> <strong>22</strong> MAY </span>
+                        <div class="news-text">
+                            <h4><a href="#" class="news-text-heading">New Cllection for Men 2015</a></h4>
+                            <div class="news-social">
+                                <a href="#" class="comment"><i class="icon_comment"></i><span>12+</span></a>
+                                <a href="#" class="like"><i class="icon_heart"></i><span>33+</span></a>
+                                <a href="#" class="author"><i class="icon_profile"></i> <span> Nanoevil </span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news-information clearfix">
+                        <span class="news-date"> <strong>19</strong> MAY </span>
+                        <div class="news-text">
+                            <h4><a href="#" class="news-text-heading">Styling Tips to Steal From the Fall 2015 NYFW
+                                Runway</a></h4>
+                            <div class="news-social">
+                                <a href="#" class="comment"><i class="icon_comment"></i><span>12+</span></a>
+                                <a href="#" class="like"><i class="icon_heart"></i><span>33+</span></a>
+                                <a href="#" class="author"><i class="icon_profile"></i> <span> Nanoevil </span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news-information clearfix">
+                        <span class="news-date"> <strong>14</strong> MAY </span>
+                        <div class="news-text">
+                            <h4><a href="#" class="news-text-heading">The Season's Key Pieces: Fall 2015</a></h4>
+                            <div class="news-social">
+                                <a href="#" class="comment"><i class="icon_comment"></i><span>12+</span></a>
+                                <a href="#" class="like"><i class="icon_heart"></i><span>33+</span></a>
+                                <a href="#" class="author"><i class="icon_profile"></i> <span> Nanoevil </span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news-information clearfix">
+                        <span class="news-date"> <strong>08</strong> MAY </span>
+                        <div class="news-text">
+                            <h4><a href="#" class="news-text-heading">5 Ways to Grow Long Hair—Fast</a></h4>
+                            <div class="news-social">
+                                <a href="#" class="comment"><i class="icon_comment"></i><span>12+</span></a>
+                                <a href="#" class="like"><i class="icon_heart"></i><span>33+</span></a>
+                                <a href="#" class="author"><i class="icon_profile"></i> <span> Nanoevil </span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news-information clearfix">
+                        <span class="news-date"> <strong>02</strong> MAY </span>
+                        <div class="news-text">
+                            <h4><a href="#" class="news-text-heading">11 Things You Didn't Know About Hermès</a></h4>
+                            <div class="news-social">
+                                <a href="#" class="comment"><i class="icon_comment"></i><span>12+</span></a>
+                                <a href="#" class="like"><i class="icon_heart"></i><span>33+</span></a>
+                                <a href="#" class="author"><i class="icon_profile"></i> <span> Nanoevil </span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="subscribe-section container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="subscribe-content">
+                        <span class="ticking-time">TIMES A TICKING </span>
+                        <strong class="subscribe-heading">DON'T MISS OUT</strong>
+                        <span class="subsribe-offer">Subscribe for the latest styles and sales, plus get 25% off your first order.</span>
+                    </div>
+                    <form class="subscribe-form clearfix">
+                        <input type="text" name="email" placeholder="Your Email Address"/>
+                        <button type="submit">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="logo-section container">
+            <div class="row">
+                <div class="block-heading">
+                    <h2>BRAND LOGO</h2>
+                    <span class="border-image"> <img src="assets/svg/shape.svg" alt="image" class="svg"/> </span>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div id="owl-demo-new" class="owl-carousel owl-theme">
+                            <div class="item">
+                                <figure class="logo-images">
+                                    <img src="assets/images/logo1.png" alt="image"/>
+                                </figure>
+                            </div>
+                            <div class="item">
+                                <figure class="logo-images">
+                                    <img src="assets/images/logo2.png" alt="image"/>
+                                </figure>
+                            </div>
+                            <div class="item">
+                                <figure class="logo-images">
+                                    <img src="assets/images/logo3.png" alt="image"/>
+                                </figure>
+                            </div>
+                            <div class="item">
+                                <figure class="logo-images">
+                                    <img src="assets/images/logo4.png" alt="image"/>
+                                </figure>
+                            </div>
+                            <div class="item">
+                                <figure class="logo-images">
+                                    <img src="assets/images/logo2.png" alt="image"/>
+                                </figure>
+                            </div>
+                            <div class="item">
+                                <figure class="logo-images">
+                                    <img src="assets/images/logo2.png" alt="image"/>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Content Area End-->
+    <!--Footer Section Start-->
+    <footer class="footer">
+        <div class="primary-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-content col-md-3 col-sm-3 col-xs-12">
+                        <div class="footer-border">
+                            <h4> STORE </h4>
+                            <ul class="footer-nav">
+                                <li>
+                                    <a href="#">New York</a>
+                                </li>
+                                <li>
+                                    <a href="#">Paris</a>
+                                </li>
+                                <li>
+                                    <a href="#">London</a>
+                                </li>
+                                <li>
+                                    <a href="#">Madrid</a>
+                                </li>
+                                <li>
+                                    <a href="#">Tokio</a>
+                                </li>
+                                <li>
+                                    <a href="#">Milan</a>
+                                </li>
+                                <li>
+                                    <a href="#">Hong Kong</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-content col-md-3 col-sm-3 col-xs-12">
+                        <div class="footer-border">
+                            <h4> OUR OFFER </h4>
+                            <ul class="footer-nav">
+                                <li>
+                                    <a href="#">New products</a>
+                                </li>
+                                <li>
+                                    <a href="#">Top sellers</a>
+                                </li>
+                                <li>
+                                    <a href="#">Specials</a>
+                                </li>
+                                <li>
+                                    <a href="#">Manufacturers</a>
+                                </li>
+                                <li>
+                                    <a href="#">Suppliers</a>
+                                </li>
+                                <li>
+                                    <a href="#">Specials</a>
+                                </li>
+                                <li>
+                                    <a href="#">Customer Service</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-content col-md-3 col-sm-3 col-xs-12">
+                        <div class="footer-border">
+                            <h4> OUR SERVICES </h4>
+                            <ul class="footer-nav">
+                                <li>
+                                    <a href="#">Order tracking</a>
+                                </li>
+                                <li>
+                                    <a href="#">Privacy Policy</a>
+                                </li>
+                                <li>
+                                    <a href="#">Gift Cards</a>
+                                </li>
+                                <li>
+                                    <a href="#">Shipping Information</a>
+                                </li>
+                                <li>
+                                    <a href="#">Returns &amp; refunds</a>
+                                </li>
+                                <li>
+                                    <a href="#">Personalised Cards</a>
+                                </li>
+                                <li>
+                                    <a href="#">Delivery information</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-content col-md-3 col-sm-3 col-xs-12">
+                        <div class="footer-border">
+                            <h4> OUR CONTACT </h4>
+                            <div class="info-block">
+                                <address class="address-info">
+                                    United Kingdom, London
+                                    <br/>
+                                    Simple Street 15A
+                                </address>
+                                <span class="call-info"> <a href="callto:1231234567890">(123) 123.456.7890 </a> <a
+                                        href="callto:1231234567890">(123) 123.456.7890</a> </span>
+                                <span class="mail-info"> <a href="mailto:megashop@info.com">megashop@info.com</a> <a
+                                        href="mailto:megashop@holding.com">megashop@holding.com</a> </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="secondary-footer">
+            <span class="copy-right">Copyright © 2016 PSD Themes by Themeon. All rights reserved.</span>
+        </div>
+    </footer>
+    <!--Footer Section End-->
+    <!--container End-->
+</div>
+<!--Page Wrapper End-->
+<script type="text/javascript" src="assets/js/jquery-1.12.0.min.js"></script>
+<script src="assets/js/less.js"></script>
+<script type="text/javascript" src="assets/js/jquery.selectbox-0.2.js"></script>
+<script type="text/javascript" src="assets/js/jquery.fancybox.js"></script>
+<script type="text/javascript" src="assets/js/bootstrap.js"></script>
+<script type="text/javascript" src="assets/js/owl.carousel.js"></script>
+<script type="text/javascript" src="assets/js/jquery-ui.js"></script>
+<script type="text/javascript" src="assets/js/isotope.pkgd.min.js"></script>
+<!-- RS5.0 Core JS Files -->
+
+<script type="text/javascript" src="assets/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.revolution.js"></script>
+
+<script type="text/javascript" src="assets/js/site.js"></script>
+<script type="text/javascript" src="assets/js/app.js"></script>
+
+</body>
+</html>

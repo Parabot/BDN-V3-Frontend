@@ -1,0 +1,263 @@
+/*
+ Table Of Contents
+
+ 1.) Homepage
+ 2.) About Us
+ 3.) Contact Us
+ ===============================================*/
+
+/*
+ 1.) Homepage
+ ----------------------------------------*/
+/*
+ 2.) About Us
+ ----------------------------------------*/
+/*
+ 3.) Contact Us
+ ----------------------------------------*/
+.welcome-block {
+	background-color: #f1f1f1;
+	padding: 48px 0 68px;
+	margin-bottom: 61px;
+}
+.welcome-block h2 {
+	font-family: 'Playfair Display', serif;
+	font-size: 48px;
+	font-weight: 700;
+	color: #000;
+	text-align: center;
+}
+.welcome-block h2 em {
+	font-family: 'Playfair Display', serif;
+	font-style: italic;
+	font-weight: 400;
+}
+.collection-links {
+	margin-bottom: 34px;
+}
+.collection-links figure {
+	position: relative;
+}
+.collection-links figure img {
+	width: 100%;
+}
+.collection-links figure:before {
+	content: "";
+	border: 1px solid #fff;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: calc(100% - 20px);
+	height: calc(100% - 20px);
+	width: -webkit-calc(100% - 20px);
+	height: -webkit-calc(100% - 20px);
+}
+.collection-links figure .collection-text {
+	bottom: 16px;
+	color: #fff;
+	font-family: "Playfair Display", serif;
+	font-size: 24px;
+	left: 26px;
+	line-height: 1.32;
+	position: absolute;
+	width: 155px;
+}
+.story-section {
+	background: url("../images/img5.jpg") no-repeat fixed 0 0;
+	margin-bottom: 34px;
+	min-height: 700px;
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+	color: #fff;
+	font-size: 14px;
+	position: relative;
+	background-size: cover;
+}
+.story-text {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	width: 60%;
+	transform: translateY(-55%);
+	-webkit-transform: translateY(-55%);
+	-ms-transform: translateY(-55%);
+	-moz-transform: translateY(-55%);
+	-o-transform: translateY(-55%);
+}
+.story-text h2 {
+	font-size: 60px;
+	font-family: "Playfair Display", serif;
+	margin-bottom: 30px;
+	letter-spacing: 0.6px;
+}
+.story-text p {
+	font-size: 14px;
+	letter-spacing: 0.1px;
+	line-height: 1.6;
+	margin-bottom: 29px;
+	letter-spacing: 0.1px;
+}
+.story-text .check-it {
+	border: 1px solid #fff;
+	display: inline-block;
+	text-align: center;
+	padding: 5px 10px;
+	min-width: 200px;
+	margin: 0 auto;
+	color: #fff;
+	line-height: 48px;
+	letter-spacing: 1.5px;
+	transition: 0.5s all ease;
+	-WEBKIT-transition: 0.5s all ease;
+}
+.sale-block {
+	background: url("../images/img6.jpg") no-repeat fixed 0 0;
+	margin-bottom: 30px;
+	min-height: 700px;
+}
+.sale-block .sale-section {
+	padding-top: 132px;
+}
+.sale-block .sale-section .sale-image {
+	text-align: right;
+	margin-top: 12px;
+}
+.inner-banner img {
+	width: 100%;
+}
+.homepage-two .new-product {
+	margin-bottom: 34px;
+}
+.sale-offer h2 {
+	font-size: 48px;
+	color: #333;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	line-height: 1.2;
+	margin-top: 0;
+	margin-bottom: 16px;
+	letter-spacing: -1.3px;
+}
+.sale-offer .offer-text {
+	font-size: 18px;
+	color: #333;
+	font-family: 'Playfair Display', serif;
+	display: block;
+	font-style: italic;
+	letter-spacing: 0.5px;
+	margin-left: 6px;
+	margin-bottom: 37px;
+}
+.sale-offer a {
+	display: inline-block;
+	font-size: 14px;
+	font-family: 'Montserrat', sans-serif;
+	color: #333;
+	border: 1px solid #333;
+	line-height: 48px;
+	text-align: center;
+	padding: 5px 10px;
+	letter-spacing: 1.4px;
+	min-width: 200px;
+	transition:0.5s all ease;
+	-webkit-transition:0.5s all ease;
+}
+.countdown-row .countdown-section:first-child {
+	display: none;
+}
+.countdown-row .countdown-section:last-child {
+	margin-right: 0;
+}
+.countdown-section {
+	width: 21.4%;
+	float: left;
+	color: #333;
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+	margin-right: 30px;
+}
+.countdown-amount {
+	font-size: 36px;
+	display: block;
+	border: 1px solid #333;
+	line-height: 88px;
+	padding: 5px 10px;
+	margin-bottom: 16px;
+}
+.countdown-period {
+	font-size: 14px;
+	display: block;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+.is-countdown {
+	margin-bottom: 30px;
+}
+.homepage-two .news-block {
+	margin-bottom: 10px;
+}
+.homepage-two .logo-section {
+	margin-bottom: 60px;
+}
+.CAspineNumber{
+	display: none;
+}
+.conventAccordion.stitch .CAspineTitle {
+	display: inline-flex;
+}
+.caption-content {
+  color: #fff;
+  font-family: "Montserrat",sans-serif;
+  font-size: 24px;
+  text-transform: uppercase;
+  margin: 0 0 0 50px;
+}
+.caption-content .caption-text {
+  letter-spacing: 0.2px;
+}
+.caption-content .count {
+  margin-right: 115px;
+  position: relative;
+}
+.caption-content .count:after {
+  background-color: #fff;
+  content: "";
+  height: 1px;
+  left: 57px;
+  position: absolute;
+  top: 15px;
+  width: 50px;
+}
+.conventAccordion.stitch .CAspine {
+	width: 50px;
+}
+.conventAccordion.stitch .CAspineTitle {
+	height: 50px;
+}
+.conventAccordion{
+	width:100% !important;
+	/*height:auto !important;*/
+	z-index: 0;
+}
+
+
+body{background-image:none;}
+#wrapper{opacity:1; width: 100%;}
+.CAslide{min-width:50px;}
+#accordion_2 li{float: left; position: relative; }
+
+
+
+.conventAccordion.stitch{
+	min-height:1000px;
+	margin: 0;
+}
+.CAspineTitle{
+	padding-right:0;
+}
+.CAslideContent > img {
+	height: 100%;
+	width:auto;
+}

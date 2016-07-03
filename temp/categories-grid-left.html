@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Look</title>
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+		<!-- Google Font -->
+		<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700%7CPlayfair+Display:400italic,400,900%7COpen+Sans%7CCrimson+Text:400italic%7CLato:400,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="assets/css/jquery.selectbox.css" media="screen">
+		<!-- Linea Icons -->
+		<link rel="stylesheet" type="text/css" href="assets/css/linea.css" media="screen">
+		<!-- Elegant Icons -->
+		<link rel="stylesheet" type="text/css" href="assets/css/eleganticon.css" media="screen">
+		<!-- Font Awesome -->
+		<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css" media="screen">
+
+		<!-- Bootstrap -->
+		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="assets/css/jquery.fancybox.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="assets/css/jquery-ui.css" media="screen">
+
+		<link rel="stylesheet" type="text/css" href="assets/css/dropdown.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="assets/css/global.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="assets/css/responsive.css" media="screen">
+		<link href="assets/css/skin.less" rel="stylesheet/less">
+		<!--[if lt IE 9]>
+		<script src="assets/js/html5shiv.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<!-- Loader -->
+		<div id="loading">
+			<div id="loading-center">
+				<div id="loading-center-absolute">
+					<div class="object" id="object_one"></div>
+					<div class="object" id="object_two"></div>
+					<div class="object" id="object_three"></div>
+					<div class="object" id="object_four"></div>
+				</div>
+			</div>
+		</div>
+		<!-- Loader -->
+		<!--Page Wrapper Start-->
+		<div id="wrapper" class="categories">
+			<!--container Start-->
+			<!--Header Section Start-->
+			<header class="header1" id="header">
+				<div class="top-header hidden-xs">
+					<div class="container">
+						<div class="row clearfix">
+							<div class="col-xs-12">
+								<ul class="top-header-left clearfix">
+									<li class="register-link clearfix">
+										<i class="lock-icon icon_lock"> </i><a href="login.html" class="login">Log In</a>
+										<span>/</span><a href="#" class="register">Register </a>
+									</li>
+									<li class="select-wrapper">
+										<select class="select">
+											<option> English </option>
+											<option> Spanish </option>
+											<option> French </option>
+											<option> German </option>
+										</select><i class="arrow_carrot-down"></i>
+									</li>
+									<li class="select-wrapper">
+										<select class="select">
+											<option> USD </option>
+										</select><i class="arrow_carrot-down"></i>
+									</li>
+								</ul>
+								<ul class="top-header-right clearfix">
+									<li class="profile">
+										<a href="#"><i class="icon_profile"></i>My Account </a>
+									</li>
+									<li class="gift">
+										<a href="#"><i class="icon_gift"></i> My Wishlist</a>
+									</li>
+									<li class="checkout">
+										<a href="#"><i class="icon_check_alt"></i>Checkout</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="middle-header">
+					<div class="container">
+						<div class="row clearfix">
+							<div class="col-xs-12 middle-header-content">
+								<div class="middle-header-left">
+									<form class="clearfix">
+										<input type="text" name="search" placeholder="Search... " />
+										<button type="submit">
+											<i class="icon_search"></i>
+										</button>
+									</form>
+								</div>
+								<div class="middle-header-right clearfix">
+									<div class="open-cart">
+										<i class="icon_bag_alt"></i>
+										<span class="item-count"> 0 Item(s) - <strong>$0.00</strong> <i class="arrow_carrot-down"></i></span>
+									</div>
+									<div class="item-block">
+										<ul class="item-list">
+											<li>
+												<figure class="item-image">
+													<a href="#"><img src="assets/images/img-one.jpg" alt="t-shirt" /></a>
+												</figure>
+												<div class="item-description">
+													<h4><a href="#" class="item-name">T-Shirt Retro Black</a></h4>
+													<span class="review-icon clearfix"> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star"></i> </span>
+													<span class="price">$ 70.00</span>
+												</div>
+												<span class="delete fa fa-trash"> </span>
+											</li>
+											<li>
+												<figure class="item-image">
+													<a href="#"><img src="assets/images/img-two.jpg" alt="t-shirt" /></a>
+												</figure>
+												<div class="item-description">
+													<h4><a href="#" class="item-name">T-Shirt Retro Black</a></h4>
+													<span class="review-icon clearfix"> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star"></i> </span>
+													<span class="price">$ 70.00</span>
+												</div>
+												<span class="delete fa fa-trash"> </span>
+											</li>
+											<li>
+												<figure class="item-image">
+													<a href="#"><img src="assets/images/img-three.jpg" alt="t-shirt" /></a>
+												</figure>
+												<div class="item-description">
+													<h4><a href="#" class="item-name">T-Shirt Retro White</a></h4>
+													<span class="review-icon clearfix"> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star"></i> </span>
+													<span class="price">$ 70.00</span>
+												</div>
+												<span class="delete fa fa-trash"> </span>
+											</li>
+										</ul>
+										<div class="total-amount clearfix">
+											<span class="total">Total</span>
+											<span class="amount">€1145.00</span>
+										</div>
+										<div class="butn-group clearfix">
+											<a href="#" class="cart">VIEW CART</a>
+											<a href="#" class="checkout">CHECKOUT</a>
+										</div>
+									</div>
+								</div>
+								<a href="index.html" class="logo"><img src="assets/images/logo.png" alt="LOOK" /></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<nav class="navigation">
+					<div class="container">
+						<div id="cssmenu">
+							<a href="javascript:void(0);" class="main-menu menu-image"></a>
+							<ul class="menu-links">
+								<li class="active has-sub">
+									<a href="javascript:void(0);">Home</a>
+									<i class="fs1 mmenu eicon visible-xs" data-icon="3"></i>
+									<ul class="sub-menu">
+										<li>
+											<a href="index.html">homepage 1</a>
+										</li>
+										<li>
+											<a href="homepage-two.html">homepage 2</a>
+										</li>
+										<li>
+											<a href="homepage-three.html">homepage 3</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">FASHION</a>
+								</li>
+								<li>
+									<a href="#">ELECTRONICS</a>
+								</li>
+								<li class="multi-level">
+									<a href="#">MULTI LEVEL</a>
+									<div class="multi-sub-menu clearfix">
+										<div class="left-menu-block">
+											<div class="top-menu clearfix">
+												<div class="menu-block">
+													<h3> STYLIEST BAG </h3>
+													<ul class="sub-menu-links">
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Clutch Handbags</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Diaper Bags</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Bags</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Hobo Handbags</a>
+														</li>
+													</ul>
+												</div>
+												<div class="menu-block">
+													<h3> MATERIAL BAG </h3>
+													<ul class="sub-menu-links">
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Beaded Handbags</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Fabric Handbags</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Handbags</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Leather Handbags</a>
+														</li>
+													</ul>
+												</div>
+												<div class="menu-block">
+													<h3> SHOES </h3>
+													<ul class="sub-menu-links">
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Flat Shoes</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Flat Sandals</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Boots</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Heels</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<div class="bottom-menu clearfix">
+												<div class="menu-block">
+													<h3> JWELLERY </h3>
+													<ul class="sub-menu-links">
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Bracelets</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Necklaces &amp; Pendants</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Pendants</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Pins &amp; Brooches</a>
+														</li>
+													</ul>
+												</div>
+												<div class="menu-block">
+													<h3> DRESSES </h3>
+													<ul class="sub-menu-links">
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Casual Dresses</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Evening</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Designer</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Party</a>
+														</li>
+													</ul>
+												</div>
+												<div class="menu-block">
+													<h3> SWIMWEAR </h3>
+													<ul class="sub-menu-links">
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Swimsuits</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Beach Clothing</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Clothing</a>
+														</li>
+														<li>
+															<a href="#"><i class="fa fa-angle-right"></i>Bikinis</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<figure class="right-menu-block">
+											<img src="assets/images/img-four.jpg" alt="image" />
+										</figure>
+									</div>
+								</li>
+								<li>
+									<a href="javascript:void(0);">Shop</a>
+									<i class="fs1 mmenu eicon visible-xs" data-icon="3"></i>
+									<ul class="sub-menu">
+										<li>
+											<a href="categories.html">categories</a>
+										</li>
+										<li>
+											<a href="categories-grid-left.html">categories grid left</a>
+										</li>
+										<li>
+											<a href="categories-list-sidebar.html">categories list sidebar</a>
+										</li>
+										<li>
+											<a href="product-page.html">product</a>
+										</li>
+										<li>
+											<a href="shopping-cart.html">shopping cart</a>
+										</li>
+									</ul>
+								</li>
+								<li class="has-sub">
+									<a href="javascript:void(0);">BLOG</a>
+									<i class="fs1 mmenu eicon visible-xs" data-icon="3"></i>
+									<ul class="sub-menu">
+										<li>
+											<a href="blog-grid-sidebar.html">Blog grid sidebar</a>
+										</li>
+										<li>
+											<a href="blog-list-sidebar.html">Blog list sidebar</a>
+										</li>
+										<li>
+											<a href="blog-detail.html">blog detail</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="contact.html">Contact us</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</header>
+			<!--Header Section End-->
+			<div class="common-banner forcefullwidth_wrapper_tp_banner">
+				<div class="container">
+					<div class="row">
+						<div class="main-banner-text">
+							<span>shop grid with left sidebar</span>
+							<ul class="banner-nav">
+								<li>
+									<a href="index.html">Home</a>
+								</li>
+								<li>
+									<a href="shopping-cart.html">Shop</a>
+								</li>
+								<li class="active">
+									<a href="#">Shop Grid with Left Sidebar</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Content Area Start-->
+			<div class="content">
+				<!-- Categories Shop Starts Here -->
+				<div class="categories-shop">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12 hidden-sm">
+								<div class="filter-btn">
+									<a href="#">filter</a>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-3 mobile-view">
+								<div class="categories-filtering">
+									<div class="categories-list">
+										<h3 class="heading">CATEGORIES</h3>
+										<ul class="main-list" id="accordion">
+											<li class="panel-heading" id="headingOne">
+												<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">basics</a>
+												<ul class="sub-list panel-collapse collapse in" id="collapseOne" aria-labelledby="headingOne">
+													<li>
+														<a href="#">T-Shirts</a>
+													</li>
+													<li>
+														<a href="#">Jackets</a>
+													</li>
+													<li>
+														<a href="#">Jeans</a>
+													</li>
+													<li>
+														<a href="#">Trousers</a>
+													</li>
+													<li>
+														<a href="#">Kitwears</a>
+													</li>
+													<li>
+														<a href="#">Sweatshirts</a>
+													</li>
+												</ul>
+											</li>
+											<li class="panel-heading" id="headingTwo">
+												<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">clothings</a>
+												<ul class="sub-list active panel-collapse collapse" id="collapseTwo" aria-labelledby="headingTwo">
+													<li>
+														<a href="#">T-Shirts</a>
+													</li>
+													<li>
+														<a href="#">Jackets</a>
+													</li>
+													<li>
+														<a href="#">Jeans</a>
+													</li>
+													<li>
+														<a href="#">Trousers</a>
+													</li>
+													<li>
+														<a href="#">Kitwears</a>
+													</li>
+													<li>
+														<a href="#">Sweatshirts</a>
+													</li>
+												</ul>
+											</li>
+											<li>
+												<a href="#">footwear</a>
+											</li>
+											<li>
+												<a href="#">bags and bagpacks</a>
+											</li>
+											<li>
+												<a href="#">accessories</a>
+											</li>
+										</ul>
+									</div>
+									<div class="filter-list">
+										<h3 class="heading">filter selection</h3>
+										<div class="select-range">
+											<p>
+												<label for="amount">PRICE</label>
+												<input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+											</p>
+											<div id="slider-meter" class="slider-meter"></div>
+											<div class="range-price">
+												<span>Range: <span id="amount2" class="first-price">$16.00</span> - <span id="amount1" class="second-price">$200.00</span></span>
+											</div>
+										</div>
+									</div>
+									<div class="color-selection">
+										<h4>color</h4>
+										<ul class="clearfix">
+											<li class="active">
+												<a href="#" class="brown"></a>
+											</li>
+											<li>
+												<a href="#" class="light-green"></a>
+											</li>
+											<li>
+												<a href="#" class="orange"></a>
+											</li>
+											<li>
+												<a href="#" class="yellow"></a>
+											</li>
+										</ul>
+									</div>
+									<div class="size-selection">
+										<h4>size selection</h4>
+										<ul class="clearfix">
+											<li>
+												<a href="#" class="active">s</a>
+											</li>
+											<li>
+												<a href="#">m</a>
+											</li>
+											<li>
+												<a href="#">l</a>
+											</li>
+											<li>
+												<a href="#">xl</a>
+											</li>
+											<li>
+												<a href="#">xxl</a>
+											</li>
+										</ul>
+									</div>
+									<div class="manufacturer">
+										<h4>manufacturer</h4>
+										<ul class="main-list">
+											<li>
+												<a href="#">Forever 21 <em>(15)</em></a>
+											</li>
+											<li>
+												<a href="#">Giordano <em>(07)</em></a>
+											</li>
+											<li>
+												<a href="#">Abercrombie <em>(05)</em></a>
+											</li>
+											<li>
+												<a href="#">Ecko United <em>(19)</em></a>
+											</li>
+											<li>
+												<a href="#">Zara <em>(12)</em></a>
+											</li>
+										</ul>
+									</div>
+									<div class="compare-products">
+										<h3 class="heading">compare product</h3>
+										<span>You have no product to compare</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-9">
+								<div class="row">
+									<div class="col-xs-12">
+										<ul class="categories-section">
+											<li>
+												<span>Showing 1 to 16 of 17 <small>total</small></span>
+											</li>
+											<li class="select-name">
+												<span>SORT BY <em>:</em></span>
+												<select class="select">
+													<option value="">Name</option>
+													<option value="1">Size</option>
+													<option value="2">Color</option>
+													<option value="3">Price</option>
+												</select>
+											</li>
+											<li>
+												<span>SHOW <em>:</em></span>
+												<select class="select">
+													<option value="">9</option>
+													<option value="1">10</option>
+													<option value="2">11</option>
+													<option value="3">12</option>
+												</select>
+											</li>
+											<li>
+												<span>VIEW</span>
+												<span class="view-btn"> <a href="#" class="grid-view active"><i class="fa fa-th-large"></i></a> <a href="#" class="list-view"><i class="fa fa-th-list"></i></a> </span>
+											</li>
+										</ul>
+									</div>
+									<div class="col-xs-12 col-sm-4">
+										<div class="product-display product-description">
+											<figure class="product-image">
+												<img src="assets/images/img-six.jpg" alt="" />
+												<div class="overlay">
+													<div class="product-view-block">
+														<div class="product-view clearfix">
+															<a class="zoom icon_zoom-in_alt single_image" href="assets/images/img-six.jpg"></a>
+															<a class="data-report icon_datareport" href="#"></a>
+															<a class="heart icon_heart_alt" href="#"></a>
+														</div>
+														<a class="btn add-cart" href="#">ADD TO CART</a>
+													</div>
+												</div>
+											</figure>
+											<div class="about-product">
+												<h4><a class="item-name" href="#">T-Shirt Retro White</a></h4>
+												<span class="review-icon clearfix"> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star"></i> </span>
+												<span class="price"> <span>$ 70.00</span> <span class="old-price">$97.00</span></span>
+
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-4">
+										<div class="product-display product-description">
+											<figure class="product-image">
+												<img src="assets/images/img-seven.jpg" alt="" />
+												<div class="overlay">
+													<div class="product-view-block">
+														<div class="product-view clearfix">
+															<a class="zoom icon_zoom-in_alt single_image" href="assets/images/img-seven.jpg"></a>
+															<a class="data-report icon_datareport" href="#"></a>
+															<a class="heart icon_heart_alt" href="#"></a>
+														</div>
+														<a class="btn add-cart" href="#">ADD TO CART</a>
+													</div>
+												</div>
+											</figure>
+											<div class="about-product">
+												<h4><a class="item-name" href="#">T-Shirt Retro White</a></h4>
+												<span class="review-icon clearfix"> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star"></i> </span>
+												<span class="price"> <span>$ 70.00</span> </span>
+
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-4">
+										<div class="product-display product-description">
+											<figure class="product-image">
+												<img src="assets/images/img-eight.jpg" alt="" />
+												<div class="overlay">
+													<div class="product-view-block">
+														<div class="product-view clearfix">
+															<a class="zoom icon_zoom-in_alt single_image" href="assets/images/img-eight.jpg"></a>
+															<a class="data-report icon_datareport" href="#"></a>
+															<a class="heart icon_heart_alt" href="#"></a>
+														</div>
+														<a class="btn add-cart" href="#">ADD TO CART</a>
+													</div>
+												</div>
+											</figure>
+											<div class="about-product">
+												<h4><a class="item-name" href="#">T-Shirt Retro White</a></h4>
+												<span class="review-icon clearfix"> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star"></i> </span>
+												<span class="price"> <span>$ 70.00</span> </span>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-4">
+										<div class="product-display product-description">
+											<figure class="product-image">
+												<img src="assets/images/img-ten.jpg" alt="" />
+												<div class="overlay">
+													<div class="product-view-block">
+														<div class="product-view clearfix">
+															<a class="zoom icon_zoom-in_alt single_image" href="assets/images/img-ten.jpg"></a>
+															<a class="data-report icon_datareport" href="#"></a>
+															<a class="heart icon_heart_alt" href="#"></a>
+														</div>
+														<a class="btn add-cart" href="#">ADD TO CART</a>
+													</div>
+												</div>
+											</figure>
+											<div class="about-product">
+												<h4><a class="item-name" href="#">The Wild Ones Raglan</a></h4>
+												<span class="review-icon clearfix"> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star"></i> </span>
+												<span class="price"> <span>$ 70.00</span> </span>
+
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-4">
+										<div class="product-display product-description">
+											<figure class="product-image">
+												<img src="assets/images/img-eleven.jpg" alt="" />
+												<div class="overlay">
+													<div class="product-view-block">
+														<div class="product-view clearfix">
+															<a class="zoom icon_zoom-in_alt single_image" href="assets/images/img-eleven.jpg"></a>
+															<a class="data-report icon_datareport" href="#"></a>
+															<a class="heart icon_heart_alt" href="#"></a>
+														</div>
+														<a class="btn add-cart" href="#">ADD TO CART</a>
+													</div>
+												</div>
+											</figure>
+											<div class="about-product">
+												<h4><a class="item-name" href="#">DBD Skull Long Sleeve</a></h4>
+												<span class="review-icon clearfix"> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star"></i> </span>
+												<span class="price"> <span>$ 70.00</span> </span>
+
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-4">
+										<div class="product-display product-description">
+											<figure class="product-image">
+												<img src="assets/images/img-twelve.jpg" alt="" />
+												<div class="overlay">
+													<div class="product-view-block">
+														<div class="product-view clearfix">
+															<a class="zoom icon_zoom-in_alt single_image" href="assets/images/img-twelve.jpg"></a>
+															<a class="data-report icon_datareport" href="#"></a>
+															<a class="heart icon_heart_alt" href="#"></a>
+														</div>
+														<a class="btn add-cart" href="#">ADD TO CART</a>
+													</div>
+												</div>
+											</figure>
+											<div class="about-product">
+												<h4><a class="item-name" href="#">DBD Skull Long Sleeve</a></h4>
+												<span class="review-icon clearfix"> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star"></i> </span>
+												<span class="price"> <span>$ 70.00</span> <span class="old-price">$97.00</span></span>
+
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-4">
+										<div class="product-display product-description">
+											<figure class="product-image">
+												<img src="assets/images/img-nine.jpg" alt="" />
+												<div class="overlay">
+													<div class="product-view-block">
+														<div class="product-view clearfix">
+															<a class="zoom icon_zoom-in_alt single_image" href="assets/images/img-nine.jpg"></a>
+															<a class="data-report icon_datareport" href="#"></a>
+															<a class="heart icon_heart_alt" href="#"></a>
+														</div>
+														<a class="btn add-cart" href="#">ADD TO CART</a>
+													</div>
+												</div>
+											</figure>
+											<div class="about-product">
+												<h4><a class="item-name" href="#">T-Shirt Retro Mounth</a></h4>
+												<span class="review-icon clearfix"> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star"></i> </span>
+												<span class="price"> <span>$ 70.00</span> </span>
+
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-4">
+										<div class="product-display product-description">
+											<figure class="product-image">
+												<img src="assets/images/img-thirteen.jpg" alt="" />
+												<div class="overlay">
+													<div class="product-view-block">
+														<div class="product-view clearfix">
+															<a class="zoom icon_zoom-in_alt single_image" href="assets/images/img-thirteen.jpg"></a>
+															<a class="data-report icon_datareport" href="#"></a>
+															<a class="heart icon_heart_alt" href="#"></a>
+														</div>
+														<a class="btn add-cart" href="#">ADD TO CART</a>
+													</div>
+												</div>
+											</figure>
+											<div class="about-product">
+												<h4><a class="item-name" href="#">Liberty or Death</a></h4>
+												<span class="review-icon clearfix"> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star"></i> </span>
+												<span class="price"> <span>$ 70.00</span> </span>
+
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-4">
+										<div class="product-display product-description">
+											<figure class="product-image">
+												<img src="assets/images/img-thirteen.jpg" alt="" />
+												<div class="overlay">
+													<div class="product-view-block">
+														<div class="product-view clearfix">
+															<a class="zoom icon_zoom-in_alt single_image" href="assets/images/img-thirteen.jpg"></a>
+															<a class="data-report icon_datareport" href="#"></a>
+															<a class="heart icon_heart_alt" href="#"></a>
+														</div>
+														<a class="btn add-cart" href="#">ADD TO CART</a>
+													</div>
+												</div>
+											</figure>
+											<div class="about-product">
+												<h4><a class="item-name" href="#">Liberty or Death</a></h4>
+												<span class="review-icon clearfix"> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star active"></i> <i class="icon_star"></i> </span>
+												<span class="price"> <span>$ 70.00</span> </span>
+
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12">
+										<div class="categories-shop-pagging">
+											<ul>
+												<li class="active">
+													<a href="javascript:void(0)">1</a>
+												</li>
+												<li>
+													<a href="javascript:void(0)">2</a>
+												</li>
+												<li>
+													<a href="javascript:void(0)">3</a>
+												</li>
+												<li>
+													<a href="javascript:void(0)">...</a>
+												</li>
+												<li>
+													<a href="javascript:void(0)">5</a>
+												</li>
+												<li>
+													<a href="javascript:void(0)"><i class="fa fa-angle-right"></i></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Categories Shop Ends Here -->
+			</div>
+			<!--Content Area End-->
+			<!--Footer Section Start-->
+			<footer class="footer">
+				<div class="primary-footer">
+					<div class="container">
+						<div class="row">
+							<div class="footer-content col-md-3 col-sm-3 col-xs-12">
+								<div class="footer-border">
+									<h4> STORE </h4>
+									<ul class="footer-nav">
+										<li>
+											<a href="#">New York</a>
+										</li>
+										<li>
+											<a href="#">Paris</a>
+										</li>
+										<li>
+											<a href="#">London</a>
+										</li>
+										<li>
+											<a href="#">Madrid</a>
+										</li>
+										<li>
+											<a href="#">Tokio</a>
+										</li>
+										<li>
+											<a href="#">Milan</a>
+										</li>
+										<li>
+											<a href="#">Hong Kong</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="footer-content col-md-3 col-sm-3 col-xs-12">
+								<div class="footer-border">
+									<h4> OUR OFFER </h4>
+									<ul class="footer-nav">
+										<li>
+											<a href="#">New products</a>
+										</li>
+										<li>
+											<a href="#">Top sellers</a>
+										</li>
+										<li>
+											<a href="#">Specials</a>
+										</li>
+										<li>
+											<a href="#">Manufacturers</a>
+										</li>
+										<li>
+											<a href="#">Suppliers</a>
+										</li>
+										<li>
+											<a href="#">Specials</a>
+										</li>
+										<li>
+											<a href="#">Customer Service</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="footer-content col-md-3 col-sm-3 col-xs-12">
+								<div class="footer-border">
+									<h4> OUR SERVICES </h4>
+									<ul class="footer-nav">
+										<li>
+											<a href="#">Order tracking</a>
+										</li>
+										<li>
+											<a href="#">Privacy Policy</a>
+										</li>
+										<li>
+											<a href="#">Gift Cards</a>
+										</li>
+										<li>
+											<a href="#">Shipping Information</a>
+										</li>
+										<li>
+											<a href="#">Returns &amp; refunds</a>
+										</li>
+										<li>
+											<a href="#">Personalised Cards</a>
+										</li>
+										<li>
+											<a href="#">Delivery information</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="footer-content col-md-3 col-sm-3 col-xs-12">
+								<div class="footer-border">
+									<h4> OUR CONTACT </h4>
+									<div class="info-block">
+										<address class="address-info">
+											United Kingdom, London
+											<br />
+											Simple Street 15A
+										</address>
+										<span class="call-info"> <a href="callto:1231234567890">(123) 123.456.7890 </a> <a href="callto:1231234567890">(123) 123.456.7890</a> </span>
+										<span class="mail-info"> <a href="mailto:megashop@info.com">megashop@info.com</a> <a href="mailto:megashop@holding.com">megashop@holding.com</a> </span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="secondary-footer">
+					<span class="copy-right">Copyright © 2016 PSD Themes by Themeon. All rights reserved.</span>
+				</div>
+			</footer>
+			<!--Footer Section End-->
+			<!--container End-->
+		</div>
+		<!--Page Wrapper End-->
+		<script type="text/javascript" src="assets/js/jquery-1.12.0.min.js"></script>
+		<script src="assets/js/less.js"></script>
+		<script type="text/javascript" src="assets/js/jquery.selectbox-0.2.js"></script>
+		<script type="text/javascript" src="assets/js/jquery.fancybox.js"></script>
+		<script type="text/javascript" src="assets/js/bootstrap.js"></script>
+		<script type="text/javascript" src="assets/js/jquery-ui.js"></script>
+
+		<script type="text/javascript" src="assets/js/site.js"></script>
+		<script type="text/javascript" src="assets/js/touch-enable.js"></script>
+
+	</body>
+</html>
