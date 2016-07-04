@@ -1,3 +1,5 @@
+const API_ENDPOINT = 'http://local.v3.bdn.parabot.org:88/api';
+
 var websiteModule = angular.module('websiteModule', []);
 websiteModule.controller('homeCtrl', function () {
 
@@ -41,18 +43,16 @@ headerModule.controller('headerCtrl',
 
 var downloadModule = angular.module('downloadModule', ['ngResource']);
 downloadModule.factory('Client', function ($resource) {
-    return $resource('http://v3.bdn.parabot.org/api/bot/list/client?nightly=true');
+    return $resource(API_ENDPOINT + '/bot/list/client?nightly=true');
 });
 
 downloadModule.controller('downloadCtrl',
     function ($scope, Client) {
-        var clients = Client.get({});
-
-        var response = Client.query({}, function(res) {
-            console.log(res);
-        });
+        var clients = Client.query();
 
         $scope.clients = clients;
+
+        $scope.downloadUrl = API_ENDPOINT + '/bot/download/client?build=';
     }
 );
 
