@@ -49,12 +49,14 @@ headerModule.controller('headerCtrl',
 
 var downloadModule = angular.module('downloadModule', ['ngResource']);
 downloadModule.factory('Client', function ($resource) {
-    return $resource(API_ENDPOINT + '/bot/list/client?nightly=true');
+    return $resource(API_ENDPOINT + '/bot/list/client?nightly=true').query();
 });
 
 downloadModule.controller('downloadCtrl',
     function ($scope, Client) {
-        $scope.clients = Client.query();
+        if ($scope.clients === undefined || $scope.clients.length <= 0) {
+            $scope.clients = Client;
+        }
 
         $scope.downloadUrl = API_ENDPOINT + '/bot/download/client?build=';
     }
