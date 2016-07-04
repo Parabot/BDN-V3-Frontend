@@ -11,7 +11,7 @@
             <h2>Clients</h2>
             <hr>
             <div class="news-information clearfix" ng-repeat="client in clients" ng-show="$index < 7">
-                <span class="news-date"> <strong>{{ client.timestamp_release | date:'dd' }}</strong> {{ client.timestamp_release | date:'MMM' }} </span>
+                <span class="news-date"> <strong>{{ client.timestamp_release * 1000 | date:'dd' }}</strong> {{ client.timestamp_release * 1000 | date:'MMM' }} </span>
                 <div class="news-text">
                     <h4><a ng-href="{{downloadUrl + client.build}}" class="news-text-heading">
                         <span ng-hide="clients.stable">Beta release: V{{client.version}}</span>
@@ -32,7 +32,7 @@
             <h2>Providers</h2>
             <hr>
             <div class="news-information clearfix" ng-repeat="provider in providers" ng-show="$index < 7">
-                <span class="news-date"> <strong>{{ provider.timestamp_release | date:'dd' }}</strong> {{ provider.timestamp_release | date:'MMM' }} </span>
+                <span class="news-date"> <strong>{{ provider.timestamp_release * 1000 | date:'dd' }}</strong> {{ provider.timestamp_release * 1000 | date:'MMM' }} </span>
                 <div class="news-text">
                     <h4><a ng-href="{{downloadUrl + provider.build}}" class="news-text-heading">
                         <span ng-hide="clients.stable">Beta release: V{{provider.version}}</span>
