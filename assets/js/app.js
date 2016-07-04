@@ -4,7 +4,9 @@ var websiteModule = angular.module('websiteModule', []);
 websiteModule.run(function($rootScope){
     $rootScope.ROUTES = {
         latest_stable_client: API_ENDPOINT + '/bot/list/client?latest=true&stable=true'
-    }
+    };
+
+    $rootScope.current_date = new Date();
 });
 
 websiteModule.controller('homeCtrl', function () {
