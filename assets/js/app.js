@@ -6,6 +6,7 @@ websiteModule.run(function($rootScope){
         latest_stable_client: API_ENDPOINT + '/bot/list/client?latest=true&stable=true'
     }
 });
+
 websiteModule.controller('homeCtrl', function () {
 
 });

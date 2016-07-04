@@ -3587,3 +3587,7 @@ a.logo img {
 a.download_link {
     cursor: inherit;
 }
+
+span.download_title {
+    float: left;
+}

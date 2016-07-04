@@ -18,15 +18,17 @@
                 <span class="news-date"> <strong>{{ client.timestamp_release * 1000 | date:'dd' }}</strong> {{ client.timestamp_release * 1000 | date:'MMM' }} </span>
                 <div class="news-text">
                     <h4><a ng-href="{{downloadUrl + client.build}}" class="news-text-heading">
-                        <span ng-hide="clients.stable">Beta release: V{{client.version}}</span>
-                        <span ng-show="clients.stable">Stable release: V{{client.version}}</span>
+                        <span class="download_title">{{clients.stable == true ? "Stable" : "Beta"}} release: V{{client.version}}</span>
                     </a></h4>
                     <div class="news-social">
                         <a ng-href="{{downloadUrl + client.build}}" class="comment">
                             <i class="icon_download"></i>
                             <span>Download</span>
                         </a>
-                        <a href="#" class="like"><i class="icon_heart"></i><span>33</span></a>
+                        <a href="#" class="like">
+                            <i class="icon_heart"></i>
+                            <span>0</span>
+                        </a>
                     </div>
                 </div>
             </div>
