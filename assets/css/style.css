@@ -3573,3 +3573,13 @@
 a.logo img {
     max-height: 75px;
 }
+
+.welcome-block {
+    margin-bottom: 61px;
+}
+.welcome-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #000;
+    text-align: center;
+}
