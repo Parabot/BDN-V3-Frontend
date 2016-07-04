@@ -3577,7 +3577,7 @@ a.logo img {
 .welcome-block {
     margin-bottom: 61px;
 }
-.welcome-block h2 {
+.welcome-block h2, h4 {
     font-family: 'Playfair Display', serif;
     color: #000;
     text-align: center;
