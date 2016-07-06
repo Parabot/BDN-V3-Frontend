@@ -3585,7 +3585,7 @@ a.logo img {
 }
 
 a.download_link {
-    cursor: inherit;
+    cursor: pointer;
 }
 
 span.download_title {
