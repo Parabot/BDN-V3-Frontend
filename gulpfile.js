@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
     bower = require('gulp-bower'),
+    browserSync = require( 'browser-sync' ).create(),
     concat = require('gulp-concat'),
     jshint = require('gulp-jshint'),
     notify = require('gulp-notify'),
@@ -9,6 +10,13 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     minifyCSS = require('gulp-minify-css'),
     rename = require('gulp-rename');
+
+var config = {
+    urls: {
+        production: 'http://beta.bdn.parabot.org/',
+        development: 'http://beta.bdn.parabot.org:88/'
+    }
+};
 
 var paths = {
     src: {
@@ -71,5 +79,30 @@ gulp.task('scripts', function () {
 
 });
 
+gulp.task( 'reload', function() {
+
+    return gulp.src( paths.dist.css, { read: false } )
+        .pipe( notify( {
+            title: config.name,
+            message: 'Compilation completed, reloading...',
+            sound: false
+        } ) );
+
+} );
+
+gulp.task( 'serve', [ 'styles', 'scripts', 'fonts', 'images' ], function() {
+
+    browserSync.init( {
+        notify: false,
+        port: 3000,
+        proxy: config.urls.development
+    } );
+
+    gulp.watch( [ paths.src.css ], [ 'styles', 'reload', browserSync.reload ] );
+    gulp.watch( [ paths.src.js ], [ 'scripts', 'reload', browserSync.reload ] );
+    gulp.watch( [ paths.src.fonts ], [ 'fonts', 'reload', browserSync.reload ] );
+    gulp.watch( [ paths.src.images ], [ 'images', 'reload', browserSync.reload ] );
+
+} );
 
 gulp.task('assets', ['scripts', 'styles', 'fonts', 'images']);
