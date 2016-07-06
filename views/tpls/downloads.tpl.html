@@ -13,7 +13,9 @@
     <div ng-show="clients.$resolved">
         <div class="col-md-6 col-sm-6 col-xs-12 news-block-content">
             <h2>Clients</h2>
-            <h5><i>Beta releases</i></h5>
+            <h5>
+                <i>Beta releases</i>
+            </h5>
             <hr>
             <div class="news-information clearfix" ng-repeat="client in clients" ng-show="$index < 7">
                 <span class="news-date"> <strong>{{ client.releaseTimestamp * 1000 | date:'dd' }}</strong> {{ client.releaseTimestamp * 1000 | date:'MMM' }} </span>
@@ -37,7 +39,9 @@
 
         <div class="col-md-6 col-sm-6 col-xs-12 news-block-content">
             <h2>Providers</h2>
-            <h5><i>Developer releases</i></h5>
+            <h5>
+                <i>Developer releases</i>
+            </h5>
             <hr>
             <div class="news-information clearfix" ng-repeat="provider in providers" ng-show="$index < 7">
                 <span class="news-date"> <strong>{{ provider.releaseTimestamp * 1000 | date:'dd' }}</strong> {{ provider.releaseTimestamp * 1000 | date:'MMM' }} </span>
