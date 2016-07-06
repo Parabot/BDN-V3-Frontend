@@ -6,10 +6,17 @@
                                                      height="200"/> </span>
         </div>
     </div>
-    <h3 class="download_link">
-        <a class="download_link" ng-href="{{ROUTES.latest_stable_client}}">Download latest stable client</a>
-    </h3>
-    <hr>
+    <div class="col-md-6 col-sm-6 col-xs-12 news-block-content">
+        <h3 class="download_link">
+            <a class="download_link" ng-href="{{ROUTES.latest_stable_client}}">Download latest stable client</a>
+        </h3>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12 news-block-content">
+        <h3 class="download_link">
+            <a class="download_link" ng-href="{{ROUTES.latest_stable_client}}">Download latest stable provider</a>
+        </h3>
+    </div>
+    <hr class="clear_both">
     <div ng-show="clients.$resolved">
         <div class="col-md-6 col-sm-6 col-xs-12 news-block-content">
             <h2>Clients</h2>

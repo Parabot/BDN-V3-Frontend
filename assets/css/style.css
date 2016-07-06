@@ -4091,6 +4091,6 @@ span.download_title {
     border-bottom: 5px solid #ffffff !important;
 }
 
-h3.download_link{
-    text-align: center;
+.clear_both{
+    clear: both;
 }
