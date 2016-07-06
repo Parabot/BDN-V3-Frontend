@@ -1,0 +1,25 @@
+{
+  "name": "bdn-v3-frontend",
+  "version": "1.0.0",
+  "description": "Frontend accessing the BDN V3 API",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-ng-config": "^1.3.1",
+    "gulp-uglify": "^1.5.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Parabot/BDN-V3-Frontend.git"
+  },
+  "author": "JKetelaar <jeroen@ketelaar.me>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Parabot/BDN-V3-Frontend/issues"
+  },
+  "homepage": "https://github.com/Parabot/BDN-V3-Frontend#readme"
+}
