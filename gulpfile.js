@@ -70,3 +70,6 @@ gulp.task('scripts', function () {
         .pipe(gulp.dest(paths.dist.js));
 
 });
+
+
+gulp.task('assets', ['scripts', 'styles', 'fonts', 'images']);
