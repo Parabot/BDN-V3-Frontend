@@ -1,9 +1,10 @@
 const API_ENDPOINT = 'http://local.v3.bdn.parabot.org:88/api';
 
 var websiteModule = angular.module('websiteModule', []);
-websiteModule.run(function($rootScope){
+websiteModule.run(function ($rootScope) {
     $rootScope.ROUTES = {
-        latest_stable_client: API_ENDPOINT + '/bot/list/client?latest=true&stable=true'
+        latest_stable_client: API_ENDPOINT + '/bot/list/client?latest=true&stable=true',
+        nightly_clients: API_ENDPOINT + '/bot/list/client?nightly=true'
     };
 
     $rootScope.current_date = new Date();
@@ -50,8 +51,8 @@ headerModule.controller('headerCtrl',
 );
 
 var downloadModule = angular.module('downloadModule', ['ngResource']);
-downloadModule.factory('Client', function ($resource) {
-    return $resource(API_ENDPOINT + '/bot/list/client?nightly=true').query();
+downloadModule.factory('Client', function ($resource, $rootScope) {
+    return $resource($rootScope.ROUTES.nightly_clients).query();
 });
 
 downloadModule.controller('downloadCtrl',
