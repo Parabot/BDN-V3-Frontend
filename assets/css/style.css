@@ -4090,3 +4090,7 @@ span.download_title {
 .active_menu {
     border-bottom: 5px solid #ffffff !important;
 }
+
+h3.download_link{
+    text-align: center;
+}
