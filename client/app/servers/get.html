@@ -1,0 +1,76 @@
+<div class="page" data-ng-controller="ServerCtrl">
+    <a ng-href="{{backURL}}">
+        <span>
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            Servers overview
+        </span>
+    </a>
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix"><h2 class="section-header">{{name}}</h2></div>
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+
+                            <div layout="column" ng-cloak class="md-inline-form">
+                                <div layout-padding>
+                                    <form name="serverForm" ng-submit="processForm()">
+                                        <h4>Information</h4>
+                                        <div class="divider divider-md"></div>
+
+                                        <div layout layout-sm="column">
+                                            <md-input-container flex>
+                                                <label>Server ID</label>
+                                                <input ng-model="server.id" disabled>
+                                            </md-input-container>
+                                        </div>
+
+                                        <md-input-container class="md-block">
+                                            <label>Name</label>
+                                            <input ng-model="server.name">
+                                        </md-input-container>
+
+                                        <md-input-container class="md-block">
+                                            <label>Version</label>
+                                            <input ng-model="server.version">
+                                        </md-input-container>
+
+                                        <md-input-container class="md-block">
+                                            <label>Description</label>
+                                            <textarea ng-model="server.description" columns="1"
+                                                      md-maxlength="1000"></textarea>
+                                        </md-input-container>
+
+                                        <div class="divider divider-xl"></div>
+                                        <h4>Details</h4>
+                                        <div class="divider divider-md"></div>
+
+                                        <div layout layout-sm="column" ng-repeat="x in server.details">
+                                            <md-input-container flex>
+                                                <label>Name</label>
+                                                <input ng-model="x.name">
+                                            </md-input-container>
+                                            <md-input-container flex>
+                                                <label>Value</label>
+                                                <input ng-model="x.value">
+                                            </md-input-container>
+                                        </div>
+
+                                        <md-button type="submit" class="md-raised btn-w-md md-primary">
+                                            Submit
+                                        </md-button>
+                                    </form>
+
+                                    <pre>{{submitted}}</pre>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+</div>

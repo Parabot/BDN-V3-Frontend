@@ -1,0 +1,36 @@
+<div class="page page-table" data-ng-controller="ServersCtrl">
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Servers</h2>
+        </div>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Status</th>
+                                <th>Version</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="x in servers">
+                                <td>{{ x.ID }}</td>
+                                <td>
+                                    <a ng-href="{{serverURL}}{{x.ID}}">{{ x.name }}</a>
+                                </td>
+                                <td>{{ x.version }}</td>
+                                <td>{{ x.status }}</td>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

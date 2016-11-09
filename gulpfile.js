@@ -218,7 +218,8 @@ function startBrowserSync(opt) {
             baseDir: [
                 config.client,
                 config.tmp
-            ]
+            ],
+            host: 'beta.bdn.parabot.org'
         };
         options.files = [
             config.client + '/**/*.*',

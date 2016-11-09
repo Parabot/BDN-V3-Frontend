@@ -3,9 +3,11 @@
 
     angular.module('app')
         .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-                var routes, setRoutes;
+                var routes, setRoutes, dynamicRoutes;
 
                 routes = [
+                    'servers/list',
+                    'servers/get/:id',
                     'ui/cards', 'ui/typography', 'ui/buttons', 'ui/icons', 'ui/grids', 'ui/widgets', 'ui/components', 'ui/timeline', 'ui/lists', 'ui/pricing-tables',
                     'map/maps',
                     'table/static', 'table/dynamic', 'table/responsive',
@@ -20,7 +22,7 @@
                     url = '/' + route;
                     config = {
                         url: url,
-                        templateUrl: 'app/' + route + '.html'
+                        templateUrl: 'app/' + route.replace(/\/:.*/g, '') + '.html'
                     };
                     $stateProvider.state(route, config);
                     return $stateProvider;

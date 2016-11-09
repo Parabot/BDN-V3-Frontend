@@ -46,10 +46,26 @@
             gray: '#EDF0F1'
         };
 
+        var endpoint = 'http://local.v3.bdn.parabot.org:88/app_dev.php/api/';
+        var endpoints = {
+            login: endpoint + 'users/connect/forums',
+            isLoggedIn: endpoint + 'users/is/loggedin',
+            serversList: endpoint + 'servers/list',
+            serverGet: endpoint + 'servers/get/'
+        };
+
+        var urls = {
+            servers: '/#/servers/list',
+            server: '/#/servers/get/'
+        };
+
         return {
+            urls: urls,
             pageTransitionOpts: pageTransitionOpts,
             main: main,
-            color: color
+            color: color,
+            endpoint: endpoint,
+            endpoints: endpoints
         }
     }
 
