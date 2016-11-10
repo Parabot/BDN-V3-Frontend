@@ -27,7 +27,7 @@
             };
 
             Server.build = function (dataSet) {
-                return new Server(dataSet['id'], dataSet['name'], dataSet['version'], 'active');
+                return new Server(dataSet['id'], dataSet['name'], 'active', dataSet['version']);
             };
 
             return Server;

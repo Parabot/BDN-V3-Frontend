@@ -13,18 +13,25 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Status</th>
                                 <th>Version</th>
+                                <th>Status</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="x in servers">
+                            <tr ng-if="servers.length > 0" ng-repeat="x in servers">
                                 <td>{{ x.ID }}</td>
                                 <td>
                                     <a ng-href="{{serverURL}}{{x.ID}}">{{ x.name }}</a>
                                 </td>
                                 <td>{{ x.version }}</td>
-                                <td>{{ x.status }}</td>
+                                <td>
+                                    <span ng-if="x.status == 'active'" class="label label-success">{{ x.status }}</span>
+                                    <span ng-if="x.status == 'inactive'"
+                                          class="label label-success">{{ x.status }}</span>
+                                    <span ng-if="x.status != 'active' && x.status != 'inactive'"
+                                          class="label label-warning">{{ x.status }}</span>
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
