@@ -1,6 +1,6 @@
 (function () {
     $(window).load(function () {
-        setTimeout(hideLoader, 1500)
+        setTimeout(hideLoader, 0)
     });
 
     function hideLoader() {

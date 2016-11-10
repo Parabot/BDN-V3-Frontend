@@ -17,8 +17,8 @@
                                 <th>Status</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr ng-if="servers.length > 0" ng-repeat="x in servers">
+                            <tbody ng-show="servers.length > 0">
+                            <tr ng-repeat="x in servers">
                                 <td>{{ x.ID }}</td>
                                 <td>
                                     <a ng-href="{{serverURL}}{{x.ID}}">{{ x.name }}</a>

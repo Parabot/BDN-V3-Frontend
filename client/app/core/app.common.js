@@ -6,7 +6,7 @@
             $httpProvider.defaults.withCredentials = true;
             //rest of route code
         })
-        .service('appCommon', function ($http, $location, appConfig, $window) {
+        .service('appCommon', function ($http, $location, $rootScope, appConfig, $window) {
             this.getURL = function ($url, $callback) {
                 $http.get($url).success($callback);
             };
@@ -19,16 +19,36 @@
                 $window.location.href = appConfig.endpoints['login'];
             };
 
-            this.checkLoggedIn = function () {
-                var callbackRedirect = function ($data) {
-                    if (typeof $data['result'] !== 'undefined') {
-                        if ($data['result'] === false) {
-                            redirectToLogin();
-                        }
-                    }
-                };
+            var showLoaderFunction = function () {
+                $rootScope.$broadcast('preloader:active');
+            };
 
-                this.isLoggedIn(callbackRedirect);
+            var hideLoaderFunction = function () {
+                $rootScope.$broadcast('preloader:hide');
+            };
+
+            this.showLoader = function(){
+                showLoaderFunction();
+            };
+
+            this.hideLoader = function(){
+                hideLoaderFunction();
+            };
+
+            this.checkLoggedIn = function ($callback) {
+                if ($callback == null) {
+                    $callback = function ($data) {
+                        if (typeof $data['result'] !== 'undefined') {
+                            if ($data['result'] === false) {
+                                redirectToLogin();
+                            }
+                        }
+                        hideLoaderFunction();
+                    };
+                }
+
+                this.showLoader();
+                this.isLoggedIn($callback);
             };
 
             this.isLoggedIn = function ($callback) {

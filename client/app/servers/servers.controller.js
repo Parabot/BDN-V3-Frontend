@@ -6,31 +6,37 @@
         .controller('ServerCtrl', ['$scope', '$stateParams', '$http', 'appConfig', 'appCommon', ServerCtrl]);
 
     function ServersCtrl($scope, $appConfig, $appCommon, Server) {
-        // This route requires authentication
-        $appCommon.checkLoggedIn();
-
         $scope.serverURL = $appConfig.urls['server'];
 
-        var serversListCallback = function ($data) {
-            $scope.servers = [];
-            $data.forEach(function (object) {
-                $scope.servers.push(Server.build(object));
-            });
+        var afterLogin = function () {
+            $appCommon.showLoader();
+
+            var serversListCallback = function ($data) {
+                $scope.servers = [];
+                $data.forEach(function (object) {
+                    $scope.servers.push(Server.build(object));
+                });
+
+                $appCommon.hideLoader();
+            };
+            $appCommon.getURL($appConfig.endpoints['serversList'], serversListCallback);
         };
-        $appCommon.getURL($appConfig.endpoints['serversList'], serversListCallback);
+
+        // This route requires authentication
+        $appCommon.checkLoggedIn(afterLogin);
     }
 
-    function ServerCtrl($scope, $stateParams, $http, $appConfig, $appCommon){
+    function ServerCtrl($scope, $stateParams, $http, $appConfig, $appCommon) {
         // This route requires authentication
         $appCommon.checkLoggedIn();
 
         $scope.backURL = $appConfig.urls['servers'];
 
-        var serverCallback = function($data){
+        var serverCallback = function ($data) {
             $scope.server = $data['result'];
         };
 
-        $scope.processForm = function() {
+        $scope.processForm = function () {
             var submitted = $scope.server;
             delete submitted['id'];
 
