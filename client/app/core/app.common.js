@@ -7,6 +7,8 @@
             //rest of route code
         })
         .service('appCommon', function ($http, $location, $rootScope, appConfig, $window) {
+            $rootScope.loggedInChecked = false;
+
             this.getURL = function ($url, $callback) {
                 $http.get($url).success($callback);
             };
@@ -36,19 +38,32 @@
             };
 
             this.checkLoggedIn = function ($callback) {
-                if ($callback == null) {
-                    $callback = function ($data) {
-                        if (typeof $data['result'] !== 'undefined') {
-                            if ($data['result'] === false) {
-                                redirectToLogin();
-                            }
-                        }
-                        hideLoaderFunction();
-                    };
-                }
+                if ($rootScope.loggedInChecked !== true) {
 
-                this.showLoader();
-                this.isLoggedIn($callback);
+                    var loginCallBack = function ($data) {
+                        if (typeof $data === 'undefined' || typeof $data['result'] === 'undefined' || $data['result'] === false) {
+                            redirectToLogin();
+                        }else{
+                            $rootScope.loggedInChecked = true;
+                        }
+                    };
+
+                    var afterLoginCheck = null;
+
+                    if ($callback == null) {
+                        afterLoginCheck = loginCallBack;
+                    }else{
+                        afterLoginCheck = function ($data) {
+                            loginCallBack($data);
+                            $callback();
+                        }
+                    }
+
+                    this.showLoader();
+                    this.isLoggedIn(afterLoginCheck);
+                }else{
+                    $callback();
+                }
             };
 
             this.isLoggedIn = function ($callback) {

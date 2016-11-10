@@ -27,23 +27,25 @@
     }
 
     function ServerCtrl($scope, $stateParams, $http, $appConfig, $appCommon) {
-        // This route requires authentication
-        $appCommon.checkLoggedIn();
-
         $scope.backURL = $appConfig.urls['servers'];
 
-        var serverCallback = function ($data) {
-            $scope.server = $data['result'];
+        var afterLogin = function(){
+            var serverCallback = function ($data) {
+                $scope.server = $data['result'];
+            };
+
+            $scope.processForm = function () {
+                var submitted = $scope.server;
+                delete submitted['id'];
+
+                $scope.submitted = submitted;
+            };
+
+            $appCommon.getURL($appConfig.endpoints['serverGet'] + $stateParams['id'], serverCallback);
         };
 
-        $scope.processForm = function () {
-            var submitted = $scope.server;
-            delete submitted['id'];
-
-            $scope.submitted = submitted;
-        };
-
-        $appCommon.getURL($appConfig.endpoints['serverGet'] + $stateParams['id'], serverCallback);
+        // This route requires authentication
+        $appCommon.checkLoggedIn(afterLogin);
     }
 
 })(); 
