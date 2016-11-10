@@ -27,11 +27,11 @@
                 $rootScope.$broadcast('preloader:hide');
             };
 
-            this.showLoader = function(){
+            this.showLoader = function () {
                 showLoaderFunction();
             };
 
-            this.hideLoader = function(){
+            this.hideLoader = function () {
                 hideLoaderFunction();
             };
 
