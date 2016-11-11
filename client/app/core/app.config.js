@@ -24,8 +24,7 @@
         var date = new Date();
         var year = date.getFullYear();
         var main = {
-            brand: 'Material',
-            name: 'Lisa',
+            brand: 'BDN V3',
             year: year,
             layout: 'wide',                                 // String: 'boxed', 'wide'
             menu: 'vertical',                               // String: 'horizontal', 'vertical'
@@ -33,7 +32,7 @@
             fixedHeader: true,                              // Boolean: true, false
             fixedSidebar: true,                             // Boolean: true, false
             pageTransition: pageTransitionOpts[0],          // Object: 0, 1, 2, 3 and build your own
-            skin: '12'                                      // String: 11,12,13,14,15,16; 21,22,23,24,25,26; 31,32,33,34,35,36
+            skin: '21'                                      // String: 11,12,13,14,15,16; 21,22,23,24,25,26; 31,32,33,34,35,36
         };
         var color = {
             primary: '#009688',
@@ -51,7 +50,9 @@
             login: endpoint + 'users/connect/forums',
             isLoggedIn: endpoint + 'users/is/loggedin',
             serversList: endpoint + 'servers/list',
-            serverGet: endpoint + 'servers/get/'
+            serverGet: endpoint + 'servers/get/',
+            serverUpdate: endpoint + 'servers/update',
+            hooksDetailed: endpoint + 'servers/hooks/'
         };
 
         var urls = {

@@ -1,0 +1,74 @@
+<div class="page" data-ng-controller="HookCtrl">
+    <a ng-href="{{backURL}}">
+        <span>
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            Servers overview
+        </span>
+    </a>
+    <div class="row ui-section">
+        <div class="col-lg-12 clearfix"><h2 class="section-header">{{name}}</h2></div>
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <script type="text/ng-template" id="myModalContent.html">
+                                <div class="modal-header">
+                                    <h3>I am a modal!</h3>
+                                </div>
+                                <div class="modal-body">
+                                <span ng-repeat="item in items" class="list-unstyled">
+                                    <label class="ui-radio"><input name="radio1" type="radio" value="{{ item }}"
+                                                                   ng-checked="selected.item === item"
+                                                                   ng-click="selected.item = item"><span>{{ item }}</span></label>
+                                </span>
+                                    <div class="callout callout-info">
+                                        Selected: <b>{{ selected.item }}</b>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button ui-wave class="btn btn-flat btn-default" ng-click="cancel()">Cancel</button>
+                                    <button ui-wave class="btn btn-flat btn-primary" ng-click="ok()">OK</button>
+                                </div>
+                            </script>
+
+                            <div layout="column" ng-cloak class="md-inline-form">
+                                <div layout-padding>
+                                    <form name="hooksForm" ng-submit="processForm()">
+                                        <h4>Hooks</h4>
+                                        <div class="divider divider-md"></div>
+
+                                        <div ng-repeat="(key, values) in hooks">
+                                            <h5 class="capitalize">{{key}}</h5>
+                                            <div layout layout-sm="column" ng-repeat="(hType, value) in values">
+                                                <md-button ng-click="removeHooksRow(key, value.id)" class="md-icon-button md-warn" aria-label="headphones"><span
+                                                        class="fa fa-minus"></span></md-button>
+                                                <md-input-container ng-repeat="(k, type) in value">
+                                                    <label>{{k}}</label>
+                                                    <input ng-model="value[k]" ng-disabled="k == 'id'">
+                                                </md-input-container>
+                                            </div>
+                                        </div>
+
+                                        <md-button ng-click="addHooksRow()" style="float: right"
+                                                   class="md-raised btn-w-sm md-info">
+                                            Add hook
+                                        </md-button>
+
+                                        <md-button ng-disabled="waiting == true" type="submit"
+                                                   class="md-raised btn-w-md md-primary">
+                                            Submit
+                                        </md-button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+</div>

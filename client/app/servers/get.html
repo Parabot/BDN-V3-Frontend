@@ -22,47 +22,53 @@
                                         <div layout layout-sm="column">
                                             <md-input-container flex>
                                                 <label>Server ID</label>
-                                                <input ng-model="server.id" disabled>
+                                                <input ng-model="server.id" disabled required>
                                             </md-input-container>
                                         </div>
 
                                         <md-input-container class="md-block">
                                             <label>Name</label>
-                                            <input ng-model="server.name">
+                                            <input ng-model="server.name" type="text" required>
                                         </md-input-container>
 
                                         <md-input-container class="md-block">
                                             <label>Version</label>
-                                            <input ng-model="server.version">
+                                            <input ng-model="server.version" type="number" required step="0.01">
                                         </md-input-container>
 
                                         <md-input-container class="md-block">
                                             <label>Description</label>
                                             <textarea ng-model="server.description" columns="1"
-                                                      md-maxlength="1000"></textarea>
+                                                      md-maxlength="1000" required></textarea>
                                         </md-input-container>
 
                                         <div class="divider divider-xl"></div>
                                         <h4>Details</h4>
                                         <div class="divider divider-md"></div>
+                                        <div>
+                                            <div layout layout-sm="column" ng-repeat="x in server.details">
+                                                <md-input-container flex>
+                                                    <label>Name</label>
+                                                    <input ng-model="x.name">
+                                                </md-input-container>
+                                                <md-input-container flex>
+                                                    <label>Value</label>
+                                                    <input ng-model="x.value">
+                                                </md-input-container>
+                                                <md-button ng-click="removeDetailsRow(x.name)" class="md-icon-button md-warn" aria-label="headphones"><span
+                                                        class="fa fa-remove"></span></md-button>
+                                            </div>
 
-                                        <div layout layout-sm="column" ng-repeat="x in server.details">
-                                            <md-input-container flex>
-                                                <label>Name</label>
-                                                <input ng-model="x.name">
-                                            </md-input-container>
-                                            <md-input-container flex>
-                                                <label>Value</label>
-                                                <input ng-model="x.value">
-                                            </md-input-container>
+                                            <md-button ng-click="addDetailsRow()" ng-disabled="server == null" style="float:right;"
+                                                       class="md-raised btn-w-md md-accent">Add row
+                                            </md-button>
                                         </div>
 
-                                        <md-button type="submit" class="md-raised btn-w-md md-primary">
+                                        <md-button ng-disabled="waiting == true" type="submit"
+                                                   class="md-raised btn-w-md md-primary">
                                             Submit
                                         </md-button>
                                     </form>
-
-                                    <pre>{{submitted}}</pre>
                                 </div>
                             </div>
 

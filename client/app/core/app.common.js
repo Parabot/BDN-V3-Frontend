@@ -6,15 +6,33 @@
             $httpProvider.defaults.withCredentials = true;
             //rest of route code
         })
-        .service('appCommon', function ($http, $location, $rootScope, appConfig, $window) {
+        .service('appCommon', function ($http, $location, $rootScope, appConfig, appUICommon, $window) {
             $rootScope.loggedInChecked = false;
 
             this.getURL = function ($url, $callback) {
-                $http.get($url).success($callback);
+                $http.get($url).success($callback).error(handleURLError);
             };
 
             this.postURL = function ($url, $callback, $data) {
-                $http.post($url, $data).success($callback);
+                var request = {
+                    url: $url,
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    data: $data
+                };
+
+                $http(request).success($callback).error(handleURLError);
+            };
+            
+            var handleURLError = function ($data, $code) {
+                var append = '';
+                if (typeof $data !== 'undefined' && typeof $data['result'] !== 'undefined' && $data['result'] !== false){
+                    append = ' Error: ' + $data['result'];
+                }
+                appUICommon.showAlert(
+                    'Error while getting the result',
+                    'API returned a ' + $code + ' code. ' + 'Please try to reload the page.' + append
+                );
             };
 
             var redirectToLogin = function () {
@@ -30,11 +48,15 @@
             };
 
             this.showLoader = function () {
-                showLoaderFunction();
+                setTimeout(function () {
+                    showLoaderFunction();
+                }, 150);
             };
 
             this.hideLoader = function () {
-                hideLoaderFunction();
+                setTimeout(function () {
+                    hideLoaderFunction();
+                }, 150);
             };
 
             this.checkLoggedIn = function ($callback) {
@@ -45,6 +67,7 @@
                             redirectToLogin();
                         }else{
                             $rootScope.loggedInChecked = true;
+                            hideLoaderFunction();
                         }
                     };
 
@@ -59,7 +82,7 @@
                         }
                     }
 
-                    this.showLoader();
+                    showLoaderFunction();
                     this.isLoggedIn(afterLoginCheck);
                 }else{
                     $callback();
@@ -68,6 +91,6 @@
 
             this.isLoggedIn = function ($callback) {
                 this.getURL(appConfig.endpoints['isLoggedIn'], $callback);
-            }
+            };
         });
 })();
