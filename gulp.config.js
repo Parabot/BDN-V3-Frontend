@@ -50,13 +50,7 @@ module.exports = function() {
             ".DS_Store",
             ".sass-cache",
             "node_modules",
-            ".git",
             client + "/bower_components",
-            docs + "/jade",
-            docs + "/layout.html",
-            landing + "/jade",
-            landing + "/bower_components",
-            "readme.md"
         ]
     };
 };
