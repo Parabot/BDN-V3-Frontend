@@ -51,6 +51,7 @@ module.exports = function() {
             ".sass-cache",
             "node_modules",
             client + "/bower_components",
+            "dist"
         ]
     };
 };
