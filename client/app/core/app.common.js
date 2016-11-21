@@ -2,10 +2,6 @@
     'use strict';
 
     angular.module('app.core')
-        .config(function ($httpProvider) {
-            $httpProvider.defaults.withCredentials = true;
-            //rest of route code
-        })
         .service('appCommon', function ($http, $location, $rootScope, appConfig, appUICommon, $window) {
             $rootScope.loggedInChecked = false;
 

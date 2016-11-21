@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css">
         <!-- end Needs images -->
 
-            
+
             <!-- build:css({.tmp,client}) styles/main.css -->
             <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
             <link rel="stylesheet" href="styles/bootstrap.css">
@@ -27,9 +27,9 @@
     <body data-ng-app="app"
           id="app"
           class="app"
-          data-custom-page 
+          data-custom-page
           data-ng-controller="AppCtrl"
-          data-ng-class=" { 'layout-boxed': main.layout === 'boxed', 
+          data-ng-class=" { 'layout-boxed': main.layout === 'boxed',
                             'nav-collapsed-min': main.isMenuCollapsed
           } ">
         <!--[if lt IE 9]>
@@ -58,7 +58,7 @@
              data-ng-class="{ 'app-nav-horizontal': main.menu === 'horizontal' }">
             <aside data-ng-include=" 'app/layout/sidebar.html' "
                    id="nav-container"
-                   class="nav-container"  
+                   class="nav-container"
                    data-ng-class="{ 'nav-fixed': main.fixedSidebar,
                                     'nav-horizontal': main.menu === 'horizontal',
                                     'nav-vertical': main.menu === 'vertical',
@@ -89,7 +89,6 @@
         <!-- build:js scripts/ui.js -->
         <script src="bower_components/angular-material/angular-material.min.js"></script>
         <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
         <script src="bower_components/jquery.slimscroll/jquery.slimscroll.min.js"></script>
 
         <script src="bower_components/angular-ui-tree/dist/angular-ui-tree.min.js"></script>
@@ -107,7 +106,7 @@
         <script src="bower_components/angular-translate/angular-translate.min.js"></script>
         <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
 
-        <script src="vendors/echarts.js"></script>        
+        <script src="vendors/echarts.js"></script>
         <script src="vendors/ngecharts.js"></script>
         <!-- endbuild -->
 
@@ -117,13 +116,13 @@
         <script src="app/app.module.js"></script>
         <script src="app/chart/chart.module.js"></script>
         <script src="app/core/core.module.js"></script>
-        <script src="app/form/form.module.js"></script>
-        <script src="app/form/formValidation.module.js"></script>
         <script src="app/layout/layout.module.js"></script>
         <script src="app/page/page.module.js"></script>
+        <script src="app/form/form.module.js"></script>
+        <script src="app/form/formValidation.module.js"></script>
         <script src="app/servers/servers.module.js"></script>
-        <script src="app/table/table.module.js"></script>
         <script src="app/ui/ui.module.js"></script>
+        <script src="app/table/table.module.js"></script>
         <script src="app/chart/echarts.controller.js"></script>
         <script src="app/core/app.common.js"></script>
         <script src="app/core/app.config.js"></script>
@@ -131,23 +130,23 @@
         <script src="app/core/app.ui.common.js"></script>
         <script src="app/core/config.route.js"></script>
         <script src="app/core/i18n.js"></script>
-        <script src="app/dashboard/dashboard.controller.js"></script>
-        <script src="app/form/form.controller.js"></script>
-        <script src="app/form/form.directive.js"></script>
-        <script src="app/form/formValidation.controller.js"></script>
-        <script src="app/form/wizard.controller.js"></script>
         <script src="app/layout/layout.controller.js"></script>
         <script src="app/layout/layout.diretive.js"></script>
         <script src="app/layout/loader.js"></script>
         <script src="app/layout/sidebar.directive.js"></script>
         <script src="app/page/page.controller.js"></script>
         <script src="app/page/page.directive.js"></script>
+        <script src="app/dashboard/dashboard.controller.js"></script>
+        <script src="app/form/form.controller.js"></script>
+        <script src="app/form/form.directive.js"></script>
+        <script src="app/form/formValidation.controller.js"></script>
+        <script src="app/form/wizard.controller.js"></script>
         <script src="app/servers/servers.controller.js"></script>
         <script src="app/servers/servers.server.js"></script>
-        <script src="app/table/table.controller.js"></script>
         <script src="app/ui/material.controller.js"></script>
         <script src="app/ui/ui.controller.js"></script>
         <script src="app/ui/ui.directive.js"></script>
+        <script src="app/table/table.controller.js"></script>
         <!-- endinject -->
         <!-- build:js scripts/app.js -->
     </body>

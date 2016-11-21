@@ -6,7 +6,6 @@
         'ngAnimate'
         , 'ngAria'
         , 'ngMessages'
-        , 'ngCookies'
 
         // Custom modules
         , 'app.layout'
@@ -17,7 +16,8 @@
         , 'ui.router'
         , 'ui.bootstrap'
         , 'duScroll'
-    ]);
+    ]).config(['$httpProvider', function ($httpProvider) {
+        $httpProvider.defaults.withCredentials = true;
+    }]);
 
 })();
-
