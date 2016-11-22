@@ -5,19 +5,35 @@
         .service('appCommon', function ($http, $location, $rootScope, appConfig, appUICommon, $window) {
             $rootScope.loggedInChecked = false;
 
-            this.getURL = function ($url, $callback) {
-                $http.get($url).success($callback).error(handleURLError);
+            this.getURL = function ($url, $callback, $handleError) {
+                var request = $http.get($url);
+
+                if ($callback != null){
+                    request.success($callback)
+                }
+
+                if ($handleError !== false){
+                    request.error(handleURLError);
+                }
             };
 
-            this.postURL = function ($url, $callback, $data) {
-                var request = {
+            this.postURL = function ($url, $callback, $data, $handleError) {
+                var requestArgs = {
                     url: $url,
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     data: $data
                 };
 
-                $http(request).success($callback).error(handleURLError);
+                var request = $http(requestArgs);
+
+                if ($callback != null){
+                    request.success($callback)
+                }
+
+                if ($handleError !== false){
+                    request.error(handleURLError);
+                }
             };
             
             var handleURLError = function ($data, $code) {
@@ -61,9 +77,11 @@
                     var loginCallBack = function ($data) {
                         if (typeof $data === 'undefined' || typeof $data['result'] === 'undefined' || $data['result'] === false) {
                             redirectToLogin();
+                            return false;
                         }else{
                             $rootScope.loggedInChecked = true;
                             hideLoaderFunction();
+                            return true;
                         }
                     };
 
@@ -73,8 +91,9 @@
                         afterLoginCheck = loginCallBack;
                     }else{
                         afterLoginCheck = function ($data) {
-                            loginCallBack($data);
-                            $callback();
+                            if (loginCallBack($data) !== false) {
+                                $callback();
+                            }
                         }
                     }
 
@@ -86,7 +105,7 @@
             };
 
             this.isLoggedIn = function ($callback) {
-                this.getURL(appConfig.endpoints['isLoggedIn'], $callback);
+                this.getURL(appConfig.endpoints['isLoggedIn'], $callback, false);
             };
         });
 })();
