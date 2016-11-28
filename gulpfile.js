@@ -42,7 +42,7 @@ gulp.task('jade-docs', function() {
 
     var options = {
         pretty: false
-    }
+    };
 
     return gulp
         .src(config.docsJade)
@@ -96,7 +96,7 @@ gulp.task('sass-min', function() {
         .pipe($.sass(sassOptions))
         .pipe($.autoprefixer())
         .pipe(gulp.dest(config.tmp + '/styles'));    
-})
+});
 
 gulp.task('sass-watcher', function() {
     gulp.watch([config.sass], ['sass']);
@@ -138,15 +138,15 @@ gulp.task('serve', ['inject', 'sass'], function() {
 
 gulp.task('build', ['optimize', 'copy'], function() {
     startBrowserSync('dist');
-})
+});
 
 gulp.task('serve-dist', function() {
     gulp.run('build');
-})
+});
 
 gulp.task('serve-docs', ['jade-docs'], function() {
     startBrowserSync('docs');
-})
+});
 
 
 
@@ -248,7 +248,7 @@ function startBrowserSync(opt) {
             baseDir: [
                 config.docs
             ]
-        }
+        };
 
         options.files = [
             config.docs + '/index.html',
