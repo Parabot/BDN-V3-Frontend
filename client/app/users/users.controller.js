@@ -54,7 +54,7 @@
                 $scope.signinLoading = false;
                 $scope.signinType = 'accent';
             } else {
-                // $location.url('/');
+                $location.url('/');
             }
         };
 
