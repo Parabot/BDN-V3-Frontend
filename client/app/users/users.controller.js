@@ -10,21 +10,26 @@
 
         var code = $appCommon.getUrlParameter('code');
 
-        var afterPost = function ($data, $code) {
-            if (typeof $data === 'undefined' || typeof $data['access_token'] === 'undefined') {
-                $appUICommon.showAlert(
-                    'Error while getting the result',
-                    'API returned an error, please retry logging in again'
-                );
-                console.log($data);
-            } else {
-                $appCommon.storeCookie('access_token', $data['access_token'], $data['expires_in'] / 60);
-                $appCommon.storeCookie('refresh_token', $data['refresh_token'], 60 * 24 * 100);
-                window.location.href = '/';
-            }
-        };
+        if (code == null) {
+            window.location.href = '/';
+        } else {
 
-        $appCommon.requestToken(afterPost, 'authorization_code', code);
+            var afterPost = function ($data, $code) {
+                if (typeof $data === 'undefined' || typeof $data['access_token'] === 'undefined') {
+                    $appUICommon.showAlert(
+                        'Error while getting the result',
+                        'API returned an error, please retry logging in again'
+                    );
+                    console.log($data);
+                } else {
+                    $appCommon.storeCookie('access_token', $data['access_token'], $data['expires_in'] / 60);
+                    $appCommon.storeCookie('refresh_token', $data['refresh_token'], 60 * 24 * 100);
+                    window.location.href = '/';
+                }
+            };
+
+            $appCommon.requestToken(afterPost, 'authorization_code', code);
+        }
     }
 
     function LoginCtrl($scope, $window, $location, $appConfig, $appCommon) {
