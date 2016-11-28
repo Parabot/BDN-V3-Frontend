@@ -1,5 +1,5 @@
 {
-  "name": "BDN V3 Frontend",
+  "name": "bdn-v3-frontend",
   "version": "0.0.1",
   "dependencies": {
     "jquery": "~2.2.1",
