@@ -24,7 +24,8 @@
     "ngmap": "~1.17.0",
     "echarts": "~2.2.7",
     "angular-wizard": "^0.6.1",
-    "ngECharts": "ngecharts#^0.2.0"
+    "ngECharts": "ngecharts#^0.2.0",
+    "angular-cookies": "^1.5.9"
   },
   "devDependencies": {
     "bootstrap-sass-official": "~3.3.0"

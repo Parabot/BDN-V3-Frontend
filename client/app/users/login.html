@@ -1,0 +1,28 @@
+<div class="page-signin" ng-controller="LoginCtrl">
+
+    <div class="wrapper">
+        <div class="main-body">
+            <div class="body-inner">
+                <div class="card bg-white">
+                    <div class="card-content">
+
+                        <section class="logo text-center">
+                            <h1>{{main.brand}}</h1>
+                        </section>
+                    </div>
+                    <div class="card-action no-border text-center">
+                        <md-progress-circular ng-show="signinLoading" style="margin: auto;" md-mode="indeterminate" md-diameter="75"></md-progress-circular>
+                        <md-button ng-click="signin()" ng-show="!signinLoading" class="md-raised btn-w-lg md-{{signinType}}">{{signinText}}</md-button>
+                    </div>
+                </div>
+
+                <div class="additional-info">
+                    <a ng-click="signup()" style="cursor: pointer;">Register</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

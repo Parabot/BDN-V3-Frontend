@@ -6,6 +6,12 @@
         .config(['$mdThemingProvider', mdConfig]);
 
     function appConfig() {
+        var env = {};
+
+        if (window) {
+            Object.assign(env, window.__env);
+        }
+
         var pageTransitionOpts = [
             {
                 name: 'Fade up',
@@ -45,10 +51,13 @@
             gray: '#EDF0F1'
         };
 
-        var endpoint = 'http://local.v3.bdn.parabot.org:88/app_dev.php/api/';
+        var base = env.baseURL;
+        var endpoint = base + 'api/';
         var endpoints = {
             login: endpoint + 'users/connect/forums',
             isLoggedIn: endpoint + 'users/is/loggedin',
+            validOAuth: endpoint + 'users/oauth/v2/valid',
+            retrieveToken: base + 'internal/route/oauth/v2/token',
             serversList: endpoint + 'servers/list',
             serverGet: endpoint + 'servers/get/',
             serverUpdate: endpoint + 'servers/update',
@@ -57,7 +66,11 @@
 
         var urls = {
             servers: '/#/servers/list',
-            server: '/#/servers/get/'
+            server: '/#/servers/get/',
+            login: '/#/users/login',
+            register: 'https://www.parabot.org/community/register',
+            oauth: base + 'oauth/v2/auth',
+            log_in: endpoint + 'users/log_in'
         };
 
         return {
@@ -66,7 +79,8 @@
             main: main,
             color: color,
             endpoint: endpoint,
-            endpoints: endpoints
+            endpoints: endpoints,
+            environment: env
         }
     }
 

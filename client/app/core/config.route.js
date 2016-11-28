@@ -2,10 +2,12 @@
     'use strict';
 
     angular.module('app')
-        .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-                var routes, setRoutes, dynamicRoutes;
+        .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
+                var routes, setRoutes;
 
                 routes = [
+                    'users/login',
+                    'users/auth',
                     'servers/list',
                     'servers/get/:id',
                     'servers/hooks/:id',
@@ -33,9 +35,18 @@
                     return setRoutes(route);
                 });
 
-                $urlRouterProvider
-                    .when('/', '/dashboard')
-                    .otherwise('/dashboard');
+                // Check if we have an oauth code
+                var field = 'code';
+                var url = window.location.href;
+                if (url.indexOf('?' + field + '=') != -1 || url.indexOf('&' + field + '=') != -1) {
+                    $urlRouterProvider
+                        .when('/', '/users/auth')
+                        .otherwise('/users/auth');
+                } else {
+                    $urlRouterProvider
+                        .when('/', '/dashboard')
+                        .otherwise('/dashboard');
+                }
 
 
                 $stateProvider.state('dashboard', {

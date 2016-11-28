@@ -12,7 +12,8 @@
         'app.ui.form.validation',
         'app.page',
         'app.table',
-        'app.servers'
+        'app.servers',
+        'app.users'
 
         // 3rd party feature modules
         , 'mgo-angular-wizard'
