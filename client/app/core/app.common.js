@@ -177,7 +177,7 @@
                     return true;
                 };
 
-                if ($rootScope.loggedInChecked !== true && $cookies.get('access_token') != null) {
+                if ($rootScope.loggedInChecked !== true || $cookies.get('access_token') == null) {
 
                     var loginCallBack = function ($data) {
                         if (typeof $data === 'undefined' || typeof $data['result'] === 'undefined' || $data['result'] === false) {
