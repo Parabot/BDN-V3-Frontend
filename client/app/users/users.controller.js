@@ -38,23 +38,23 @@
 
         var afterLoggedIn = function ($data) {
 
-            var hasGivenAccess = function () {
-
-            };
-
-            $scope.loggedin = !(typeof $data === 'undefined' || typeof $data['result'] === 'undefined' || $data['result'] === false);
-            $scope.givenAccess = hasGivenAccess();
-
-            if (!$scope.loggedin) {
+            if (typeof $data === 'undefined' || typeof $data['result'] === 'undefined' || $data['result'] === false) {
                 $scope.signinText = 'Sign into Parabot';
                 $scope.signinLoading = false;
                 $scope.signinType = 'primary';
-            } else if (!$scope.givenAccess) {
-                $scope.signinText = 'Login with your account';
-                $scope.signinLoading = false;
-                $scope.signinType = 'accent';
+                $scope.loggedin = false;
             } else {
-                $location.url('/');
+                var afterValidCheck = function ($data) {
+                    if (typeof $data === 'undefined' || typeof $data['result'] === 'undefined' || $data['result'] === false) {
+                        $scope.signinText = 'Login with your account';
+                        $scope.signinLoading = false;
+                        $scope.signinType = 'accent';
+                        $scope.givenAccess = false;
+                    } else {
+                        $location.url('/');
+                    }
+                };
+                $appCommon.getURL($appConfig.endpoints.validOAuth, afterValidCheck);
             }
         };
 
@@ -65,9 +65,9 @@
         };
 
         $scope.signin = function () {
-            if (!$scope.loggedin) {
+            if ($scope.loggedin === false) {
                 window.location.href = $appConfig.urls.log_in + '?after_login_redirect=' + encodeURIComponent(window.location.href);
-            } else if ($scope.loggedin && !$scope.givenAccess) {
+            } else if ($scope.loggedin !== false && $scope.givenAccess === false) {
                 window.location.href = $appConfig.urls.oauth + '?response_type=code&client_id=' + $appConfig.environment.clientID + '&redirect_uri=' + window.location.protocol + '//' + window.location.host;
             }
         }
