@@ -80,3 +80,5 @@ documentation/index.html
 documentation/layout.html
 npm-debug.log
 /preview/preview.zip
+
+client/env.js
