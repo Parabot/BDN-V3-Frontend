@@ -1,6 +1,6 @@
 {
-  "name": "material",
-  "version": "1.2.4",
+  "name": "BDN V3 Frontend",
+  "version": "0.0.1",
   "dependencies": {
     "jquery": "~2.2.1",
     "angular": "~1.5.0",
