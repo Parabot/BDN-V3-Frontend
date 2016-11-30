@@ -61,7 +61,10 @@
             serversList: endpoint + 'servers/list',
             serverGet: endpoint + 'servers/get/',
             serverUpdate: endpoint + 'servers/update',
-            hooksDetailed: endpoint + 'servers/hooks/'
+            hooksDetailed: endpoint + 'servers/hooks/',
+            userGet: endpoint + 'users/get/',
+            usersList: endpoint + 'users/list/',
+            usersSearch: endpoint + 'users/search/'
         };
 
         var urls = {

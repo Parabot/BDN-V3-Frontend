@@ -1,0 +1,80 @@
+<div class="page page-table" ng-controller="UsersCtrl">
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Users</h2>
+        </div>
+        <div class="col-md-12">
+            <section class="panel panel-default table-dynamic">
+                <div class="table-filters">
+                    <div class="row">
+                        <div class="col-sm-4 col-xs-6">
+                            <form>
+                                <input type="text"
+                                       placeholder="Search..."
+                                       class="form-control"
+                                       data-ng-model="searchUsername"
+                                       data-ng-keyup="search()">
+                            </form>
+                        </div>
+                        <div class="col-sm-3 col-xs-6 filter-result-info">
+                            <span>Found {{totalAmount}} entries</span>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table table-bordered table-striped table-responsive table-hover">
+                    <thead>
+                    <tr>
+                        <th>
+                            <div class="th">
+                                ID
+                            </div>
+                        </th>
+                        <th>
+                            <div class="th">
+                                Username
+                            </div>
+                        </th>
+                        <th>
+                            <div class="th">
+                                Email
+                            </div>
+                        </th>
+                        <th>
+                            <div class="th">
+                                Community ID
+                            </div>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-click="logU(user)" data-ng-repeat="user in users">
+                        <td>{{user.id}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.communityId}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <footer class="table-footer">
+                    <div class="row">
+                        <div class="col-md-6 text-right pagination-container">
+                            <uib-pagination class="pagination-sm"
+                                            ng-model="currentPage"
+                                            total-items="totalAmount"
+                                            max-size="4"
+                                            ng-change="select(currentPage)"
+                                            items-per-page="numPerPage"
+                                            rotate="false"
+                                            previous-text="&lsaquo;" next-text="&rsaquo;"
+                                            boundary-links="true"></uib-pagination>
+                        </div>
+                    </div>
+                </footer>
+            </section>
+        </div>
+    </div>
+
+</div>

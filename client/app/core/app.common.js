@@ -7,7 +7,7 @@
 
             var self = this;
 
-            self.getURL = function ($url, $callback, $appendAccessToken, $handleError) {
+            self.getURL = function ($url, $callback, $appendAccessToken, $handleError, $errorHandler) {
                 if ($appendAccessToken !== false && $cookies.get('access_token') != null) {
                     $url = self.appendURLParameter($url, 'access_token', $cookies.get('access_token'))
                 }
@@ -18,12 +18,22 @@
                     request.success($callback)
                 }
 
+                var e;
+                if ($errorHandler != null) {
+                    e = function ($data, $code) {
+                        $errorHandler($data, $code);
+                        handleURLError($data, $code);
+                    }
+                } else {
+                    e = handleURLError;
+                }
+
                 if ($handleError !== false) {
-                    request.error(handleURLError);
+                    request.error(e);
                 }
             };
 
-            self.postURL = function ($url, $callback, $data, $appendAccessToken, $handleError) {
+            self.postURL = function ($url, $callback, $data, $appendAccessToken, $handleError, $errorHandler) {
                 if ($appendAccessToken !== false && $cookies.get('access_token') != null) {
                     $url = self.appendURLParameter($url, 'access_token', $cookies.get('access_token'))
                 }
@@ -41,8 +51,18 @@
                     request.success($callback);
                 }
 
+                var e;
+                if ($errorHandler != null) {
+                    e = function ($data, $code) {
+                        $errorHandler($data, $code);
+                        handleURLError($data, $code);
+                    }
+                } else {
+                    e = handleURLError;
+                }
+
                 if ($handleError !== false) {
-                    request.error(handleURLError);
+                    request.error(e);
                 }
             };
 
@@ -169,7 +189,7 @@
             };
 
             this.checkLoggedIn = function ($callback) {
-                var onSuccess = function(){
+                var onSuccess = function () {
                     $rootScope.loggedInChecked = true;
                     self.hideLoader();
                     $callback();

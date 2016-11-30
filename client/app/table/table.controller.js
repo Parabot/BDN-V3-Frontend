@@ -157,28 +157,28 @@
             start = (page - 1) * $scope.numPerPage;
             end = start + $scope.numPerPage;
             return $scope.currentPageStores = $scope.filteredStores.slice(start, end);
-        };
+        }
 
         function onFilterChange() {
             $scope.select(1);
             $scope.currentPage = 1;
             return $scope.row = '';
-        };
+        }
 
         function onNumPerPageChange() {
             $scope.select(1);
             return $scope.currentPage = 1;
-        };
+        }
 
         function onOrderChange() {
             $scope.select(1);
             return $scope.currentPage = 1;
-        };
+        }
 
         function search() {
             $scope.filteredStores = $filter('filter')($scope.stores, $scope.searchKeywords);
             return $scope.onFilterChange();
-        };
+        }
 
         function order(rowName) {
             if ($scope.row === rowName) {
@@ -187,7 +187,7 @@
             $scope.row = rowName;
             $scope.filteredStores = $filter('orderBy')($scope.stores, rowName);
             return $scope.onOrderChange();
-        };
+        }
 
         init = function () {
             $scope.search();

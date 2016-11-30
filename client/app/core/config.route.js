@@ -6,6 +6,8 @@
                 var routes, setRoutes;
 
                 routes = [
+                    'users/list',
+                    'users/list/:id',
                     'users/login',
                     'users/auth',
                     'servers/list',

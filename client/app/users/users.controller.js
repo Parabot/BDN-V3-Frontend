@@ -3,7 +3,53 @@
 
     angular.module('app.users')
         .controller('LoginCtrl', ['$scope', '$window', '$location', 'appConfig', 'appCommon', LoginCtrl])
-        .controller('AuthCtrl', ['$scope', '$window', '$location', 'appConfig', 'appCommon', 'appUICommon', AuthCtrl]);
+        .controller('AuthCtrl', ['$scope', '$window', '$location', 'appConfig', 'appCommon', 'appUICommon', AuthCtrl])
+        .controller('UsersCtrl', ['$scope', '$location', 'appConfig', 'appCommon', 'userManager', UsersCtrl]);
+
+    function UsersCtrl($scope, $location, $appConfig, $appCommon, userManager) {
+        $scope.numPerPage = 25;
+        $scope.totalAmount = 0;
+        $scope.searchUsername = '';
+
+        var afterLogin = function () {
+            $scope.select(1);
+        };
+
+        $scope.select = function (page) {
+            $appCommon.showLoader();
+
+            userManager.loadUsers(page).then(function (users) {
+                $scope.users = users;
+                userManager.getTotalForLatestRetrieval().then(function (total) {
+                    $scope.totalAmount = total;
+                    $appCommon.hideLoader();
+                });
+            });
+        };
+
+        $scope.logU = function (user) {
+            $location.url('/#/users/get/' + user.id);
+        };
+
+        $scope.search = function () {
+            if ($scope.searchUsername.length >= 3) {
+                $appCommon.showLoader();
+
+                userManager.loadUsers(1, 'username', $scope.searchUsername).then(function (users) {
+                    $scope.users = users;
+                    userManager.getTotalForLatestRetrieval().then(function (total) {
+                        $scope.totalAmount = total;
+                        $appCommon.hideLoader();
+                    });
+                });
+            } else if ($scope.searchUsername.length == 0) {
+                $scope.select(1);
+            }
+        };
+
+        // This route requires authentication
+        $appCommon.checkLoggedIn(afterLogin);
+    }
 
     function AuthCtrl($scope, $window, $location, $appConfig, $appCommon, $appUICommon) {
         $appCommon.showLoader();
