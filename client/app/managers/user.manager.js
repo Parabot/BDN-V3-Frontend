@@ -27,26 +27,14 @@
                 return this._pool[userId];
             },
 
-            _searchByUsername: function (username) {
-                var users = [];
-                angular.forEach(this._pool, function (value, key) {
-                    if (value.hasOwnProperty('username') && value.username.indexOf(username) !== -1) {
-                        users.push(value);
-                    }
-                });
-
-                return users;
-            },
-
             _load: function (userId, deferred) {
                 var scope = this;
 
-                appCommon.getURL.get(appConfig.endpoints.userGet + userId)
-                    .success(function (userData) {
+                appCommon.getURL(appConfig.endpoints.userGet + userId,
+                    function (userData) {
                         var user = scope._retrieveInstance(userData.id, userData);
                         deferred.resolve(user);
-                    })
-                    .error(function () {
+                    }, true, true, function () {
                         deferred.reject();
                     });
             },
@@ -88,17 +76,6 @@
                 );
                 return deferred.promise;
             },
-
-            setUser: function (userData) {
-                var scope = this;
-                var user = this._search(userData.id);
-                if (user) {
-                    user.setData(userData);
-                } else {
-                    user = scope._retrieveInstance(userData);
-                }
-                return user;
-            }
 
         };
     }

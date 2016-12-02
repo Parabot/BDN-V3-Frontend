@@ -4,7 +4,21 @@
     angular.module('app.users')
         .controller('LoginCtrl', ['$scope', '$window', '$location', 'appConfig', 'appCommon', LoginCtrl])
         .controller('AuthCtrl', ['$scope', '$window', '$location', 'appConfig', 'appCommon', 'appUICommon', AuthCtrl])
-        .controller('UsersCtrl', ['$scope', '$location', 'appConfig', 'appCommon', 'userManager', UsersCtrl]);
+        .controller('UsersCtrl', ['$scope', '$location', 'appConfig', 'appCommon', 'userManager', UsersCtrl])
+        .controller('UserCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'userManager', UserCtrl]);
+
+    function UserCtrl($scope, $stateParams, $appConfig, $appCommon, userManager){
+        $scope.backURL = $appConfig.urls['users'];
+
+        var afterLogin = function () {
+            userManager.getUser($stateParams['id']).then(function(user){
+                $scope.user = user;
+            });
+        };
+
+        // This route requires authentication
+        $appCommon.checkLoggedIn(afterLogin);
+    }
 
     function UsersCtrl($scope, $location, $appConfig, $appCommon, userManager) {
         $scope.numPerPage = 25;
@@ -27,8 +41,8 @@
             });
         };
 
-        $scope.logU = function (user) {
-            $location.url('/#/users/get/' + user.id);
+        $scope.openUser = function (id) {
+            $location.url($appConfig.routeUrls['user'] + id);
         };
 
         $scope.search = function () {
@@ -57,7 +71,7 @@
         var code = $appCommon.getUrlParameter('code');
 
         if (code == null) {
-            window.location.href = '/';
+            $location.url('/');
         } else {
 
             var afterPost = function ($data, $code) {

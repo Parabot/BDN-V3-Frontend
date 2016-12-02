@@ -7,7 +7,7 @@
 
                 routes = [
                     'users/list',
-                    'users/list/:id',
+                    'users/get/:id',
                     'users/login',
                     'users/auth',
                     'servers/list',

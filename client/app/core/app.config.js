@@ -67,9 +67,15 @@
             usersSearch: endpoint + 'users/search/'
         };
 
+        var routeUrls = {
+            user: '/users/get/'
+        };
+
         var urls = {
             servers: '/#/servers/list',
             server: '/#/servers/get/',
+            users: '/#/users/list',
+            user: '/#' + routeUrls.user,
             login: '/#/users/login',
             register: 'https://www.parabot.org/community/register',
             oauth: base + 'oauth/v2/auth',
@@ -78,6 +84,7 @@
 
         return {
             urls: urls,
+            routeUrls: routeUrls,
             pageTransitionOpts: pageTransitionOpts,
             main: main,
             color: color,
