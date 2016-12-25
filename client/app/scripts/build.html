@@ -1,0 +1,70 @@
+<div class="page" data-ng-controller="BuildCtrl">
+    <a ng-href="#" ng-click="goBack()">
+        <span>
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            Builds overview
+        </span>
+    </a>
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Information of build ID {{ buildID }}</h2>
+        </div>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="panel panel-default panel-minimal">
+                                <div class="panel-heading">
+                                    <b>Build ID</b>
+                                </div>
+                                <div class="panel-body">
+                                    {{ build.id }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="panel panel-default panel-minimal">
+                                <div class="panel-heading">
+                                    <b>State</b>
+                                </div>
+                                <div class="panel-body">
+                                    {{ build.state }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="panel panel-default panel-minimal">
+                                <div class="panel-heading">
+                                    <b>Status</b>
+                                </div>
+                                <div class="panel-body">
+                                    <span ng-if="build.status == 'SUCCESS'" class="label label-success">{{ build.status }}</span>
+                                    <span ng-if="build.status == 'FAILURE'"
+                                          class="label label-danger">{{ build.status }}</span>
+                                    <span ng-if="build.status != 'SUCCESS' && build.status != 'FAILURE'"
+                                          class="label label-warning">{{ build.status }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel panel-default panel-minimal">
+                                <div class="panel-heading">
+                                    <b>Build log</b>
+                                </div>
+                                <div class="panel-body">
+                                    <pre>{{ log }}</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

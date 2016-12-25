@@ -13,7 +13,8 @@
         'app.page',
         'app.table',
         'app.servers',
-        'app.users'
+        'app.users',
+        'app.scripts'
 
         // 3rd party feature modules
         , 'mgo-angular-wizard'

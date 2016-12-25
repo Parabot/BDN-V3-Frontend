@@ -19,6 +19,7 @@
                     $mdToast.simple()
                         .content($message)
                         .hideDelay(3000)
+                        .position('right top')
                 );
             }
         });

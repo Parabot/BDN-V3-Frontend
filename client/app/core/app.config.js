@@ -57,14 +57,22 @@
             login: endpoint + 'users/connect/forums',
             isLoggedIn: endpoint + 'users/is/loggedin',
             validOAuth: endpoint + 'users/oauth/v2/valid',
+            userGet: endpoint + 'users/get/',
+            usersList: endpoint + 'users/list/',
+            usersSearch: endpoint + 'users/search/',
+
             retrieveToken: base + 'internal/route/oauth/v2/token',
+
             serversList: endpoint + 'servers/list',
             serverGet: endpoint + 'servers/get/',
             serverUpdate: endpoint + 'servers/update',
             hooksDetailed: endpoint + 'servers/hooks/',
-            userGet: endpoint + 'users/get/',
-            usersList: endpoint + 'users/list/',
-            usersSearch: endpoint + 'users/search/'
+
+            myScriptsList: endpoint + 'scripts/list/my',
+            buildTypesList: endpoint + 'city/build_types/list',
+            buildsList: endpoint + 'city/builds/list/',
+            build: endpoint + 'city/builds/get/',
+            createBuild: endpoint + 'city/build_types/create/'
         };
 
         var routeUrls = {
@@ -74,6 +82,12 @@
         var urls = {
             servers: '/#/servers/list',
             server: '/#/servers/get/',
+
+            scripts: '/#/scripts/list',
+            script: '/#/scripts/get/',
+            builds: '/#/scripts/builds',
+            build: '/#/scripts/build/',
+
             users: '/#/users/list',
             user: '/#' + routeUrls.user,
             login: '/#/users/login',

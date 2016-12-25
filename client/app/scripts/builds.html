@@ -1,0 +1,52 @@
+<div class="page page-table" data-ng-controller="BuildsCtrl">
+
+    <div class="row ui-section">
+        <div ng-show="script != null">
+            <div class="col-lg-8">
+                <h2 class="section-header">Builds for {{ script }}</h2>
+            </div>
+            <div class="col-lg-2"></div>
+            <div class="col-lg-2">
+                <md-button class="md-raised btn-w-md md-accent" ng-click="build()">
+                    <span class="fa fa-wrench"></span> Build
+                </md-button>
+                <div class="divider"></div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Status</th>
+                                <th>State</th>
+                            </tr>
+                            </thead>
+                            <tbody ng-show="builds.length > 0">
+                            <tr ng-repeat="x in builds">
+                                <td>
+                                    <a ng-href="{{buildURL}}{{x.id}}">{{ x.id }}</a>
+                                </td>
+                                <td>
+                                    <span ng-if="x.status == 'SUCCESS'"
+                                          class="label label-success">{{ x.status }}</span>
+                                    <span ng-if="x.status == 'FAILURE'"
+                                          class="label label-danger">{{ x.status }}</span>
+                                    <span ng-if="x.status != 'SUCCESS' && x.status != 'FAILURE'"
+                                          class="label label-warning">{{ x.status }}</span>
+                                </td>
+
+                                <td>{{ x.state }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

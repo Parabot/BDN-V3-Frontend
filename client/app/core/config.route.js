@@ -10,9 +10,16 @@
                     'users/get/:id',
                     'users/login',
                     'users/auth',
+
                     'servers/list',
                     'servers/get/:id',
                     'servers/hooks/:id',
+
+                    'scripts/list',
+                    'scripts/get/:id',
+                    'scripts/builds/:id',
+                    'scripts/build/:id',
+
                     'ui/cards', 'ui/typography', 'ui/buttons', 'ui/icons', 'ui/grids', 'ui/widgets', 'ui/components', 'ui/timeline', 'ui/lists', 'ui/pricing-tables',
                     'map/maps',
                     'table/static', 'table/dynamic', 'table/responsive',
