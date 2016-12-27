@@ -61,6 +61,8 @@
             usersList: endpoint + 'users/list/',
             usersSearch: endpoint + 'users/search/',
 
+            groupsList: endpoint + 'users/groups/list',
+
             retrieveToken: base + 'internal/route/oauth/v2/token',
 
             serversList: endpoint + 'servers/list',
@@ -68,6 +70,10 @@
             serverUpdate: endpoint + 'servers/update',
             hooksDetailed: endpoint + 'servers/hooks/',
 
+            categoriesList: endpoint + 'scripts/categories/list',
+
+            scriptGet: endpoint + 'scripts/get/',
+            scriptUpdate: endpoint + 'scripts/update',
             myScriptsList: endpoint + 'scripts/list/my',
             buildTypesList: endpoint + 'city/build_types/list',
             buildsList: endpoint + 'city/builds/list/',

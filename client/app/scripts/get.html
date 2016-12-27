@@ -1,0 +1,152 @@
+<div class="page" data-ng-controller="ScriptCtrl">
+    <a ng-href="{{backURL}}">
+        <span>
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            Scripts overview
+        </span>
+    </a>
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix"><h2 class="section-header">{{script.name}}</h2></div>
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+
+                            <div layout="column" ng-cloak class="md-inline-form">
+                                <div layout-padding>
+                                    <form name="scriptForm" ng-submit="processForm()">
+                                        <h4>Information</h4>
+
+                                        <div class="divider divider-md"></div>
+
+                                        <div layout layout-sm="column">
+                                            <md-input-container flex>
+                                                <label>Script ID</label>
+                                                <input ng-model="script.id" disabled required>
+                                            </md-input-container>
+                                        </div>
+
+                                        <md-input-container class="md-block">
+                                            <p style="margin-bottom: -18px; font-size: 12px; font-weight: bold; color: rgba(0,0,0,0.54);">
+                                                Script active</p>
+                                            <md-switch ng-disabled="script == null" ng-model="script.active"
+                                                       aria-label="Active"></md-switch>
+                                        </md-input-container>
+
+                                        <md-input-container class="md-block">
+                                            <label>Name</label>
+                                            <input ng-model="script.name" type="text" required>
+                                        </md-input-container>
+
+                                        <md-input-container class="md-block">
+                                            <label>Version</label>
+                                            <input ng-model="script.version" type="number" required step="0.01">
+                                        </md-input-container>
+
+                                        <md-input-container class="md-block">
+                                            <label>Forum ID</label>
+                                            <input ng-model="script.forum" type="number" step="1">
+                                        </md-input-container>
+
+                                        <md-input-container class="md-block">
+                                            <label>Description</label>
+                                            <textarea ng-model="script.description" columns="1"
+                                                      md-maxlength="1000" required></textarea>
+                                        </md-input-container>
+
+                                        <md-input-container class="md-block">
+                                            <label>Git URL</label>
+                                            <input ng-model="script.git.url" type="text" required ng-change="gitCheck()"
+                                                   ng-model-options='{ debounce: 1000 }'>
+                                        </md-input-container>
+
+                                        <div class="divider divider-xl"></div>
+                                        <h4>Authors</h4>
+                                        <div class="divider divider-md"></div>
+                                        <div>
+                                            <div layout layout-sm="column" ng-repeat="x in script.authors">
+                                                <md-input-container flex>
+                                                    <label>Username</label>
+                                                    <input ng-model="x.username">
+                                                </md-input-container>
+                                                <md-button ng-click="removeAuthor(x.username)"
+                                                           class="md-icon-button md-warn" aria-label="headphones"><span
+                                                        class="fa fa-remove"></span></md-button>
+                                            </div>
+
+                                            <md-button ng-click="addAuthor()" ng-disabled="script == null"
+                                                       style=" float:right;"
+                                                       class="md-raised btn-w-md md-accent">Add author
+                                            </md-button>
+                                        </div>
+
+                                        <div class="divider divider-xl"></div>
+                                        <h4>Groups</h4>
+                                        <p>User groups that have access to this script</p>
+                                        <div class="divider divider-md"></div>
+                                        <div>
+                                            <div layout layout-sm="column" ng-repeat="x in script.groups">
+                                                <md-input-container class="full-width">
+                                                    <label>Group</label>
+                                                    <md-select ng-model="x.id" aria-label="select">
+                                                        <md-option ng-repeat="group in possibleGroups"
+                                                                   value="{{group.id}}">
+                                                            {{group.name}}
+                                                        </md-option>
+                                                    </md-select>
+                                                </md-input-container>
+                                                <md-button ng-click="removeGroup(x.id)" class="md-icon-button md-warn"
+                                                           aria-label="headphones"><span
+                                                        class="fa fa-remove"></span></md-button>
+                                            </div>
+
+                                            <md-button ng-click="addGroup()" ng-disabled="possibleGroups == null"
+                                                       style=" float:right;"
+                                                       class="md-raised btn-w-md md-accent">Add group
+                                            </md-button>
+                                        </div>
+
+                                        <div class="divider divider-xl"></div>
+                                        <h4>Categories</h4>
+                                        <div class="divider divider-md"></div>
+                                        <div>
+                                            <div layout layout-sm="column" ng-repeat="x in script.categories">
+                                                <md-input-container class="full-width">
+                                                    <label>Category</label>
+                                                    <md-select ng-model="x.id" aria-label="select">
+                                                        <md-option ng-repeat="category in possibleCategories"
+                                                                   value="{{category.id}}">
+                                                            {{category.name}}
+                                                        </md-option>
+                                                    </md-select>
+                                                </md-input-container>
+                                                <md-button ng-click="removeCategory(x.id)" class="md-icon-button md-warn"
+                                                           aria-label="headphones"><span
+                                                        class="fa fa-remove"></span></md-button>
+                                            </div>
+
+                                            <md-button ng-click="addCategory()" ng-disabled="possibleCategories == null"
+                                                       style=" float:right;"
+                                                       class="md-raised btn-w-md md-accent">Add category
+                                            </md-button>
+                                        </div>
+
+                                        <div class="divider divider-xl"></div>
+
+                                        <md-button ng-disabled="waiting == true" type="submit"
+                                                   class="md-raised btn-w-md md-primary">
+                                            Submit
+                                        </md-button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+</div>

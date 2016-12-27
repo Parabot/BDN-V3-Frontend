@@ -3,6 +3,7 @@
 
     angular.module('app.scripts')
         .controller('ScriptsCtrl', ['$scope', 'appConfig', 'appCommon', 'appUICommon', ScriptsCtrl])
+        .controller('ScriptCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', ScriptCtrl])
         .controller('BuildsCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', BuildsCtrl])
         .controller('BuildCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', BuildCtrl]);
 
@@ -43,7 +44,7 @@
             var buildCreateCallback = function ($data) {
                 if (typeof $data !== 'undefined' && typeof $data['result'] !== 'undefined' && $data['result'] == true) {
                     $appUICommon.showToast('Build started, this might take up to a few minutes.');
-                }else{
+                } else {
                     $appUICommon.showAlert('Incorrect API response', 'API returned something unexpected.')
                 }
                 $appCommon.hideLoader();
@@ -67,6 +68,107 @@
             };
 
             $appCommon.getURL($appConfig.endpoints['buildsList'] + $stateParams['id'], buildsListCallback);
+        };
+
+        // This route requires authentication
+        $appCommon.checkLoggedIn(afterLogin);
+    }
+
+    function ScriptCtrl($scope, $stateParams, $appConfig, $appCommon, $appUICommon) {
+        $scope.backURL = $appConfig.urls['scripts'];
+
+        var afterLogin = function () {
+            $appCommon.showLoader();
+
+            var categoriesListCallback = function($data){
+                if (typeof $data !== 'undefined' && typeof $data['categories'] !== 'undefined') {
+                    $scope.possibleCategories = $data['categories'];
+                } else {
+                    $appUICommon.showAlert('Incorrect API response', 'API returned something unexpected.')
+                }
+                $appCommon.hideLoader();
+            };
+
+            var scriptGroupListCallback = function ($data) {
+                if (typeof $data !== 'undefined' && typeof $data['groups'] !== 'undefined') {
+                    $scope.possibleGroups = $data['groups'];
+                } else {
+                    $appUICommon.showAlert('Incorrect API response', 'API returned something unexpected.')
+                }
+                $appCommon.hideLoader();
+
+                $appCommon.showLoader();
+                $appCommon.getURL($appConfig.endpoints['categoriesList'], categoriesListCallback);
+            };
+
+            var scriptsListCallback = function ($data) {
+                if (typeof $data !== 'undefined' && typeof $data['result'] !== 'undefined') {
+                    $scope.script = $data['result'];
+                } else {
+                    $appUICommon.showAlert('Incorrect API response', 'API returned something unexpected.')
+                }
+                $appCommon.hideLoader();
+
+                $appCommon.showLoader();
+                $appCommon.getURL($appConfig.endpoints['groupsList'], scriptGroupListCallback);
+            };
+
+            $appCommon.getURL($appConfig.endpoints['scriptGet'] + $stateParams['id'], scriptsListCallback);
+        };
+
+        $scope.gitCheck = function () {
+            var valid = /((git)|(git@[\w\.]+))(:(\/\/)?)([\w\.@\:\/\-~]+)(\.git)(\/)?/.test($scope.script.git.url);
+            if (!valid) {
+                $appUICommon.showToast('Please insert a valid git URL (like git@domain.com:username/project.git)');
+            }
+        };
+
+        $scope.removeAuthor = function ($username) {
+            if ($username == $scope.script.creator.username) {
+                $appUICommon.showToast('You cannot remove the creator of the script');
+            } else {
+                $scope.script.authors = $scope.script.authors.filter(function (el) {
+                    return el.username !== $username;
+                });
+            }
+        };
+
+        $scope.removeGroup = function ($id) {
+            $scope.script.groups = $scope.script.groups.filter(function (el) {
+                return el.id !== $id;
+            });
+        };
+
+        $scope.removeCategory = function ($id) {
+            $scope.script.categories = $scope.script.categories.filter(function (el) {
+                return el.id !== $id;
+            });
+        };
+
+        $scope.processForm = function () {
+            $scope.waiting = true;
+
+            var submitted = $scope.script;
+
+            var afterRequest = function ($data, $code) {
+                $scope.waiting = false;
+
+                $appUICommon.showToast($data['result']);
+            };
+
+            $appCommon.postURL($appConfig.endpoints['scriptUpdate'], afterRequest, JSON.stringify(submitted));
+        };
+
+        $scope.addAuthor = function () {
+            $scope.script.authors.push({});
+        };
+
+        $scope.addGroup = function () {
+            $scope.script.groups.push({});
+        };
+
+        $scope.addCategory = function () {
+            $scope.script.categories.push({});
         };
 
         // This route requires authentication
