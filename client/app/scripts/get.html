@@ -1,12 +1,29 @@
 <div class="page" data-ng-controller="ScriptCtrl">
-    <a ng-href="{{backURL}}">
-        <span>
-            <i class="fa fa-arrow-left" aria-hidden="true"></i>
-            Scripts overview
-        </span>
-    </a>
     <div class="row ui-section">
-        <div class="col-lg-8 clearfix"><h2 class="section-header">{{script.name}}</h2></div>
+        <div class="col-lg-8">
+            <a ng-href="{{backURL}}">
+                <span>
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                    Scripts overview
+                </span>
+            </a>
+        </div>
+
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-2">
+            <a ng-href="{{buildsURL}}">
+                <span>
+                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                    Builds
+                </span>
+            </a>
+        </div>
+    </div>
+    <div class="row ui-section">
+        <div class="col-lg-8">
+            <h2 class="section-header">{{script.name}}</h2>
+        </div>
         <div class="col-md-12">
             <section class="panel panel-default">
                 <div class="panel-body">

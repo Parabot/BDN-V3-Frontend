@@ -76,6 +76,7 @@
 
     function ScriptCtrl($scope, $stateParams, $appConfig, $appCommon, $appUICommon) {
         $scope.backURL = $appConfig.urls['scripts'];
+        $scope.buildsURL = $appConfig.urls['builds'] + $stateParams['id'];
 
         var afterLogin = function () {
             $appCommon.showLoader();

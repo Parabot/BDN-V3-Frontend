@@ -91,7 +91,7 @@
 
             scripts: '/#/scripts/list',
             script: '/#/scripts/get/',
-            builds: '/#/scripts/builds',
+            builds: '/#/scripts/builds/',
             build: '/#/scripts/build/',
 
             users: '/#/users/list',
