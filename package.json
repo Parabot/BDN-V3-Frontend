@@ -44,7 +44,9 @@
   "engines": {
     "node": ">=0.10.20"
   },
-  "dependencies": {},
+  "dependencies": {
+    "vinyl-ftp": "^0.5.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Parabot/BDN-V3-Frontend.git"
