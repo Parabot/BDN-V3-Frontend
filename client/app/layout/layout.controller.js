@@ -7,7 +7,6 @@
     function SidebarManager($scope, $rootScope, $appConfig, userManager) {
         userManager.getMyUser().then(function (user) {
             $rootScope.user = user;
-            console.log(user);
         });
 
         $scope.isAdmin = function () {
