@@ -9,6 +9,7 @@
         return {
             _totalLastSearch: 0,
             _pool: {},
+            _myUserId: null,
 
             _retrieveInstance: function (userId, userData) {
                 var instance = this._pool[userId];
@@ -76,6 +77,30 @@
                 );
                 return deferred.promise;
             },
+
+            getMyUser: function () {
+                var deferred = $q.defer();
+                var scope = this;
+
+                if (this._myUserId == null) {
+                    appCommon.getURL(appConfig.endpoints.getMy.id,
+                        function (userData) {
+                            scope._myUserId = userData.result.id;
+                            scope._load(scope._myUserId, deferred);
+                        }, true, true, function () {
+                            deferred.reject();
+                        });
+                }else{
+                    var user = this._search(this._myUserId);
+                    if (user) {
+                        deferred.resolve(user);
+                    } else {
+                        this._load(this._myUserId, deferred);
+                    }
+                }
+
+                return deferred.promise;
+            }
 
         };
     }

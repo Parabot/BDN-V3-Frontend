@@ -1,37 +1,74 @@
-<div class="nav-wrapper">
+<div class="nav-wrapper" ng-controller="SidebarManager">
     <ul id="nav"
         class="nav"
         data-slim-scroll
         data-collapse-nav
         data-highlight-active>
-        <li class="nav-title"><span data-translate="NAVIGATION"></span></li>
-        <li><a md-button aria-label="meanu" href="#/dashboard"><i class="zmdi zmdi-home"></i><span
-                data-translate="DASHBOARD"></span> </a></li>
 
-        <li>
-            <a md-button aria-label="meanu" href="#/scripts/list"><i class="zmdi zmdi-library"></i><span>Scripts</span></a>
-            <ul>
-                <li><a md-button aria-label="meanu" href="#/scripts/list"><i class="fa fa-circle"></i>List</a></li>
-                <li><a md-button aria-label="meanu" href="#/scripts/add"><i class="fa fa-circle"></i>Add</a></li>
-            </ul>
+        <li class="nav-title">
+            <span data-translate="NAVIGATION"></span>
         </li>
 
         <li>
-            <a md-button aria-label="meanu" href="#/servers/list"><i class="fa fa-list"></i><span>Servers</span></a>
+            <a md-button aria-label="meanu" href="#/dashboard">
+                <i class="zmdi zmdi-home"></i>
+                <span data-translate="DASHBOARD"></span>
+            </a>
+        </li>
+
+        <li ng-show="isScriptWriter()">
+            <a md-button aria-label="meanu" href="#/scripts/list">
+                <i class="zmdi zmdi-library"></i>
+                <span>Scripts</span>
+            </a>
             <ul>
-                <li><a md-button aria-label="meanu" href="#/servers/list"><i class="fa fa-circle"></i>List</a></li>
-                <li><a md-button aria-label="meanu" href="#/servers/add"><i class="fa fa-circle"></i>Add</a></li>
+                <li>
+                    <a md-button aria-label="meanu" href="#/scripts/list">
+                        <i class="fa fa-circle"></i>List
+                    </a>
+                </li>
+                <li>
+                    <a md-button aria-label="meanu" href="#/scripts/add">
+                        <i class="fa fa-circle"></i>Add
+                    </a>
+                </li>
             </ul>
         </li>
 
-        <li>
-            <a md-button aria-label="meanu" href="#/users/list"><i class="fa fa-users"></i><span>Users</span></a>
+        <li ng-show="isServerDeveloper()">
+            <a md-button aria-label="meanu" href="#/servers/list">
+                <i class="fa fa-list"></i>
+                <span>Servers</span>
+            </a>
             <ul>
-                <li><a md-button aria-label="meanu" href="#/users/list"><i class="fa fa-circle"></i>List</a></li>
+                <li>
+                    <a md-button aria-label="meanu" href="#/servers/list">
+                        <i class="fa fa-circle"></i>List
+                    </a>
+                </li>
+                <li>
+                    <a md-button aria-label="meanu" href="#/servers/add">
+                        <i class="fa fa-circle"></i>Add
+                    </a>
+                </li>
             </ul>
         </li>
 
-        <li>
+        <li ng-show="isAdmin()">
+            <a md-button aria-label="meanu" href="#/users/list">
+                <i class="fa fa-users"></i>
+                <span>Users</span>
+            </a>
+            <ul>
+                <li>
+                    <a md-button aria-label="meanu" href="#/users/list">
+                        <i class="fa fa-circle"></i>List
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li ng-show="isAdmin()">
             <a md-button aria-label="meanu" href="#/ui"><i class="zmdi zmdi-card-giftcard"></i><span><span
                     data-translate="MATERIAL"></span> UI</span></a>
             <ul>
@@ -57,7 +94,8 @@
                         data-translate="GRIDS"></span></a></li>
             </ul>
         </li>
-        <li>
+
+        <li ng-show="isAdmin()">
             <a md-button aria-label="meanu" href="#/page"><i class="zmdi zmdi-pages"></i><span
                     data-translate="PAGES"></span></a>
             <ul>
@@ -82,7 +120,8 @@
                         data-translate="BLANK_PAGE"></span></a></li>
             </ul>
         </li>
-        <li>
+
+        <li ng-show="isAdmin()">
             <a md-button aria-label="meanu" href="#/table"><i class="zmdi zmdi-view-list"></i><span
                     data-translate="TABLES"></span></a>
             <ul>
@@ -94,7 +133,8 @@
                         data-translate="DYNAMIC_TABLES"></span></a></li>
             </ul>
         </li>
-        <li>
+
+        <li ng-show="isAdmin()">
             <a md-button aria-label="meanu" href="#/form"><i class="zmdi zmdi-edit"></i><span
                     data-translate="FORMS"></span></a>
             <ul>
@@ -108,7 +148,8 @@
                         data-translate="FORM_LAYOUTS"></span></a></li>
             </ul>
         </li>
-        <li>
+
+        <li ng-show="isAdmin()">
             <a md-button aria-label="meanu" href="#/chart"><i class="zmdi zmdi-chart"></i><span
                     data-translate="CHARTS"></span></a>
             <ul>
@@ -124,13 +165,5 @@
                     <span data-translate="MORE"></span></a></li>
             </ul>
         </li>
-        <li class="nav-divider"></li>
-        <li class="nav-title"><span data-translate="FEATURES"></span></li>
-        <li class="li-small"><a href="#/ui/components"><i class="fa fa-circle color-info"></i> <span
-                data-translate="MATERIAL_COMPO"></span></a></li>
-        <li class="li-small"><a href="#/form/elements"><i class="fa fa-circle color-success"></i> <span
-                data-translate="MATERIAL_ELEMENTS"></span></a></li>
-        <li class="li-small"><a href="#/ui/icons"><i class="fa fa-circle color-danger"></i> <span
-                data-translate="MATERIAL_ICONS"></span></a></li>
     </ul>
 </div>

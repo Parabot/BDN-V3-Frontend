@@ -60,6 +60,9 @@
             userGet: endpoint + 'users/get/',
             usersList: endpoint + 'users/list/',
             usersSearch: endpoint + 'users/search/',
+            getMy: {
+                id: endpoint + 'users/my/id'
+            },
 
             groupsList: endpoint + 'users/groups/list',
 
@@ -102,6 +105,30 @@
             log_in: endpoint + 'users/log_in'
         };
 
+        var groups = {
+            administrators: [
+                4
+            ],
+            scriptWriters: [
+                20, 9
+            ],
+            moderators: [
+                6, 4
+            ],
+            sponsors: [
+                8
+            ],
+            vips: [
+                7, 8
+            ],
+            developers: [
+                12
+            ],
+            serverDevelopers: [
+                22
+            ]
+        };
+
         return {
             urls: urls,
             routeUrls: routeUrls,
@@ -110,7 +137,8 @@
             color: color,
             endpoint: endpoint,
             endpoints: endpoints,
-            environment: env
+            environment: env,
+            groups: groups
         }
     }
 
