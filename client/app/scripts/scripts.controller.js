@@ -3,7 +3,7 @@
 
     angular.module('app.scripts')
         .controller('ScriptsCtrl', ['$scope', 'appConfig', 'appCommon', 'appUICommon', ScriptsCtrl])
-        .controller('ScriptCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', ScriptCtrl])
+        .controller('ScriptCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', 'userManager', ScriptCtrl])
         .controller('BuildsCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', BuildsCtrl])
         .controller('BuildCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', BuildCtrl]);
 
@@ -74,14 +74,17 @@
         $appCommon.checkLoggedIn(afterLogin);
     }
 
-    function ScriptCtrl($scope, $stateParams, $appConfig, $appCommon, $appUICommon) {
+    function ScriptCtrl($scope, $stateParams, $appConfig, $appCommon, $appUICommon, userManager) {
         $scope.backURL = $appConfig.urls['scripts'];
-        $scope.buildsURL = $appConfig.urls['builds'] + $stateParams['id'];
+        if ($stateParams['id'] !== undefined) {
+            console.log($stateParams['id']);
+            $scope.buildsURL = $appConfig.urls['builds'] + $stateParams['id'];
+        }
 
         var afterLogin = function () {
             $appCommon.showLoader();
 
-            var categoriesListCallback = function($data){
+            var categoriesListCallback = function ($data) {
                 if (typeof $data !== 'undefined' && typeof $data['categories'] !== 'undefined') {
                     $scope.possibleCategories = $data['categories'];
                 } else {
@@ -114,7 +117,24 @@
                 $appCommon.getURL($appConfig.endpoints['groupsList'], scriptGroupListCallback);
             };
 
-            $appCommon.getURL($appConfig.endpoints['scriptGet'] + $stateParams['id'], scriptsListCallback);
+            if ($stateParams['id'] !== undefined) {
+                $appCommon.getURL($appConfig.endpoints['scriptGet'] + $stateParams['id'], scriptsListCallback);
+            } else {
+                $appCommon.getURL($appConfig.endpoints['groupsList'], scriptGroupListCallback);
+
+                $scope.script = {};
+                userManager.getMyUser().then(function ($user) {
+                    $scope.script.authors = [
+                        {
+                            username: $user['username']
+                        }
+                    ];
+
+                    $scope.script.creator = {
+                        username: $user['username']
+                    };
+                });
+            }
         };
 
         $scope.gitCheck = function () {
@@ -146,6 +166,20 @@
             });
         };
 
+        $scope.processCreateForm = function () {
+            $scope.waiting = true;
+
+            var submitted = $scope.script;
+
+            var afterRequest = function ($data, $code) {
+                $scope.waiting = false;
+
+                $appUICommon.showToast($data['result']);
+            };
+
+            $appCommon.postURL($appConfig.endpoints['scriptCreate'], afterRequest, JSON.stringify(submitted), true, afterRequest);
+        };
+
         $scope.processForm = function () {
             $scope.waiting = true;
 
@@ -161,14 +195,22 @@
         };
 
         $scope.addAuthor = function () {
-            $scope.script.authors.push({});
+            if ($scope.script.authors !== undefined) {
+                $scope.script.authors.push({});
+            }
         };
 
         $scope.addGroup = function () {
+            if ($scope.script.groups === undefined) {
+                $scope.script.groups = [];
+            }
             $scope.script.groups.push({});
         };
 
         $scope.addCategory = function () {
+            if ($scope.script.categories === undefined) {
+                $scope.script.categories = [];
+            }
             $scope.script.categories.push({});
         };
 

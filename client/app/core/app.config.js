@@ -77,6 +77,7 @@
 
             scriptGet: endpoint + 'scripts/get/',
             scriptUpdate: endpoint + 'scripts/update',
+            scriptCreate: endpoint + 'scripts/create',
             myScriptsList: endpoint + 'scripts/list/my',
             buildTypesList: endpoint + 'city/build_types/list',
             buildsList: endpoint + 'city/builds/list/',

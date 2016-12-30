@@ -16,6 +16,7 @@
                     'servers/hooks/:id',
 
                     'scripts/list',
+                    'scripts/create',
                     'scripts/get/:id',
                     'scripts/builds/:id',
                     'scripts/build/:id',

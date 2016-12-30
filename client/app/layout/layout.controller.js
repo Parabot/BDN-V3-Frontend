@@ -5,9 +5,19 @@
         .controller('SidebarManager', ['$scope', '$rootScope', 'appConfig', 'userManager', SidebarManager]);
 
     function SidebarManager($scope, $rootScope, $appConfig, userManager) {
-        userManager.getMyUser().then(function (user) {
-            $rootScope.user = user;
-        });
+        function checkLoggedIn() {
+            setTimeout(function () {
+                if ($rootScope.loggedInChecked !== true) {
+                    checkLoggedIn();
+                }else{
+                    userManager.getMyUser().then(function (user) {
+                        $rootScope.user = user;
+                    });
+                }
+            }, 500);
+        }
+
+        checkLoggedIn();
 
         $scope.isAdmin = function () {
             if ($rootScope.user !== undefined) {
