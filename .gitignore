@@ -82,3 +82,5 @@ npm-debug.log
 /preview/preview.zip
 
 client/env.js
+
+config.json

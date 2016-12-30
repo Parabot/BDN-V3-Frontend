@@ -1,0 +1,7 @@
+{
+  "FTP": {
+    "HOST": "ftp.domain.tld",
+    "USERNAME": "username",
+    "PASSWORD": "password"
+  }
+}
