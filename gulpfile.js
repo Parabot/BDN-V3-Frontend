@@ -162,6 +162,11 @@ gulp.task('build', ['optimize', 'copy'], function () {
     startBrowserSync('build');
 });
 
+gulp.task('deploy-build', ['optimize', 'copy'], function () {
+    startBrowserSync('build');
+    gulp.run('deploy');
+});
+
 gulp.task('serve-dist', function () {
     startBrowserSync('dist');
 });
