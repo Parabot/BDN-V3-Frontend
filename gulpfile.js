@@ -26,7 +26,8 @@ gulp.task('deploy', function () {
     ];
 
     return gulp.src(globs, {base: './dist/', buffer: false})
-        .pipe(conn.newer('/public_html'));
+        .pipe(conn.newer('/public_html')) // only upload newer files
+        .pipe(conn.dest('/public_html'));
 
 });
 
