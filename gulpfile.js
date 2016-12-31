@@ -26,8 +26,7 @@ gulp.task('deploy', function () {
     ];
 
     return gulp.src(globs, {base: './dist/', buffer: false})
-        .pipe(conn.newer('/public_html')) // only upload newer files
-        .pipe(conn.dest('/public_html'));
+        .pipe(conn.newer('/public_html'));
 
 });
 
@@ -160,11 +159,11 @@ gulp.task('serve', ['inject', 'sass'], function () {
 });
 
 gulp.task('build', ['optimize', 'copy'], function () {
-    startBrowserSync('dist');
+    startBrowserSync('build');
 });
 
 gulp.task('serve-dist', function () {
-    gulp.run('build');
+    startBrowserSync('dist');
 });
 
 gulp.task('serve-docs', ['jade-docs'], function () {
@@ -219,6 +218,9 @@ function startBrowserSync(opt) {
     };
 
     switch (opt) {
+        case 'build':
+            log('Creating dist build');
+            break;
         case 'dist':
             log('Serving dist app');
             serveDistApp();
