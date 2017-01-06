@@ -87,7 +87,8 @@
         };
 
         var routeUrls = {
-            user: '/users/get/'
+            user: '/users/get/',
+            scripts: '/scripts/list'
         };
 
         var urls = {

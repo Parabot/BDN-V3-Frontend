@@ -3,7 +3,7 @@
 
     angular.module('app.scripts')
         .controller('ScriptsCtrl', ['$scope', 'appConfig', 'appCommon', 'appUICommon', ScriptsCtrl])
-        .controller('ScriptCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', 'userManager', '$state', ScriptCtrl])
+        .controller('ScriptCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', 'userManager', '$state', '$location', ScriptCtrl])
         .controller('BuildsCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', BuildsCtrl])
         .controller('BuildCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', BuildCtrl]);
 
@@ -74,7 +74,7 @@
         $appCommon.checkLoggedIn(afterLogin);
     }
 
-    function ScriptCtrl($scope, $stateParams, $appConfig, $appCommon, $appUICommon, userManager, $state) {
+    function ScriptCtrl($scope, $stateParams, $appConfig, $appCommon, $appUICommon, userManager, $state, $location) {
         $scope.backURL = $appConfig.urls['scripts'];
 
         var afterLogin = function () {
@@ -198,6 +198,10 @@
                 $scope.waiting = false;
 
                 $appUICommon.showToast($data['result']);
+
+                setTimeout(function(){
+                    $location.url($appConfig.routeUrls.scripts);
+                }, 250);
             };
 
             $appCommon.postURL($appConfig.endpoints['scriptCreate'], afterRequest, JSON.stringify(submitted), true, afterRequest);
