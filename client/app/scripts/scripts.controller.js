@@ -3,7 +3,7 @@
 
     angular.module('app.scripts')
         .controller('ScriptsCtrl', ['$scope', 'appConfig', 'appCommon', 'appUICommon', ScriptsCtrl])
-        .controller('ScriptCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', 'userManager', ScriptCtrl])
+        .controller('ScriptCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', 'userManager', '$state', ScriptCtrl])
         .controller('BuildsCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', BuildsCtrl])
         .controller('BuildCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', BuildCtrl]);
 
@@ -74,12 +74,8 @@
         $appCommon.checkLoggedIn(afterLogin);
     }
 
-    function ScriptCtrl($scope, $stateParams, $appConfig, $appCommon, $appUICommon, userManager) {
+    function ScriptCtrl($scope, $stateParams, $appConfig, $appCommon, $appUICommon, userManager, $state) {
         $scope.backURL = $appConfig.urls['scripts'];
-        if ($stateParams['id'] !== undefined) {
-            console.log($stateParams['id']);
-            $scope.buildsURL = $appConfig.urls['builds'] + $stateParams['id'];
-        }
 
         var afterLogin = function () {
             $appCommon.showLoader();
@@ -113,6 +109,14 @@
                 }
                 $appCommon.hideLoader();
 
+                if ($stateParams['id'] !== undefined) {
+                    if ($data['result']['buildTypeId'] != null) {
+                        $scope.buildsURL = $appConfig.urls['builds'] + $stateParams['id'];
+                    } else {
+                        $scope.createBuild = true;
+                    }
+                }
+
                 $appCommon.showLoader();
                 $appCommon.getURL($appConfig.endpoints['groupsList'], scriptGroupListCallback);
             };
@@ -134,6 +138,25 @@
                         username: $user['username']
                     };
                 });
+            }
+        };
+
+        $scope.createBuildType = function () {
+            if ($scope.script != null && $scope.createBuild === true && $scope.creatingBuild !== true) {
+                $appCommon.showLoader();
+                $scope.creatingBuild = true;
+
+                var afterRequest = function ($data, $code) {
+                    $appCommon.hideLoader();
+
+                    $appUICommon.showToast('Build project created: ' + $data['result']);
+
+                    $state.reload();
+                };
+
+                $appCommon.postURL($appConfig.endpoints['buildTypeProjectCreate'] + $scope.script.id, afterRequest, {modules: 'all'});
+            }else if($scope.creatingBuild === true){
+                $appUICommon.showToast('Still creating build project...');
             }
         };
 

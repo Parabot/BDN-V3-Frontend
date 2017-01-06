@@ -12,12 +12,18 @@
         <div class="col-lg-2"></div>
 
         <div class="col-lg-2">
-            <a ng-href="{{buildsURL}}">
+            <a ng-show="buildsURL != null" ng-href="{{buildsURL}}">
                 <span>
                     <i class="fa fa-arrow-right" aria-hidden="true"></i>
                     Builds
                 </span>
             </a>
+            <p ng-show="createBuild == true" ng-click="createBuildType()" style="color: #009688">
+                <span>
+                    <i class="fa fa-cogs" aria-hidden="true"></i>
+                    Add build project
+                </span>
+            </p>
         </div>
     </div>
     <div class="row ui-section">
