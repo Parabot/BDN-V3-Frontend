@@ -12,6 +12,7 @@
                     'users/auth',
 
                     'servers/list',
+                    'servers/create',
                     'servers/get/:id',
                     'servers/hooks/:id',
 

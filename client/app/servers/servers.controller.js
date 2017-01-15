@@ -81,12 +81,29 @@
 
             var serverCallback = function ($data) {
                 $scope.server = $data['result'];
+                console.log($scope.server.details);
                 $scope.waiting = false;
 
                 $appCommon.hideLoader();
             };
 
-            $appCommon.getURL($appConfig.endpoints['serverGet'] + $stateParams['id'], serverCallback);
+            if ($stateParams['id'] !== undefined) {
+                $appCommon.getURL($appConfig.endpoints['serverGet'] + $stateParams['id'], serverCallback);
+            } else {
+                $scope.server = {};
+                $scope.server.details = [
+                    {
+                        name: 'live_client',
+                        value: ''
+                    },
+                    {
+                        name: 'client_class',
+                        value: ''
+                    }
+                ];
+
+                $appCommon.hideLoader();
+            }
         };
 
         $scope.processForm = function () {
@@ -104,6 +121,10 @@
         };
 
         $scope.addDetailsRow = function () {
+            if ($scope.server.details === undefined) {
+                $scope.server.details = [];
+            }
+
             $scope.server.details.push({});
         };
 
