@@ -79,16 +79,30 @@
         var afterLogin = function () {
             $appCommon.showLoader();
 
+            var serverGroupListCallback = function ($data) {
+                if (typeof $data !== 'undefined' && typeof $data['groups'] !== 'undefined') {
+                    $scope.possibleGroups = $data['groups'];
+                } else {
+                    $appUICommon.showAlert('Incorrect API response', 'API returned something unexpected.')
+                }
+                $appCommon.hideLoader();
+            };
+
             var serverCallback = function ($data) {
                 $scope.server = $data['result'];
 
                 $scope.waiting = false;
                 $appCommon.hideLoader();
+
+                $appCommon.showLoader();
+                $appCommon.getURL($appConfig.endpoints['groupsList'], serverGroupListCallback);
             };
 
             if ($stateParams['id'] !== undefined) {
                 $appCommon.getURL($appConfig.endpoints['serverGet'] + $stateParams['id'], serverCallback);
             } else {
+                $appCommon.getURL($appConfig.endpoints['groupsList'], serverGroupListCallback);
+
                 $scope.server = {};
                 $scope.server.details = [
                     {
@@ -154,6 +168,19 @@
         $scope.removeAuthor = function ($username) {
             $scope.server.authors = $scope.server.authors.filter(function (el) {
                 return el.username !== $username;
+            });
+        };
+
+        $scope.addGroup = function () {
+            if ($scope.server.groups === undefined) {
+                $scope.server.groups = [];
+            }
+            $scope.server.groups.push({});
+        };
+
+        $scope.removeGroup = function ($id) {
+            $scope.server.groups = $scope.server.groups.filter(function (el) {
+                return el.id !== $id;
             });
         };
 

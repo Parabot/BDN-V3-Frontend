@@ -63,6 +63,32 @@
                                         </div>
 
                                         <div class="divider divider-xl"></div>
+                                        <h4>Groups</h4>
+                                        <p>User groups that have access to this server</p>
+                                        <div class="divider divider-md"></div>
+                                        <div>
+                                            <div layout layout-sm="column" ng-repeat="x in server.groups">
+                                                <md-input-container class="full-width">
+                                                    <label>Group</label>
+                                                    <md-select ng-model="x.id" aria-label="select">
+                                                        <md-option ng-repeat="group in possibleGroups"
+                                                                   value="{{group.id}}">
+                                                            {{group.name}}
+                                                        </md-option>
+                                                    </md-select>
+                                                </md-input-container>
+                                                <md-button ng-click="removeGroup(x.id)" class="md-icon-button md-warn"
+                                                           aria-label="headphones"><span
+                                                        class="fa fa-remove"></span></md-button>
+                                            </div>
+
+                                            <md-button ng-click="addGroup()" ng-disabled="possibleGroups == null"
+                                                       style=" float:right;"
+                                                       class="md-raised btn-w-md md-accent">Add group
+                                            </md-button>
+                                        </div>
+
+                                        <div class="divider divider-xl"></div>
                                         <h4>Details</h4>
                                         <div class="divider divider-md"></div>
                                         <div>
