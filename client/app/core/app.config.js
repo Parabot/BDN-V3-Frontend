@@ -71,6 +71,7 @@
             serversList: endpoint + 'servers/list',
             serverGet: endpoint + 'servers/get/',
             serverUpdate: endpoint + 'servers/update',
+            serverCreate: endpoint + 'servers/create',
             hooksDetailed: endpoint + 'servers/hooks/',
 
             categoriesList: endpoint + 'scripts/categories/list',
@@ -88,7 +89,8 @@
 
         var routeUrls = {
             user: '/users/get/',
-            scripts: '/scripts/list'
+            scripts: '/scripts/list',
+            servers: '/servers/list'
         };
 
         var urls = {

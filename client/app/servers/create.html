@@ -15,7 +15,7 @@
 
                             <div layout="column" ng-cloak class="md-inline-form">
                                 <div layout-padding>
-                                    <form name="serverForm" ng-submit="processForm()">
+                                    <form name="serverForm" ng-submit="processCreateForm()">
                                         <h4>Information</h4>
                                         <div class="divider divider-md"></div>
 
@@ -41,6 +41,26 @@
                                             <textarea ng-model="server.description" columns="1"
                                                       md-maxlength="1000" required></textarea>
                                         </md-input-container>
+
+                                        <div class="divider divider-xl"></div>
+                                        <h4>Authors</h4>
+                                        <div class="divider divider-md"></div>
+                                        <div>
+                                            <div layout layout-sm="column" ng-repeat="x in server.authors">
+                                                <md-input-container flex>
+                                                    <label>Username</label>
+                                                    <input ng-model="x.username">
+                                                </md-input-container>
+                                                <md-button ng-click="removeAuthor(x.username)"
+                                                           class="md-icon-button md-warn" aria-label="headphones"><span
+                                                        class="fa fa-remove"></span></md-button>
+                                            </div>
+
+                                            <md-button ng-click="addAuthor()" ng-disabled="server == null"
+                                                       style=" float:right;"
+                                                       class="md-raised btn-w-md md-accent">Add author
+                                            </md-button>
+                                        </div>
 
                                         <div class="divider divider-xl"></div>
                                         <h4>Details</h4>

@@ -3,7 +3,7 @@
 
     angular.module('app.servers')
         .controller('ServersCtrl', ['$scope', 'appConfig', 'appCommon', 'Server', ServersCtrl])
-        .controller('ServerCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', ServerCtrl])
+        .controller('ServerCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', 'userManager', '$state', '$location', ServerCtrl])
         .controller('HookCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', '$uibModal', HookCtrl]);
 
     function HookCtrl($scope, $stateParams, $appConfig, $appCommon, $appUICommon, $uibModal) {
@@ -72,7 +72,7 @@
         $appCommon.checkLoggedIn(afterLogin);
     }
 
-    function ServerCtrl($scope, $stateParams, $appConfig, $appCommon, $appUICommon) {
+    function ServerCtrl($scope, $stateParams, $appConfig, $appCommon, $appUICommon, userManager, $state, $location) {
         $scope.backURL = $appConfig.urls['servers'];
         $scope.waiting = true;
 
@@ -81,9 +81,8 @@
 
             var serverCallback = function ($data) {
                 $scope.server = $data['result'];
-                console.log($scope.server.details);
-                $scope.waiting = false;
 
+                $scope.waiting = false;
                 $appCommon.hideLoader();
             };
 
@@ -101,7 +100,15 @@
                         value: ''
                     }
                 ];
+                userManager.getMyUser().then(function ($user) {
+                    $scope.server.authors = [
+                        {
+                            username: $user['username']
+                        }
+                    ];
+                });
 
+                $scope.waiting = false;
                 $appCommon.hideLoader();
             }
         };
@@ -118,6 +125,36 @@
             };
 
             $appCommon.postURL($appConfig.endpoints['serverUpdate'], afterRequest, JSON.stringify(submitted));
+        };
+
+        $scope.processCreateForm = function () {
+            $scope.waiting = true;
+
+            var submitted = $scope.server;
+
+            var afterRequest = function ($data, $code) {
+                $scope.waiting = false;
+
+                $appUICommon.showToast($data['result']);
+
+                setTimeout(function(){
+                    $location.url($appConfig.routeUrls.servers);
+                }, 250);
+            };
+
+            $appCommon.postURL($appConfig.endpoints['serverCreate'], afterRequest, JSON.stringify(submitted), true, afterRequest);
+        };
+
+        $scope.addAuthor = function () {
+            if ($scope.server.authors !== undefined) {
+                $scope.server.authors.push({});
+            }
+        };
+
+        $scope.removeAuthor = function ($username) {
+            $scope.server.authors = $scope.server.authors.filter(function (el) {
+                return el.username !== $username;
+            });
         };
 
         $scope.addDetailsRow = function () {
