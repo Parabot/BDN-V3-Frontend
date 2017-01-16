@@ -80,6 +80,8 @@
             scriptUpdate: endpoint + 'scripts/update',
             scriptCreate: endpoint + 'scripts/create',
             myScriptsList: endpoint + 'scripts/list/my',
+            scriptCreateRelease: endpoint + 'scripts/release/create',
+
             buildTypesList: endpoint + 'city/build_types/list',
             buildTypeProjectCreate: endpoint + 'city/projects/create/',
             buildsList: endpoint + 'city/builds/list/',

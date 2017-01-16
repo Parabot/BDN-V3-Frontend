@@ -3,9 +3,22 @@
 
     angular.module('app.scripts')
         .controller('ScriptsCtrl', ['$scope', 'appConfig', 'appCommon', 'appUICommon', ScriptsCtrl])
-        .controller('ScriptCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', 'userManager', '$state', '$location', ScriptCtrl])
+        .controller('ScriptCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', 'userManager', '$state', '$location', '$uibModal', ScriptCtrl])
         .controller('BuildsCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', BuildsCtrl])
-        .controller('BuildCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', BuildCtrl]);
+        .controller('BuildCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', BuildCtrl])
+        .controller('ScriptReleaseCtrl', ['$scope', '$uibModalInstance', 'version', ScriptReleaseCtrl]);
+
+    function ScriptReleaseCtrl($scope, $uibModalInstance, version) {
+        $scope.version = version;
+
+        $scope.create = function () {
+            $uibModalInstance.close($scope.version);
+        };
+
+        $scope.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        };
+    }
 
     function BuildCtrl($scope, $stateParams, $appConfig, $appCommon, $appUICommon) {
         $scope.buildID = $stateParams['id'];
@@ -74,7 +87,7 @@
         $appCommon.checkLoggedIn(afterLogin);
     }
 
-    function ScriptCtrl($scope, $stateParams, $appConfig, $appCommon, $appUICommon, userManager, $state, $location) {
+    function ScriptCtrl($scope, $stateParams, $appConfig, $appCommon, $appUICommon, userManager, $state, $location, $uibModal) {
         $scope.backURL = $appConfig.urls['scripts'];
 
         var afterLogin = function () {
@@ -155,7 +168,7 @@
                 };
 
                 $appCommon.postURL($appConfig.endpoints['buildTypeProjectCreate'] + $scope.script.id, afterRequest, {modules: 'all'});
-            }else if($scope.creatingBuild === true){
+            } else if ($scope.creatingBuild === true) {
                 $appUICommon.showToast('Still creating build project...');
             }
         };
@@ -199,7 +212,7 @@
 
                 $appUICommon.showToast($data['result']);
 
-                setTimeout(function(){
+                setTimeout(function () {
                     $location.url($appConfig.routeUrls.scripts);
                 }, 250);
             };
@@ -239,6 +252,44 @@
                 $scope.script.categories = [];
             }
             $scope.script.categories.push({});
+        };
+
+        $scope.createRelease = function () {
+
+            var modalInstance = $uibModal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: 'createRelease.html',
+                controller: 'ScriptReleaseCtrl',
+                size: 'sm',
+                resolve: {
+                    version: function () {
+                        return $scope.script.version;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (version) {
+                $scope.waiting = true;
+                $appCommon.showLoader();
+
+                var currentVersion = $scope.script.version;
+                var submitted = $scope.script;
+                submitted.version = version;
+
+                var afterRequest = function ($data, $code) {
+                    $scope.waiting = false;
+                    $appCommon.hideLoader();
+
+                    $appUICommon.showToast($data['result']);
+
+                    if ($code == 200) {
+                        $scope.script.version = version;
+                    }
+                };
+
+                $appCommon.postURL($appConfig.endpoints['scriptCreateRelease'], afterRequest, JSON.stringify(submitted));
+                $scope.script.version = currentVersion;
+            });
         };
 
         // This route requires authentication
