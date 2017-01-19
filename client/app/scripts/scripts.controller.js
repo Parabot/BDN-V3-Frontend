@@ -6,7 +6,8 @@
         .controller('ScriptCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', 'userManager', '$state', '$location', '$uibModal', ScriptCtrl])
         .controller('BuildsCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', BuildsCtrl])
         .controller('BuildCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', BuildCtrl])
-        .controller('ScriptReleaseCtrl', ['$scope', '$uibModalInstance', 'version', ScriptReleaseCtrl]);
+        .controller('ScriptReleaseCtrl', ['$scope', '$uibModalInstance', 'version', ScriptReleaseCtrl])
+        .controller('ReviewsCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', '$state', ReviewsCtrl]);
 
     function ScriptReleaseCtrl($scope, $uibModalInstance, version) {
         $scope.version = version;
@@ -18,6 +19,57 @@
         $scope.cancel = function () {
             $uibModalInstance.dismiss('cancel');
         };
+    }
+
+    function ReviewsCtrl($scope, $stateParams, $appConfig, $appCommon, $appUICommon, $state){
+        $scope.scriptID = $stateParams['id'];
+        $scope.backURL = $appConfig.urls['scripts'];
+        $scope.scriptURL = $appConfig.urls['script'] + $scope.scriptID;
+
+        var afterLogin = function () {
+            $appCommon.showLoader();
+
+            var scriptGetCallback = function($data){
+                if (typeof $data !== 'undefined' && typeof $data['result'] !== 'undefined') {
+                    $scope.script = $data['result'];
+                } else {
+                    $appUICommon.showAlert('Incorrect API response', 'API returned something unexpected.')
+                }
+                $appCommon.hideLoader();
+            }
+
+            var reviewsListCallback = function ($data) {
+                if (typeof $data !== 'undefined' && typeof $data['result'] !== 'undefined') {
+                    $scope.reviews = $data['result']['reviews'];
+                    $scope.averageScore = $data['result']['average_stars'];
+                } else {
+                    $appUICommon.showAlert('Incorrect API response', 'API returned something unexpected.')
+                }
+                $appCommon.hideLoader();
+
+                $appCommon.showLoader();
+                $appCommon.getURL($appConfig.endpoints['scriptGet'] + $scope.scriptID, scriptGetCallback);
+            };
+
+            $appCommon.getURL($appConfig.endpoints['reviewsList'] + $scope.scriptID + '?accepted=all', reviewsListCallback);
+        };
+
+        $scope.accept = function(id){
+            $appCommon.showLoader();
+
+            var afterRequest = function ($data, $code) {
+                $appCommon.hideLoader();
+
+                $appUICommon.showToast('Review accepted');
+
+                $state.reload();
+            };
+
+            $appCommon.postURL($appConfig.endpoints['acceptReview'], afterRequest, {id: id, accepted: '1'});
+        }
+
+        // This route requires authentication
+        $appCommon.checkLoggedIn(afterLogin);
     }
 
     function BuildCtrl($scope, $stateParams, $appConfig, $appCommon, $appUICommon) {
@@ -32,7 +84,6 @@
 
             var buildCallback = function ($data) {
                 if (typeof $data !== 'undefined' && typeof $data['build'] !== 'undefined') {
-                    console.log($data);
                     $scope.build = $data['build'];
                     $scope.log = $data['log'];
                 } else {
@@ -298,6 +349,7 @@
 
     function ScriptsCtrl($scope, $appConfig, $appCommon, $appUICommon) {
         $scope.scriptURL = $appConfig.urls['script'];
+        $scope.reviewsURL = $appConfig.urls['reviews'];
 
         var afterLogin = function () {
             $appCommon.showLoader();

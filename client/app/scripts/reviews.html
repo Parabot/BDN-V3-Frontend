@@ -1,0 +1,60 @@
+<div class="page page-table" data-ng-controller="ReviewsCtrl">
+
+    <div class="row ui-section">
+        <div class="col-lg-8">
+            <a ng-href="{{backURL}}">
+                <span>
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                    Scripts overview
+                </span>
+            </a>
+        </div>
+
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Reviews for <a href="scriptURL">{{ script.name }}</a></h2>
+        </div>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Stars</th>
+                                <th>Review</th>
+                                <th>Username</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody ng-show="reviews.length > 0">
+                            <tr ng-repeat="x in reviews">
+                                <td>{{ x.id }}</td>
+                                <td>{{ x.stars }}</td>
+                                <td>{{ x.review }}</td>
+                                <td>{{ x.user.username }}</td>
+                                <td>{{ x.date | date:"dd/MM/yyyy 'at' h:mm a" }}</td>
+
+                                <td>
+                                    <span ng-if="x.accepted" class="label label-success">Accepted</span>
+                                    <span ng-click="accept(x.id)" ng-if="!x.accepted" class="label label-danger">Not yet accepted</span>
+                                </td>
+                            </tr>
+                            </tbody>
+                            <tfoot>
+                                <th>Average score</th>
+                                <th>{{ averageScore }}</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

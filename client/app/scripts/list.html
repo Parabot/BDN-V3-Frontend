@@ -15,6 +15,7 @@
                                 <th>Name</th>
                                 <th>Version</th>
                                 <th>Status</th>
+                                <th>Stars</th>
                             </tr>
                             </thead>
                             <tbody ng-show="scripts.length > 0">
@@ -26,6 +27,7 @@
                                     <span ng-if="x.active" class="label label-success">Active</span>
                                     <span ng-if="!x.active" class="label label-danger">Inactive</span>
                                 </td>
+                                <td><a ng-href="{{reviewsURL}}{{x.id}}">{{ x.averageReviewStars }}</a></td>
                             </tr>
                             </tbody>
                         </table>

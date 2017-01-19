@@ -82,6 +82,9 @@
             myScriptsList: endpoint + 'scripts/list/my',
             scriptCreateRelease: endpoint + 'scripts/release/create',
 
+            reviewsList: endpoint + 'scripts/reviews/list/',
+            acceptReview: endpoint + 'scripts/reviews/accepted',
+
             buildTypesList: endpoint + 'city/build_types/list',
             buildTypeProjectCreate: endpoint + 'city/projects/create/',
             buildsList: endpoint + 'city/builds/list/',
@@ -101,8 +104,11 @@
 
             scripts: '/#/scripts/list',
             script: '/#/scripts/get/',
+
             builds: '/#/scripts/builds/',
             build: '/#/scripts/build/',
+
+            reviews: '/#/scripts/reviews/',
 
             users: '/#/users/list',
             user: '/#' + routeUrls.user,

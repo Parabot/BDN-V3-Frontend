@@ -19,8 +19,11 @@
                     'scripts/list',
                     'scripts/create',
                     'scripts/get/:id',
+
                     'scripts/builds/:id',
                     'scripts/build/:id',
+
+                    'scripts/reviews/:id',
 
                     'ui/cards', 'ui/typography', 'ui/buttons', 'ui/icons', 'ui/grids', 'ui/widgets', 'ui/components', 'ui/timeline', 'ui/lists', 'ui/pricing-tables',
                     'map/maps',
