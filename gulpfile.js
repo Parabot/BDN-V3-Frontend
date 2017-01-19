@@ -3,33 +3,33 @@ var gutil = require( 'gulp-util' );
 var args = require('yargs').argv;
 var browserSync = require('browser-sync');
 var config = require('./gulp.config')();
-var localConfig = require('./config.json');
 var del = require('del');
 var $ = require('gulp-load-plugins')({lazy: true});
 var ftp = require('vinyl-ftp');
+// var localConfig = require('./config.json');
 
 gulp.task('help', $.taskListing);
 gulp.task('default', ['help']);
 
-gulp.task('deploy', function () {
-
-    var conn = ftp.create({
-        host: localConfig.FTP.HOST,
-        user: localConfig.FTP.USERNAME,
-        password: localConfig.FTP.PASSWORD,
-        parallel: 10,
-        log:      gutil.log
-    });
-
-    var globs = [
-        'dist/**'
-    ];
-
-    return gulp.src(globs, {base: './dist/', buffer: false})
-        .pipe(conn.newer('/public_html')) // only upload newer files
-        .pipe(conn.dest('/public_html'));
-
-});
+// gulp.task('deploy', function () {
+//
+//     var conn = ftp.create({
+//         host: localConfig.FTP.HOST,
+//         user: localConfig.FTP.USERNAME,
+//         password: localConfig.FTP.PASSWORD,
+//         parallel: 10,
+//         log:      gutil.log
+//     });
+//
+//     var globs = [
+//         'dist/**'
+//     ];
+//
+//     return gulp.src(globs, {base: './dist/', buffer: false})
+//         .pipe(conn.newer('/public_html')) // only upload newer files
+//         .pipe(conn.dest('/public_html'));
+//
+// });
 
 gulp.task('vet', function () {
     log('Analyzing source with JSHint and JSCS');
