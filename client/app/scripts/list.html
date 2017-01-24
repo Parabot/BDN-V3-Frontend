@@ -13,7 +13,6 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Version</th>
                                 <th>Status</th>
                                 <th>Stars</th>
                             </tr>
@@ -22,7 +21,6 @@
                             <tr ng-repeat="x in scripts">
                                 <td>{{ x.id }}</td>
                                 <td><a ng-href="{{scriptURL}}{{x.id}}">{{ x.name }}</a></td>
-                                <td>{{ x.version }}</td>
                                 <td>
                                     <span ng-if="x.active" class="label label-success">Active</span>
                                     <span ng-if="!x.active" class="label label-danger">Inactive</span>

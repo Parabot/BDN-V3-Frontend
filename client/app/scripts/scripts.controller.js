@@ -6,14 +6,15 @@
         .controller('ScriptCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', 'userManager', '$state', '$location', '$uibModal', ScriptCtrl])
         .controller('BuildsCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', BuildsCtrl])
         .controller('BuildCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', BuildCtrl])
-        .controller('ScriptReleaseCtrl', ['$scope', '$uibModalInstance', 'version', ScriptReleaseCtrl])
+        .controller('ScriptReleaseCtrl', ['$scope', '$uibModalInstance', 'version', 'changelog', ScriptReleaseCtrl])
         .controller('ReviewsCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', '$state', ReviewsCtrl]);
 
-    function ScriptReleaseCtrl($scope, $uibModalInstance, version) {
+    function ScriptReleaseCtrl($scope, $uibModalInstance, version, changelog) {
         $scope.version = version;
+        $scope.changelog = changelog;
 
         $scope.create = function () {
-            $uibModalInstance.close($scope.version);
+            $uibModalInstance.close({version: $scope.version, changelog: $scope.changelog});
         };
 
         $scope.cancel = function () {
@@ -36,7 +37,7 @@
                     $appUICommon.showAlert('Incorrect API response', 'API returned something unexpected.')
                 }
                 $appCommon.hideLoader();
-            }
+            };
 
             var reviewsListCallback = function ($data) {
                 if (typeof $data !== 'undefined' && typeof $data['result'] !== 'undefined') {
@@ -66,7 +67,7 @@
             };
 
             $appCommon.postURL($appConfig.endpoints['acceptReview'], afterRequest, {id: id, accepted: '1'});
-        }
+        };
 
         // This route requires authentication
         $appCommon.checkLoggedIn(afterLogin);
@@ -315,17 +316,19 @@
                 resolve: {
                     version: function () {
                         return $scope.script.version;
+                    },
+                    changelog: function () {
+                        return '';
                     }
                 }
             });
 
-            modalInstance.result.then(function (version) {
+                modalInstance.result.then(function (object) {
                 $scope.waiting = true;
                 $appCommon.showLoader();
 
                 var currentVersion = $scope.script.version;
-                var submitted = $scope.script;
-                submitted.version = version;
+                var submitted = {version: object.version, changelog: object.changelog, id: $scope.script.id};
 
                 var afterRequest = function ($data, $code) {
                     $scope.waiting = false;
@@ -334,7 +337,7 @@
                     $appUICommon.showToast($data['result']);
 
                     if ($code == 200) {
-                        $scope.script.version = version;
+                        $scope.script.version = object.version;
                     }
                 };
 

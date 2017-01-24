@@ -36,6 +36,12 @@
                 <label>Version</label>
                 <input ng-model="version" type="number" required step="0.01">
             </md-input-container>
+
+            <md-input-container class="md-block">
+                <label>Description</label>
+                <textarea ng-model="changelog" columns="1"
+                          md-maxlength="1000" required></textarea>
+            </md-input-container>
         </div>
         <div class="modal-footer">
             <button ui-wave class="btn btn-flat btn-default" ng-click="cancel()">Cancel</button>
@@ -86,7 +92,7 @@
 
                                         <md-input-container class="md-block">
                                             <label>Version</label>
-                                            <input ng-model="script.version" type="number" required step="0.01">
+                                            <input ng-model="script.version" type="number" required step="0.01" disabled>
                                         </md-input-container>
 
                                         <md-input-container class="md-block">
