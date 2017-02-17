@@ -5,7 +5,48 @@
         .controller('LoginCtrl', ['$scope', '$window', '$location', 'appConfig', 'appCommon', LoginCtrl])
         .controller('AuthCtrl', ['$scope', '$window', '$location', 'appConfig', 'appCommon', 'appUICommon', AuthCtrl])
         .controller('UsersCtrl', ['$scope', '$location', 'appConfig', 'appCommon', 'userManager', UsersCtrl])
-        .controller('UserCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'userManager', UserCtrl]);
+        .controller('UserCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'userManager', UserCtrl])
+        .controller('ProfileCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', '$window', ProfileCtrl]);
+
+    function ProfileCtrl($scope, $stateParams, $appConfig, $appCommon, $appUICommon, $window){
+        $scope.isInSlack = null;
+        var afterLogin = function(){
+            var isInSlack = function ($data) {
+
+                if (typeof $data !== 'undefined' && typeof $data['result'] !== 'undefined') {
+                    $scope.isInSlack = $data['result'];
+                } else {
+                    $appUICommon.showAlert('Incorrect API response', 'API returned something unexpected.')
+                }
+
+                $appCommon.hideLoader();
+            };
+            $appCommon.getURL($appConfig.endpoints.isInSlack, isInSlack);
+        };
+
+        $scope.slackInvite = function () {
+                $scope.waiting = true;
+
+                var submitted = $scope.server;
+
+                var afterRequest = function ($data, $code) {
+                    $scope.waiting = false;
+
+                    if ($data['result'] == true) {
+                        $appUICommon.showToast('Invite sent to your email');
+                    }
+                };
+
+                $appCommon.postURL($appConfig.endpoints.inviteSlack, afterRequest, JSON.stringify(submitted));
+        };
+
+        $scope.goToSlack = function () {
+            $window.location.href = $appConfig.urls.slack;
+        };
+
+        // This route requires authentication
+        $appCommon.checkLoggedIn(afterLogin);
+    }
 
     function UserCtrl($scope, $stateParams, $appConfig, $appCommon, userManager){
         $scope.backURL = $appConfig.urls['users'];

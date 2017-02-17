@@ -64,6 +64,9 @@
                 id: endpoint + 'users/my/id'
             },
 
+            isInSlack: endpoint + 'users/in_slack',
+            inviteSlack: endpoint + 'users/slack',
+
             groupsList: endpoint + 'users/groups/list',
 
             retrieveToken: base + 'internal/route/oauth/v2/token',
@@ -115,7 +118,9 @@
             login: '/#/users/login',
             register: 'https://www.parabot.org/community/register',
             oauth: base + 'oauth/v2/auth',
-            log_in: endpoint + 'users/log_in'
+            log_in: endpoint + 'users/log_in',
+
+            slack: 'https://parabot.slack.com/'
         };
 
         var groups = {

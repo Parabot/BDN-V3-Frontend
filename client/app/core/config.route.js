@@ -10,6 +10,7 @@
                     'users/get/:id',
                     'users/login',
                     'users/auth',
+                    'users/profile',
 
                     'servers/list',
                     'servers/create',

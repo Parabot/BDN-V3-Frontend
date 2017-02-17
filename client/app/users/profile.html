@@ -1,0 +1,97 @@
+<div class="page" data-ng-controller="ProfileCtrl">
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix"><h2 class="section-header">{{user.username}}</h2></div>
+
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+
+                            <div layout="column" ng-cloak class="md-inline-form">
+                                <div layout-padding>
+                                    <h4>Slack</h4>
+                                    <div ng-hide="isInSlack == null">
+                                        <div ng-show="!isInSlack">
+                                            <span class="label label-danger">Not activated</span>
+                                            <div class="divider"></div>
+                                            <md-button ng-click="slackInvite()" class="md-raised btn-w-sm md-primary md-button md-ink-ripple">Get a Slack invite</md-button>
+                                        </div>
+
+                                        <div ng-show="isInSlack">
+                                            <span class="label label-success">Activated</span>
+                                            <div class="divider"></div>
+                                            <md-button ng-click="goToSlack()" class="md-raised btn-w-sm md-primary md-button md-ink-ripple">Go to Slack</md-button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+
+                            <div layout="column" ng-cloak class="md-inline-form">
+                                <div layout-padding>
+                                    <h4>Information</h4>
+                                    <div class="divider divider-md"></div>
+
+                                    <md-input-container class="md-block">
+                                        <label>User ID</label>
+                                        <input ng-model="user.id" readonly>
+                                    </md-input-container>
+
+                                    <md-input-container class="md-block">
+                                        <label>Community ID</label>
+                                        <input ng-model="user.communityId" readonly>
+                                    </md-input-container>
+
+                                    <md-input-container class="md-block">
+                                        <label>Username</label>
+                                        <input ng-model="user.username" type="text" readonly>
+                                    </md-input-container>
+
+                                    <md-input-container class="md-block">
+                                        <label>Email</label>
+                                        <input ng-model="user.email" type="email" readonly>
+                                    </md-input-container>
+
+                                    <h4>Groups</h4>
+                                    <div>
+                                        <div layout layout-sm="column" ng-repeat="x in user.groups">
+                                            <md-input-container flex>
+                                                <label>ID</label>
+                                                <input ng-model="x.id" readonly>
+                                            </md-input-container>
+
+                                            <md-input-container flex>
+                                                <label>Community ID</label>
+                                                <input ng-model="x.communityId" readonly>
+                                            </md-input-container>
+
+                                            <md-input-container flex>
+                                                <label>Name</label>
+                                                <input ng-model="x.name" readonly>
+                                            </md-input-container>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+</div>
