@@ -112,6 +112,10 @@
                     {
                         name: 'client_class',
                         value: ''
+                    },
+                    {
+                        name: 'provider',
+                        value: ''
                     }
                 ];
                 userManager.getMyUser().then(function ($user) {

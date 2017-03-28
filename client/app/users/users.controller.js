@@ -121,7 +121,6 @@
                         'Error while getting the result',
                         'API returned an error, please retry logging in again'
                     );
-                    console.log($data);
                 } else {
                     $appCommon.storeCookie('access_token', $data['access_token'], $data['expires_in'] / 60);
                     $appCommon.storeCookie('refresh_token', $data['refresh_token'], 60 * 24 * 100);
