@@ -10,7 +10,6 @@
 
         // Custom modules
         , 'app.layout'
-        , 'app.i18n'
 
         // 3rd Party Modules
         ,'oc.lazyLoad'
