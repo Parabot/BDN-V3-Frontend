@@ -9,10 +9,10 @@
 @import
 
 // Core CSS
-    "components/scaffolding"
+    "components/utilities"
+,   "components/scaffolding"
 ,   "components/grid"
 ,   "components/type"
-,   "components/tables"
 ,   "components/tables-responsive"
 ,   "components/form-checkbox-radio"
 ,   "components/form-editor"
@@ -27,10 +27,12 @@
 // Components
 ,   "components/animation"
 ,   "components/badges"
+,   "components/boxes"
 ,   "components/breadcrumbs"
 ,   "components/callout"
 ,   "components/dropdowns"
 ,   "components/hover"
+,   "components/md-form-validation"
 ,   "components/image-size"
 ,   "components/labels"
 ,   "components/list-group"
@@ -52,6 +54,5 @@
 ,   "components/accordion"
 ,   "components/map"
 ,   "components/pagination"
-,   "components/progress-bars"
 ,   "components/tab"
 ;

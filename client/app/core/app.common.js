@@ -33,18 +33,15 @@
         var self = this;
 
         self.getURL = function ($url, $callback, $appendAccessToken, $handleError, $errorHandler) {
-            if ($appendAccessToken !== false && $cookies.get('access_token') != null) {
+            if ($appendAccessToken !== false && $cookies.get('access_token') !== null) {
                 $url = self.appendURLParameter($url, 'access_token', $cookies.get('access_token'))
             }
 
+
             var request = $http.get($url);
-
-            if ($callback != null) {
-                request.success($callback)
-            }
-
             var e;
-            if ($errorHandler != null) {
+
+            if ($errorHandler !== null) {
                 e = function ($data, $code) {
                     $errorHandler($data, $code);
                     handleURLError($data, $code);
@@ -53,13 +50,17 @@
                 e = handleURLError;
             }
 
-            if ($handleError !== false) {
-                request.error(e);
-            }
+            request.then(function successCallback(response) {
+                $callback(response);
+            }, function errorCallback(response) {
+                if ($handleError !== false) {
+                    e(response);
+                }
+            });
         };
 
         self.postURL = function ($url, $callback, $data, $appendAccessToken, $handleError, $errorHandler) {
-            if ($appendAccessToken !== false && $cookies.get('access_token') != null) {
+            if ($appendAccessToken !== false && $cookies.get('access_token') !== null) {
                 $url = self.appendURLParameter($url, 'access_token', $cookies.get('access_token'))
             }
 
@@ -72,12 +73,12 @@
 
             var request = $http(requestArgs);
 
-            if ($callback != null) {
+            if ($callback !== null) {
                 request.success($callback);
             }
 
             var e;
-            if ($errorHandler != null) {
+            if ($errorHandler !== null) {
                 e = function ($data, $code) {
                     $errorHandler($data, $code);
                     handleURLError($data, $code);
@@ -120,7 +121,7 @@
                 redirect_uri: window.location.href
             };
 
-            if ($type != 'refresh_token') {
+            if ($type !== 'refresh_token') {
                 data['code'] = $code;
             } else {
                 data['refresh_token'] = $code;
@@ -270,5 +271,5 @@
         this.isLoggedIn = function ($callback) {
             this.getURL(appConfig.endpoints['isLoggedIn'], $callback);
         };
-    };
+    }
 })();

@@ -42,6 +42,7 @@
         >li>a>i,
         >li>a>.nav-icon {
             display: inline-block;
+            vertical-align: bottom; // for material-icons
             margin-right: 10px;
             width: 20px;
             line-height: $line-height-computed;

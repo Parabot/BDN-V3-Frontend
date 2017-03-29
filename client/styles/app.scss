@@ -10,12 +10,10 @@
 @import 
     "global/shared"
     
-// Plugins, overrides plugins' style
-,   "plugins/angular-bootstrap"
-,   "plugins/angular-material"
-,   "plugins/angular-ui-tree"
-,   "plugins/jquery-steps"
-,   "plugins/angular-wizard"
+// overrides 3rd party libs' style
+,   "libs/angular-material"
+,   "libs/angular-material-data-table"
+,   "libs/angular-wizard"
 
 // Pages
 ,   "global/var-pages"
@@ -25,7 +23,6 @@
 ,   "pages/auth"
 ,   "pages/profile"
 ,   "pages/invoice"
-,   "pages/ui"
 ,   "pages/features"
 ,   "pages/demo"
 ,   "pages/demo-material"
@@ -39,4 +36,7 @@
 ,   "layout/nav-color"
 ,   "layout/header"
 ,   "layout/body"
+,   "layout/quickview"
+,   "layout/quickview-customizer"
+,   "theme/customzier-options"
 ;

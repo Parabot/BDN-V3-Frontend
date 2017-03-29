@@ -1,35 +1,12 @@
 var gulp = require('gulp');
-var gutil = require( 'gulp-util' );
 var args = require('yargs').argv;
 var browserSync = require('browser-sync');
 var config = require('./gulp.config')();
 var del = require('del');
 var $ = require('gulp-load-plugins')({lazy: true});
-var ftp = require('vinyl-ftp');
-// var localConfig = require('./config.json');
 
 gulp.task('help', $.taskListing);
 gulp.task('default', ['help']);
-
-// gulp.task('deploy', function () {
-//
-//     var conn = ftp.create({
-//         host: localConfig.FTP.HOST,
-//         user: localConfig.FTP.USERNAME,
-//         password: localConfig.FTP.PASSWORD,
-//         parallel: 10,
-//         log:      gutil.log
-//     });
-//
-//     var globs = [
-//         'dist/**'
-//     ];
-//
-//     return gulp.src(globs, {base: './dist/', buffer: false})
-//         .pipe(conn.newer('/public_html')) // only upload newer files
-//         .pipe(conn.dest('/public_html'));
-//
-// });
 
 gulp.task('vet', function () {
     log('Analyzing source with JSHint and JSCS');
@@ -60,17 +37,17 @@ gulp.task('clean-all', function (done) {
     clean(delconfig, done);
 });
 
-gulp.task('jade-docs', function () {
-    log('Compiling docs jade --> html');
+gulp.task('pug-docs', function () {
+    log('Compiling docs pug --> html');
 
     var options = {
         pretty: false
-    };
+    }
 
     return gulp
-        .src(config.docsJade)
+        .src(config.docsPug)
         .pipe($.plumber({errorHandler: swallowError}))
-        .pipe($.jade(options))
+        .pipe($.pug(options))
         .pipe(gulp.dest(config.docs));
 });
 
@@ -134,11 +111,15 @@ gulp.task('inject', function () {
         .pipe(gulp.dest(config.client));
 });
 
-gulp.task('copy', function () {
+gulp.task('copy', ['sass-min'], function () {
     log('Copying assets');
 
+    var assets = [].concat(config.assetsLazyLoad, config.assetsToCopy);
+
+    gulp.src(config.tmp + '/styles/loader.css').pipe(gulp.dest(config.dist + '/styles'));
+
     return gulp
-        .src(config.assets, {base: config.client})
+        .src(assets, {base: config.client})
         .pipe(gulp.dest(config.dist + '/'));
 });
 
@@ -163,18 +144,17 @@ gulp.task('build', ['optimize', 'copy'], function () {
     startBrowserSync('build');
 });
 
-gulp.task('deploy-build', ['optimize', 'copy'], function () {
-    startBrowserSync('build');
-    gulp.run('deploy');
-});
+gulp.task('build', ['optimize', 'copy'], function () {
+    startBrowserSync('dist');
+})
 
 gulp.task('serve-dist', function () {
-    startBrowserSync('dist');
-});
+    gulp.run('build');
+})
 
-gulp.task('serve-docs', ['jade-docs'], function () {
+gulp.task('serve-docs', ['pug-docs'], function () {
     startBrowserSync('docs');
-});
+})
 
 
 function clean(path, done) {
@@ -248,8 +228,7 @@ function startBrowserSync(opt) {
             baseDir: [
                 config.client,
                 config.tmp
-            ],
-            host: 'beta.bdn.parabot.org'
+            ]
         };
         options.files = [
             config.client + '/**/*.*',
@@ -272,7 +251,7 @@ function startBrowserSync(opt) {
     }
 
     function serveDocs() {
-        gulp.watch([config.docsJade], ['jade-docs']);
+        gulp.watch([config.docsPug], ['pug-docs']);
 
         options.server = {
             baseDir: [
@@ -282,12 +261,10 @@ function startBrowserSync(opt) {
 
         options.files = [
             config.docs + '/index.html',
-            '!' + config.jade
+            '!' + config.pug
         ];
 
         browserSync(options);
     }
 
 }
-
-

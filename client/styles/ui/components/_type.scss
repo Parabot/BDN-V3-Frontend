@@ -10,10 +10,6 @@
     }
 }
 
-.capitalize::first-letter {
-    text-transform: uppercase;
-}
-
 // Gradient text
 .gradient-text {
     font-size: 150px;
@@ -157,49 +153,6 @@ a.color-gray-lighter {
         background-color: $brand-primary;
     }
 }
-
-// 
-.pull-in {
-    margin: 0 -15px;
-}
-
-// divider
-.divider {
-    display: block;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    &.divider-dashed {
-        border: 1px dashed $state-default-border;
-    }
-    &.divider-dotted {
-        border: 1px dotted $state-default-border;
-    }
-}
-.divider-sm { 
-    margin-top: 10px; 
-    margin-bottom: 10px; 
-}
-.divider-md {
-    margin-top: 20px; 
-    margin-bottom: 20px;     
-}
-.divider-lg { 
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-.divider-xl { 
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-// 
-.space {
-    display: inline;
-    padding: 6px;
-}
-.space-md { padding: 15px; }
-.space-lg { padding: 25px; }
-
 
 .hr-colored {
     border-color: $brand-primary;

@@ -1,7 +1,8 @@
-$wz-color-default: #E6E6E6;
+$wz-color-default: rgba(#000, .15);
 $wz-color-current: #808080;
 $wz-color-done:    $brand-success;
 $wz-color-editing: $brand-primary;
+
 
 .ui-angular-wizard {
     .steps {
@@ -40,8 +41,8 @@ $wz-color-editing: $brand-primary;
     right: 0;
     bottom: 0;
     left: 0;
-    margin: 0;
-    padding: 20px 0 0 0;
+    margin: 10px 0 30px;
+    padding: 20px 0 30px;
     height: 30px;
     list-style: none;
     
@@ -207,3 +208,23 @@ $wz-color-editing: $brand-primary;
         background-color: $wz-color-editing;
     }
 }
+
+// Dark theme
+// --------------------------------------------------
+// override
+.ui-angular-wizard {
+    .steps {
+        border-color: rgba(#000, .15);
+
+        h2 {
+            border-color: rgba(#000, .15);
+        }
+    }
+    .ui-wizard-actions {
+        border-color: rgba(#000, .15);
+    }
+    .ui-wizard-content {
+        background-color: rgba(#000, .035);
+    }
+}
+

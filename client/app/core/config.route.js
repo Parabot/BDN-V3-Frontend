@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('app')
-        .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
+        .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$ocLazyLoadProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, $ocLazyLoadProvider) {
                 var routes, setRoutes;
 
                 routes = [

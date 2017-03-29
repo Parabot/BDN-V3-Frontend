@@ -13,9 +13,9 @@
         , 'app.i18n'
 
         // 3rd Party Modules
+        ,'oc.lazyLoad'
         , 'ngMaterial'
         , 'ui.router'
-        , 'ui.bootstrap'
         , 'duScroll'
     ]).config(['$httpProvider', function ($httpProvider) {
         $httpProvider.defaults.withCredentials = true;

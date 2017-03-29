@@ -1,22 +1,43 @@
+// rgba(#000, .035) // #eee
 
-$image_path:            "../images" !default;
+$image_path:            "../assets/images/" !default;
+$image_pathdemo:        "../assets/images-demo/" !default;
+
+
+$skin:                  $brand-primary;
+$skin-light:            #42A5F5 !default; // Blue 400
+$dark:                  #333C44 !default; // darken Blue 100 > #343E46
+$dark-light:            lighten($dark, 5%) !default;
+$bright:                #fafafa !default;
+$white:                 #fff !default;
+$gray-light2:           #999 !default;
+
+$page-bg:               #f5f5f5 !default; // background color of .app-page-container
+
+
+$state-default-bg:              rgba(0,0,0, .1) !default; // also: pagination bg
+$state-default-border:          darken(adjust-hue($state-default-bg, -10), 5%) !default; 
+$state-default-border-light:    #f3f3f3 !default; 
 
 //== Typography
 $font-weight-thin:      300 !default;
-$font-family-condensed: "Roboto Condensed", "Roboto", "Helvetica Neue", Arial, sans-serif !default;
+$font-family-condensed: "Roboto Condensed", "Roboto", "Helvetica Neue", Arial, sans-serif !default
+
+
+// UI
+$container_fluid_maxwidth:      1400px;
 
 
 // Cards 
 $card-padding:          20px !default;
 $border-radius-card:    2px !default;
 
-
 // Grid Variables
 $element-top-margin:        ($grid-gutter-width/3) !default;
 $element-bottom-margin:     ($grid-gutter-width*2)/3 !default;
 
-// Animation
-$material_animation:        cubic-bezier(.4,0,.2,1);
+// Tables
+$theme-dark-data-table-header-color: rgba(#fff, 0.54);
 
 
 // box shadow
@@ -38,3 +59,7 @@ $material_animation:        cubic-bezier(.4,0,.2,1);
 .z-depth-5 {
     box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
 }
+
+// Animation
+$material_animation:        cubic-bezier(.4,0,.2,1);
+
