@@ -49,10 +49,14 @@
                 $appCommon.hideLoader();
 
                 $appCommon.showLoader();
-                $appCommon.getURL($appConfig.endpoints['scriptGet'] + $scope.scriptID, scriptGetCallback);
+                $appCommon.getURL($appConfig.endpoints['scriptGet'] + $scope.scriptID).then(function (data) {
+                    scriptGetCallback(data);
+                });
             };
 
-            $appCommon.getURL($appConfig.endpoints['reviewsList'] + $scope.scriptID + '?accepted=all', reviewsListCallback);
+            $appCommon.getURL($appConfig.endpoints['reviewsList'] + $scope.scriptID + '?accepted=all').then(function (data) {
+                reviewsListCallback(data);
+            });
         };
 
         $scope.accept = function(id){
@@ -93,7 +97,9 @@
                 $appCommon.hideLoader();
             };
 
-            $appCommon.getURL($appConfig.endpoints['build'] + $stateParams['id'], buildCallback);
+            $appCommon.getURL($appConfig.endpoints['build'] + $stateParams['id']).then(function (data) {
+                buildCallback(data);
+            });
         };
 
         // This route requires authentication
@@ -132,7 +138,9 @@
                 $appCommon.hideLoader();
             };
 
-            $appCommon.getURL($appConfig.endpoints['buildsList'] + $stateParams['id'], buildsListCallback);
+            $appCommon.getURL($appConfig.endpoints['buildsList'] + $stateParams['id']).then(function (data) {
+                buildsListCallback(data);
+            });
         };
 
         // This route requires authentication
@@ -163,7 +171,9 @@
                 $appCommon.hideLoader();
 
                 $appCommon.showLoader();
-                $appCommon.getURL($appConfig.endpoints['categoriesList'], categoriesListCallback);
+                $appCommon.getURL($appConfig.endpoints['categoriesList']).then(function (data) {
+                    categoriesListCallback(data);
+                });
             };
 
             var scriptsListCallback = function ($data) {
@@ -175,7 +185,7 @@
                 $appCommon.hideLoader();
 
                 if ($stateParams['id'] !== undefined) {
-                    if ($data['result']['buildTypeId'] != null) {
+                    if ($data['result']['buildTypeId'] !== null) {
                         $scope.buildsURL = $appConfig.urls['builds'] + $stateParams['id'];
                     } else {
                         $scope.createBuild = true;
@@ -183,13 +193,19 @@
                 }
 
                 $appCommon.showLoader();
-                $appCommon.getURL($appConfig.endpoints['groupsList'], scriptGroupListCallback);
+                $appCommon.getURL($appConfig.endpoints['groupsList']).then(function (data) {
+                    scriptGroupListCallback(data);
+                });
             };
 
             if ($stateParams['id'] !== undefined) {
-                $appCommon.getURL($appConfig.endpoints['scriptGet'] + $stateParams['id'], scriptsListCallback);
+                $appCommon.getURL($appConfig.endpoints['scriptGet'] + $stateParams['id']).then(function (data) {
+                    scriptsListCallback(data);
+                });
             } else {
-                $appCommon.getURL($appConfig.endpoints['groupsList'], scriptGroupListCallback);
+                $appCommon.getURL($appConfig.endpoints['groupsList']).then(function (data) {
+                    scriptGroupListCallback(data);
+                });
 
                 $scope.script = {};
                 userManager.getMyUser().then(function ($user) {
@@ -366,7 +382,9 @@
                 $appCommon.hideLoader();
             };
 
-            $appCommon.getURL($appConfig.endpoints['myScriptsList'], scriptsListCallback);
+            $appCommon.getURL($appConfig.endpoints['myScriptsList']).then(function (data) {
+                scriptsListCallback(data);
+            });
         };
 
         // This route requires authentication

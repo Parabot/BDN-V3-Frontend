@@ -102,20 +102,20 @@
         };
 
         var urls = {
-            servers: '/#/servers/list',
-            server: '/#/servers/get/',
+            servers: '/#!/servers/list',
+            server: '/#!/servers/get/',
 
-            scripts: '/#/scripts/list',
-            script: '/#/scripts/get/',
+            scripts: '/#!/scripts/list',
+            script: '/#!/scripts/get/',
 
-            builds: '/#/scripts/builds/',
-            build: '/#/scripts/build/',
+            builds: '/#!/scripts/builds/',
+            build: '/#!/scripts/build/',
 
-            reviews: '/#/scripts/reviews/',
+            reviews: '/#!/scripts/reviews/',
 
-            users: '/#/users/list',
-            user: '/#' + routeUrls.user,
-            login: '/#/users/login',
+            users: '/#!/users/list',
+            user: '/#!' + routeUrls.user,
+            login: '/#!/users/login',
             register: 'https://www.parabot.org/community/register',
             oauth: base + 'oauth/v2/auth',
             log_in: endpoint + 'users/log_in',

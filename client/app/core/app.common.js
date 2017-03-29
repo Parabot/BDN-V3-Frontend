@@ -3,7 +3,7 @@
 
     angular.module('app.core')
         .service('appUICommon', ['$mdDialog', '$mdToast', appUICommon])
-        .service('appCommon', ['$http', '$rootScope', 'appConfig', 'appUICommon', '$window', '$cookies', appCommon]);
+        .service('appCommon', ['$http', '$rootScope', 'appConfig', 'appUICommon', '$window', '$cookies', '$q', appCommon]);
 
     function appUICommon($mdDialog, $mdToast) {
         this.showAlert = function ($title, $description) {
@@ -27,39 +27,32 @@
         };
     }
 
-    function appCommon($http, $rootScope, appConfig, appUICommon, $window, $cookies) {
+    function appCommon($http, $rootScope, appConfig, appUICommon, $window, $cookies, $q) {
         $rootScope.loggedInChecked = false;
 
         var self = this;
 
-        self.getURL = function ($url, $callback, $appendAccessToken, $handleError, $errorHandler) {
+        self.getURL = function ($url, $appendAccessToken, $handleError) {
             if ($appendAccessToken !== false && $cookies.get('access_token') !== null) {
                 $url = self.appendURLParameter($url, 'access_token', $cookies.get('access_token'))
             }
 
-
+            var deferred = $q.defer();
             var request = $http.get($url);
-            var e;
-
-            if ($errorHandler !== null) {
-                e = function ($data, $code) {
-                    $errorHandler($data, $code);
-                    handleURLError($data, $code);
-                }
-            } else {
-                e = handleURLError;
-            }
 
             request.then(function successCallback(response) {
-                $callback(response);
-            }, function errorCallback(response) {
+                deferred.resolve(response);
+            }, function errorCallback(response, status) {
                 if ($handleError !== false) {
-                    e(response);
+                    handleURLError(response, status);
                 }
+                deferred.reject(response);
             });
+
+            return deferred.promise;
         };
 
-        self.postURL = function ($url, $callback, $data, $appendAccessToken, $handleError, $errorHandler) {
+        self.postURL = function ($url, $data, $appendAccessToken, $handleError) {
             if ($appendAccessToken !== false && $cookies.get('access_token') !== null) {
                 $url = self.appendURLParameter($url, 'access_token', $cookies.get('access_token'))
             }
@@ -71,25 +64,20 @@
                 data: $data
             };
 
+            var deferred = $q.defer();
             var request = $http(requestArgs);
 
-            if ($callback !== null) {
-                request.success($callback);
-            }
-
-            var e;
-            if ($errorHandler !== null) {
-                e = function ($data, $code) {
-                    $errorHandler($data, $code);
-                    handleURLError($data, $code);
+            request.then(function successCallback(response) {
+                deferred.resolve(response);
+            }, function errorCallback(response, status) {
+                if ($handleError !== false) {
+                    handleURLError(response, status);
                 }
-            } else {
-                e = handleURLError;
-            }
 
-            if ($handleError !== false) {
-                request.error(e);
-            }
+                deferred.reject(response, status);
+            });
+
+            return deferred.promise;
         };
 
         this.getUrlParameter = function (parameter) {
@@ -127,7 +115,9 @@
                 data['refresh_token'] = $code;
             }
 
-            this.postURL(appConfig.endpoints.retrieveToken, $callback, data);
+            this.postURL(appConfig.endpoints.retrieveToken, data).then(function (response) {
+                $callback(response);
+            });
         };
 
         this.appendURLParameter = function insertParam(url, parameterName, parameterValue, atStart) {
@@ -150,8 +140,8 @@
                 var parameters = urlParts[1].split("&");
                 for (var i = 0; (i < parameters.length); i++) {
                     var parameterParts = parameters[i].split("=");
-                    if (!(replaceDuplicates && parameterParts[0] == parameterName)) {
-                        if (newQueryString == "") {
+                    if (!(replaceDuplicates && parameterParts[0] === parameterName)) {
+                        if (newQueryString === "") {
                             newQueryString = "?";
                         } else {
                             newQueryString += "&";
@@ -160,14 +150,14 @@
                     }
                 }
             }
-            if (newQueryString == "") {
+            if (newQueryString === "") {
                 newQueryString = "?";
             }
 
             if (atStart) {
                 newQueryString = '?' + parameterName + "=" + parameterValue + (newQueryString.length > 1 ? '&' + newQueryString.substring(1) : '');
             } else {
-                if (newQueryString !== "" && newQueryString != '?') {
+                if (newQueryString !== "" && newQueryString !== '?') {
                     newQueryString += "&";
                 }
                 newQueryString += parameterName + "=" + (parameterValue ? parameterValue : '');
@@ -223,7 +213,7 @@
                 return true;
             };
 
-            if ($rootScope.loggedInChecked !== true || $cookies.get('access_token') == null) {
+            if ($rootScope.loggedInChecked !== true || $cookies.get('access_token') === null) {
 
                 var loginCallBack = function ($data) {
                     if (typeof $data === 'undefined' || typeof $data['result'] === 'undefined' || $data['result'] === false) {
@@ -236,7 +226,7 @@
                                 var refreshToken = $cookies.get('refresh_token');
                                 var accessToken = $cookies.get('access_token');
 
-                                if (accessToken == null && refreshToken != null) {
+                                if (accessToken === null && refreshToken !== null) {
                                     var requestTokenFallback = function ($data) {
                                         if (typeof $data === 'undefined' || typeof $data['access_token'] === 'undefined') {
                                             redirectToLogin();
@@ -249,7 +239,7 @@
                                     };
 
                                     self.requestToken(requestTokenFallback, 'refresh_token', refreshToken);
-                                } else if ($cookies.get('refresh_token') == null) {
+                                } else if ($cookies.get('refresh_token') === null) {
                                     redirectToLogin();
                                     return false;
                                 }
@@ -257,7 +247,9 @@
                                 return onSuccess();
                             }
                         };
-                        self.getURL(appConfig.endpoints.validOAuth, afterTokenCheck);
+                        self.getURL(appConfig.endpoints.validOAuth).then(function (response) {
+                            afterTokenCheck(response);
+                        });
                     }
                 };
 
@@ -269,7 +261,9 @@
         };
 
         this.isLoggedIn = function ($callback) {
-            this.getURL(appConfig.endpoints['isLoggedIn'], $callback);
+            this.getURL(appConfig.endpoints['isLoggedIn']).then(function (data) {
+                $callback(data);
+            });
         };
     }
 })();

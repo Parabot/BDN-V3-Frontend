@@ -53,7 +53,7 @@
                 // Check if we have an oauth code
                 var field = 'code';
                 var url = window.location.href;
-                if (url.indexOf('?' + field + '=') != -1 || url.indexOf('&' + field + '=') != -1) {
+                if (url.indexOf('?' + field + '=') !== -1 || url.indexOf('&' + field + '=') !== -1) {
                     $urlRouterProvider
                         .when('/', '/users/auth')
                         .otherwise('/users/auth');

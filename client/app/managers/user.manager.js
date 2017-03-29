@@ -31,13 +31,12 @@
             _load: function (userId, deferred) {
                 var scope = this;
 
-                appCommon.getURL(appConfig.endpoints.userGet + userId,
-                    function (userData) {
-                        var user = scope._retrieveInstance(userData.id, userData);
-                        deferred.resolve(user);
-                    }, true, true, function () {
-                        deferred.reject();
-                    });
+                appCommon.getURL(appConfig.endpoints.userGet + userId, true, true).then(function (userData) {
+                    var user = scope._retrieveInstance(userData.id, userData);
+                    deferred.resolve(user);
+                }).catch(function () {
+                    deferred.reject();
+                });
             },
 
             getTotalForLatestRetrieval: function () {
@@ -60,9 +59,10 @@
             loadUsers: function (page, key, value) {
                 var deferred = $q.defer();
                 var scope = this;
-                var url = (key != null && value != null ? appConfig.endpoints.usersSearch + key + '/' + value + '?page=' + page : appConfig.endpoints.usersList + page);
+                var url = (key !== null && value !== null ? appConfig.endpoints.usersSearch + key + '/' + value + '?page=' + page : appConfig.endpoints.usersList + page);
+
                 appCommon.getURL(
-                    url, function (usersArray) {
+                    url, true, true.then(function (usersArray) {
                         var users = [];
                         usersArray['result'].forEach(function (userData) {
                             var user = scope._retrieveInstance(userData.id, userData);
@@ -71,10 +71,11 @@
                         scope._totalLastSearch = usersArray['total'];
 
                         deferred.resolve(users);
-                    }, true, true, function () {
+                    }).catch(function () {
                         deferred.reject();
-                    }
+                    })
                 );
+
                 return deferred.promise;
             },
 
@@ -82,15 +83,12 @@
                 var deferred = $q.defer();
                 var scope = this;
 
-                if (this._myUserId == null) {
-                    appCommon.getURL(appConfig.endpoints.getMy.id,
-                        function (userData) {
-                            scope._myUserId = userData.result.id;
-                            scope._load(scope._myUserId, deferred);
-                        }, true, true, function () {
-                            deferred.reject();
-                        });
-                }else{
+                if (this._myUserId === null) {
+                    appCommon.getURL(appConfig.endpoints.getMy.id, true, true).then(function (data) {
+                        scope._myUserId = data.result.id;
+                        scope._load(scope._myUserId, deferred);
+                    });
+                } else {
                     var user = this._search(this._myUserId);
                     if (user) {
                         deferred.resolve(user);
