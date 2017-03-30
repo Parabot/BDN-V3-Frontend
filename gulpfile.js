@@ -140,22 +140,21 @@ gulp.task('serve', ['inject', 'sass'], function () {
     startBrowserSync('serve');
 });
 
-gulp.task('build', ['optimize', 'copy'], function () {
+gulp.task('build-deploy', ['optimize', 'copy'], function () {
     startBrowserSync('build');
 });
 
 gulp.task('build', ['optimize', 'copy'], function () {
     startBrowserSync('dist');
-})
+});
 
 gulp.task('serve-dist', function () {
     gulp.run('build');
-})
+});
 
 gulp.task('serve-docs', ['pug-docs'], function () {
     startBrowserSync('docs');
-})
-
+});
 
 function clean(path, done) {
     log('Cleaning: ' + $.util.colors.blue(path));
