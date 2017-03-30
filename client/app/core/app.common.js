@@ -33,7 +33,7 @@
         var self = this;
 
         self.getURL = function ($url, $appendAccessToken, $handleError) {
-            if ($appendAccessToken !== false && $cookies.get('access_token') !== null) {
+            if ($appendAccessToken !== false && $cookies.get('access_token') !== undefined) {
                 $url = self.appendURLParameter($url, 'access_token', $cookies.get('access_token'))
             }
 
@@ -41,19 +41,19 @@
             var request = $http.get($url);
 
             request.then(function successCallback(response) {
-                deferred.resolve(response);
-            }, function errorCallback(response, status) {
+                deferred.resolve(response.data);
+            }, function errorCallback(response) {
                 if ($handleError !== false) {
-                    handleURLError(response, status);
+                    handleURLError(response.data, response.status);
                 }
-                deferred.reject(response);
+                deferred.reject(response.data);
             });
 
             return deferred.promise;
         };
 
         self.postURL = function ($url, $data, $appendAccessToken, $handleError) {
-            if ($appendAccessToken !== false && $cookies.get('access_token') !== null) {
+            if ($appendAccessToken !== false && $cookies.get('access_token') !== undefined) {
                 $url = self.appendURLParameter($url, 'access_token', $cookies.get('access_token'))
             }
 
@@ -68,13 +68,13 @@
             var request = $http(requestArgs);
 
             request.then(function successCallback(response) {
-                deferred.resolve(response);
-            }, function errorCallback(response, status) {
+                deferred.resolve(response.data);
+            }, function errorCallback(response) {
                 if ($handleError !== false) {
-                    handleURLError(response, status);
+                    handleURLError(response.data, response.status);
                 }
 
-                deferred.reject(response, status);
+                deferred.reject(response.data, response.status);
             });
 
             return deferred.promise;
@@ -116,6 +116,7 @@
             }
 
             this.postURL(appConfig.endpoints.retrieveToken, data).then(function (response) {
+                console.log(response);
                 $callback(response);
             });
         };
@@ -213,8 +214,7 @@
                 return true;
             };
 
-            if ($rootScope.loggedInChecked !== true || $cookies.get('access_token') === null) {
-
+            if ($rootScope.loggedInChecked !== true || $cookies.get('access_token') === undefined) {
                 var loginCallBack = function ($data) {
                     if (typeof $data === 'undefined' || typeof $data['result'] === 'undefined' || $data['result'] === false) {
                         redirectToLogin();
@@ -226,7 +226,7 @@
                                 var refreshToken = $cookies.get('refresh_token');
                                 var accessToken = $cookies.get('access_token');
 
-                                if (accessToken === null && refreshToken !== null) {
+                                if (accessToken === undefined && refreshToken !== undefined) {
                                     var requestTokenFallback = function ($data) {
                                         if (typeof $data === 'undefined' || typeof $data['access_token'] === 'undefined') {
                                             redirectToLogin();
@@ -239,7 +239,7 @@
                                     };
 
                                     self.requestToken(requestTokenFallback, 'refresh_token', refreshToken);
-                                } else if ($cookies.get('refresh_token') === null) {
+                                } else if (refreshToken === undefined) {
                                     redirectToLogin();
                                     return false;
                                 }

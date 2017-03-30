@@ -70,7 +70,9 @@
                 $state.reload();
             };
 
-            $appCommon.postURL($appConfig.endpoints['acceptReview'], afterRequest, {id: id, accepted: '1'});
+            $appCommon.postURL($appConfig.endpoints['acceptReview'], {id: id, accepted: '1'}).then(function(response){
+                afterRequest(response);
+            });
         };
 
         // This route requires authentication
@@ -121,7 +123,9 @@
                 $appCommon.hideLoader();
             };
 
-            $appCommon.postURL($appConfig.endpoints['createBuild'] + $stateParams['id'], buildCreateCallback);
+            $appCommon.postURL($appConfig.endpoints['createBuild'] + $stateParams['id']).then(function(response){
+                buildCreateCallback(response);
+            });
         };
 
         var afterLogin = function () {
@@ -235,7 +239,9 @@
                     $state.reload();
                 };
 
-                $appCommon.postURL($appConfig.endpoints['buildTypeProjectCreate'] + $scope.script.id, afterRequest, {modules: 'all'});
+                $appCommon.postURL($appConfig.endpoints['buildTypeProjectCreate'] + $scope.script.id, {modules: 'all'}).then(function(response){
+                    afterRequest(response);
+                });
             } else if ($scope.creatingBuild === true) {
                 $appUICommon.showToast('Still creating build project...');
             }
@@ -285,7 +291,11 @@
                 }, 250);
             };
 
-            $appCommon.postURL($appConfig.endpoints['scriptCreate'], afterRequest, JSON.stringify(submitted), true, afterRequest);
+            $appCommon.postURL($appConfig.endpoints['scriptCreate'], JSON.stringify(submitted), true).then(function(response){
+                afterRequest(response, 200);
+            }).catch(function(response, code){
+                afterRequest(response, code);
+            });
         };
 
         $scope.processForm = function () {
@@ -299,7 +309,9 @@
                 $appUICommon.showToast($data['result']);
             };
 
-            $appCommon.postURL($appConfig.endpoints['scriptUpdate'], afterRequest, JSON.stringify(submitted));
+            $appCommon.postURL($appConfig.endpoints['scriptUpdate'], JSON.stringify(submitted)).then(function(response){
+                afterRequest(response);
+            });
         };
 
         $scope.addAuthor = function () {
@@ -352,12 +364,16 @@
 
                     $appUICommon.showToast($data['result']);
 
-                    if ($code == 200) {
+                    if ($code === 200) {
                         $scope.script.version = object.version;
                     }
                 };
 
-                $appCommon.postURL($appConfig.endpoints['scriptCreateRelease'], afterRequest, JSON.stringify(submitted));
+                $appCommon.postURL($appConfig.endpoints['scriptCreateRelease'], JSON.stringify(submitted)).then(function(response){
+                    afterRequest(response, 200);
+                }).catch(function(response, code){
+                    afterRequest(response, code);
+                });
                 $scope.script.version = currentVersion;
             });
         };

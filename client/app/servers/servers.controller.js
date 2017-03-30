@@ -44,7 +44,9 @@
 
                 $appCommon.hideLoader();
             };
-            $appCommon.getURL($appConfig.endpoints['hooksDetailed'] + $stateParams['id'] + '?detailed=true', hooksListCallback);
+            $appCommon.getURL($appConfig.endpoints['hooksDetailed'] + $stateParams['id'] + '?detailed=true').then(function(response){
+                hooksListCallback(response);
+            });
         };
 
         // This route requires authentication
@@ -65,7 +67,9 @@
 
                 $appCommon.hideLoader();
             };
-            $appCommon.getURL($appConfig.endpoints['serversList'], serversListCallback);
+            $appCommon.getURL($appConfig.endpoints['serversList']).then(function(response){
+                serversListCallback(response);
+            });
         };
 
         // This route requires authentication
@@ -95,13 +99,19 @@
                 $appCommon.hideLoader();
 
                 $appCommon.showLoader();
-                $appCommon.getURL($appConfig.endpoints['groupsList'], serverGroupListCallback);
+                $appCommon.getURL($appConfig.endpoints['groupsList']).then(function(response){
+                    serverGroupListCallback(response);
+                });
             };
 
             if ($stateParams['id'] !== undefined) {
-                $appCommon.getURL($appConfig.endpoints['serverGet'] + $stateParams['id'], serverCallback);
+                $appCommon.getURL($appConfig.endpoints['serverGet'] + $stateParams['id']).then(function(response){
+                    serverCallback(response);
+                });
             } else {
-                $appCommon.getURL($appConfig.endpoints['groupsList'], serverGroupListCallback);
+                $appCommon.getURL($appConfig.endpoints['groupsList']).then(function(response){
+                    serverGroupListCallback(response);
+                });
 
                 $scope.server = {};
                 $scope.server.details = [
@@ -142,7 +152,9 @@
                 $appUICommon.showToast($data['result']);
             };
 
-            $appCommon.postURL($appConfig.endpoints['serverUpdate'], afterRequest, JSON.stringify(submitted));
+            $appCommon.postURL($appConfig.endpoints['serverUpdate'], JSON.stringify(submitted)).then(function(response){
+                afterRequest(response);
+            });
         };
 
         $scope.processCreateForm = function () {
@@ -160,7 +172,11 @@
                 }, 250);
             };
 
-            $appCommon.postURL($appConfig.endpoints['serverCreate'], afterRequest, JSON.stringify(submitted), true, afterRequest);
+            $appCommon.postURL($appConfig.endpoints['serverCreate'], JSON.stringify(submitted), true).then(function(response){
+                afterRequest(response, 200);
+            }).catch(function(response, code){
+                afterRequest(response, code);
+            });
         };
 
         $scope.addAuthor = function () {

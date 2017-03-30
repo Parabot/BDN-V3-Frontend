@@ -21,7 +21,9 @@
 
                 $appCommon.hideLoader();
             };
-            $appCommon.getURL($appConfig.endpoints.isInSlack, isInSlack);
+            $appCommon.getURL($appConfig.endpoints.isInSlack).then(function(response){
+                isInSlack(response);
+            });
         };
 
         $scope.slackInvite = function () {
@@ -32,12 +34,14 @@
                 var afterRequest = function ($data, $code) {
                     $scope.waiting = false;
 
-                    if ($data['result'] == true) {
+                    if ($data['result'] === true) {
                         $appUICommon.showToast('Invite sent to your email');
                     }
                 };
 
-                $appCommon.postURL($appConfig.endpoints.inviteSlack, afterRequest, JSON.stringify(submitted));
+                $appCommon.postURL($appConfig.endpoints.inviteSlack, JSON.stringify(submitted)).then(function(response){
+                    afterRequest(response);
+                });
         };
 
         $scope.goToSlack = function () {
@@ -97,7 +101,7 @@
                         $appCommon.hideLoader();
                     });
                 });
-            } else if ($scope.searchUsername.length == 0) {
+            } else if ($scope.searchUsername.length === 0) {
                 $scope.select(1);
             }
         };
@@ -111,10 +115,9 @@
 
         var code = $appCommon.getUrlParameter('code');
 
-        if (code == null) {
+        if (code === null) {
             $location.url('/');
         } else {
-
             var afterPost = function ($data, $code) {
                 if (typeof $data === 'undefined' || typeof $data['access_token'] === 'undefined') {
                     $appUICommon.showAlert(
@@ -137,7 +140,6 @@
         $scope.signinLoading = true;
 
         var afterLoggedIn = function ($data) {
-
             if (typeof $data === 'undefined' || typeof $data['result'] === 'undefined' || $data['result'] === false) {
                 $scope.signinText = 'Sign into Parabot';
                 $scope.signinLoading = false;
@@ -154,7 +156,9 @@
                         $location.url('/');
                     }
                 };
-                $appCommon.getURL($appConfig.endpoints.validOAuth, afterValidCheck);
+                $appCommon.getURL($appConfig.endpoints.validOAuth).then(function(response){
+                    afterValidCheck(response);
+                });
             }
         };
 
