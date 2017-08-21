@@ -4,34 +4,41 @@
     angular.module('app.servers')
         .controller('ServersCtrl', ['$scope', 'appConfig', 'appCommon', 'Server', ServersCtrl])
         .controller('ServerCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', 'userManager', '$state', '$location', ServerCtrl])
-        .controller('HookCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', '$uibModal', HookCtrl]);
+        .controller('HookCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', '$state', HookCtrl]);
 
-    function HookCtrl($scope, $stateParams, $appConfig, $appCommon, $appUICommon, $uibModal) {
+    function HookCtrl($scope, $stateParams, $appConfig, $appCommon, $appUICommon, $state) {
         $scope.backURL = $appConfig.urls['servers'];
 
         var afterLogin = function () {
             $appCommon.showLoader();
 
-            $scope.items = ["Item 1", "Item 2", "Item 3"];
+            $scope.addHook = false;
+            $scope.xmlHooks = null;
+            $scope.client = null;
+
             $scope.addHooksRow = function () {
+                $scope.addHook = true;
+            };
 
-                var modalInstance = $uibModal.open({
-                    animation: $scope.animationsEnabled,
-                    templateUrl: 'myModalContent.html',
-                    controller: 'ModalInstanceCtrl',
-                    size: 'lg',
-                    resolve: {
-                        items: function () {
-                            return $scope.items;
-                        }
-                    }
-                });
+            $scope.updateClient = function () {
+                var f = document.getElementById('file').files[0];
+                var r = new FileReader();
 
-                modalInstance.result.then(function (selectedItem) {
-                    $scope.selected = selectedItem;
-                }, function () {
-                    $log.info('Modal dismissed at: ' + new Date());
-                });
+                var afterRequest = function ($data, $code) {
+                    $scope.waiting = false;
+
+                    $appUICommon.showToast($data['result']);
+
+                    $state.reload();
+                };
+
+                r.onloadend = function (e) {
+                    $appCommon.postURLWithFile($appConfig.endpoints['serverClientUpdate'], 'server', f, {id: $stateParams['id']}).then(function (response) {
+                        afterRequest(response);
+                    });
+                };
+
+                r.readAsBinaryString(f);
             };
 
             var hooksListCallback = function ($data) {
@@ -44,9 +51,37 @@
 
                 $appCommon.hideLoader();
             };
-            $appCommon.getURL($appConfig.endpoints['hooksDetailed'] + $stateParams['id'] + '?detailed=true').then(function(response){
+            $appCommon.getURL($appConfig.endpoints['hooksDetailed'] + $stateParams['id'] + '?detailed=true').then(function (response) {
                 hooksListCallback(response);
             });
+
+            $scope.processForm = function () {
+                $scope.waiting = true;
+
+                var submitted = null;
+                var newHooks = false;
+                if ($scope.xmlHooks === null) {
+                    submitted = $scope.hooks;
+                } else {
+                    submitted = {xml: $scope.xmlHooks, id: $stateParams['id']};
+                    newHooks = true;
+                }
+
+                var afterRequest = function ($data, $code) {
+                    $scope.waiting = false;
+
+                    $appUICommon.showToast($data['result']);
+                };
+
+                if (newHooks) {
+                    $appCommon.postURL($appConfig.endpoints['hooksFileUpdate'], JSON.stringify(submitted)).then(function (response) {
+                        afterRequest(response);
+                    });
+                } else {
+                    alert("Add the xml content into the \"Add Hooks\" section");
+                    $scope.waiting = false;
+                }
+            };
         };
 
         // This route requires authentication
@@ -67,7 +102,7 @@
 
                 $appCommon.hideLoader();
             };
-            $appCommon.getURL($appConfig.endpoints['serversList']).then(function(response){
+            $appCommon.getURL($appConfig.endpoints['serversList']).then(function (response) {
                 serversListCallback(response);
             });
         };
@@ -79,6 +114,10 @@
     function ServerCtrl($scope, $stateParams, $appConfig, $appCommon, $appUICommon, userManager, $state, $location) {
         $scope.backURL = $appConfig.urls['servers'];
         $scope.waiting = true;
+
+        $scope.updateClient = function () {
+            $location.url($appConfig.routeUrls.hooks + $stateParams['id']);
+        };
 
         var afterLogin = function () {
             $appCommon.showLoader();
@@ -99,17 +138,17 @@
                 $appCommon.hideLoader();
 
                 $appCommon.showLoader();
-                $appCommon.getURL($appConfig.endpoints['groupsList']).then(function(response){
+                $appCommon.getURL($appConfig.endpoints['groupsList']).then(function (response) {
                     serverGroupListCallback(response);
                 });
             };
 
             if ($stateParams['id'] !== undefined) {
-                $appCommon.getURL($appConfig.endpoints['serverGet'] + $stateParams['id']).then(function(response){
+                $appCommon.getURL($appConfig.endpoints['serverGet'] + $stateParams['id']).then(function (response) {
                     serverCallback(response);
                 });
             } else {
-                $appCommon.getURL($appConfig.endpoints['groupsList']).then(function(response){
+                $appCommon.getURL($appConfig.endpoints['groupsList']).then(function (response) {
                     serverGroupListCallback(response);
                 });
 
@@ -152,7 +191,7 @@
                 $appUICommon.showToast($data['result']);
             };
 
-            $appCommon.postURL($appConfig.endpoints['serverUpdate'], JSON.stringify(submitted)).then(function(response){
+            $appCommon.postURL($appConfig.endpoints['serverUpdate'], JSON.stringify(submitted)).then(function (response) {
                 afterRequest(response);
             });
         };
@@ -167,14 +206,14 @@
 
                 $appUICommon.showToast($data['result']);
 
-                setTimeout(function(){
+                setTimeout(function () {
                     $location.url($appConfig.routeUrls.servers);
                 }, 250);
             };
 
-            $appCommon.postURL($appConfig.endpoints['serverCreate'], JSON.stringify(submitted), true).then(function(response){
+            $appCommon.postURL($appConfig.endpoints['serverCreate'], JSON.stringify(submitted), true).then(function (response) {
                 afterRequest(response, 200);
-            }).catch(function(response, code){
+            }).catch(function (response, code) {
                 afterRequest(response, code);
             });
         };

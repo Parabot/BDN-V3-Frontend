@@ -80,6 +80,44 @@
             return deferred.promise;
         };
 
+        self.postURLWithFile = function ($url, $fileParam, $file, $data, $appendAccessToken, $handleError) {
+            if ($appendAccessToken !== false && $cookies.get('access_token') !== undefined) {
+                $url = self.appendURLParameter($url, 'access_token', $cookies.get('access_token'))
+            }
+
+            var fd = new FormData();
+            fd.append('server', $file);
+
+            for (var k in $data){
+                if ($data.hasOwnProperty(k)) {
+                    fd.append(k, $data[k]);
+                }
+            }
+
+            var requestArgs = {
+                url: $url,
+                method: 'POST',
+                headers: {'Content-Type': undefined},
+                data: fd,
+                transformRequest: angular.identity
+            };
+
+            var deferred = $q.defer();
+            var request = $http(requestArgs);
+
+            request.then(function successCallback(response) {
+                deferred.resolve(response.data);
+            }, function errorCallback(response) {
+                if ($handleError !== false) {
+                    handleURLError(response.data, response.status);
+                }
+
+                deferred.reject(response.data, response.status);
+            });
+
+            return deferred.promise;
+        };
+
         this.getUrlParameter = function (parameter) {
             var queryDict = {};
             location.search.substr(1).split("&").forEach(function (item) {

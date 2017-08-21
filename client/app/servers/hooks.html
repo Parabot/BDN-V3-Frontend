@@ -11,28 +11,14 @@
             <section class="panel panel-default">
                 <div class="panel-body">
                     <div class="row">
+                        <div class="col-lg-4">
+                            <h4>Client</h4>
+                            <input type="file" id="file" name="file"/>
+                            <br/>
+                            <md-button ng-click="updateClient()" class="md-raised btn-w-md md-primary">Update client</md-button>
+                        </div>
                         <div class="col-lg-12">
-
-                            <script type="text/ng-template" id="myModalContent.html">
-                                <div class="modal-header">
-                                    <h3>I am a modal!</h3>
-                                </div>
-                                <div class="modal-body">
-                                <span ng-repeat="item in items" class="list-unstyled">
-                                    <label class="ui-radio"><input name="radio1" type="radio" value="{{ item }}"
-                                                                   ng-checked="selected.item === item"
-                                                                   ng-click="selected.item = item"><span>{{ item }}</span></label>
-                                </span>
-                                    <div class="callout callout-info">
-                                        Selected: <b>{{ selected.item }}</b>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button ui-wave class="btn btn-flat btn-default" ng-click="cancel()">Cancel</button>
-                                    <button ui-wave class="btn btn-flat btn-primary" ng-click="ok()">OK</button>
-                                </div>
-                            </script>
-
+                            <hr/>
                             <div layout="column" ng-cloak class="md-inline-form">
                                 <div layout-padding>
                                     <form name="hooksForm" ng-submit="processForm()">
@@ -42,24 +28,31 @@
                                         <div ng-repeat="(key, values) in hooks">
                                             <h5 class="capitalize">{{key}}</h5>
                                             <div layout layout-sm="column" ng-repeat="(hType, value) in values">
-                                                <md-button ng-click="removeHooksRow(key, value.id)" class="md-icon-button md-warn" aria-label="headphones"><span
-                                                        class="fa fa-minus"></span></md-button>
+                                                <!--<md-button ng-click="removeHooksRow(key, value.id)"-->
+                                                           <!--class="md-icon-button md-warn" aria-label="headphones"><span-->
+                                                        <!--class="fa fa-minus"></span></md-button>-->
                                                 <md-input-container ng-repeat="(k, type) in value">
                                                     <label>{{k}}</label>
-                                                    <input ng-model="value[k]" ng-disabled="k == 'id'">
+                                                    <input ng-model="value[k]" ng-disabled="true || k == 'id'">
                                                 </md-input-container>
                                             </div>
                                         </div>
 
                                         <md-button ng-click="addHooksRow()" style="float: right"
                                                    class="md-raised btn-w-sm md-info">
-                                            Add hook
+                                            Add hooks
                                         </md-button>
 
                                         <md-button ng-disabled="waiting == true" type="submit"
                                                    class="md-raised btn-w-md md-primary">
                                             Submit
                                         </md-button>
+
+                                        <div style="padding-top: 25px;">
+                                        <textarea ng-model="xmlHooks" ng-show="addHook == true" name="hooks" class="form-control" rows="25" data-gramm="true"
+                                                  spellcheck="false" data-gramm_editor="true"
+                                                  style="z-index: auto; position: relative; line-height: 15px; font-size: 14px; transition: none; background: transparent !important;"></textarea>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
