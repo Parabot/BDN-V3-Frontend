@@ -15,6 +15,7 @@
         ,'oc.lazyLoad'
         , 'ngMaterial'
         , 'ui.router'
+        , 'ui.bootstrap'
         , 'duScroll'
     ]).config(['$httpProvider', function ($httpProvider) {
         $httpProvider.defaults.withCredentials = true;
