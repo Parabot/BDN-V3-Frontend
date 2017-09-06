@@ -8,9 +8,9 @@
         .controller('UserCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'userManager', UserCtrl])
         .controller('ProfileCtrl', ['$scope', '$stateParams', 'appConfig', 'appCommon', 'appUICommon', '$window', ProfileCtrl]);
 
-    function ProfileCtrl($scope, $stateParams, $appConfig, $appCommon, $appUICommon, $window){
+    function ProfileCtrl($scope, $stateParams, $appConfig, $appCommon, $appUICommon, $window) {
         $scope.isInSlack = null;
-        var afterLogin = function(){
+        var afterLogin = function () {
             var isInSlack = function ($data) {
 
                 if (typeof $data !== 'undefined' && typeof $data['result'] !== 'undefined') {
@@ -21,27 +21,31 @@
 
                 $appCommon.hideLoader();
             };
-            $appCommon.getURL($appConfig.endpoints.isInSlack).then(function(response){
+            $appCommon.getURL($appConfig.endpoints.isInSlack).then(function (response) {
                 isInSlack(response);
             });
         };
 
         $scope.slackInvite = function () {
-                $scope.waiting = true;
+            $scope.waiting = true;
 
-                var submitted = $scope.server;
+            var submitted = $scope.server;
 
-                var afterRequest = function ($data, $code) {
-                    $scope.waiting = false;
+            var afterRequest = function ($data, $code) {
+                $scope.waiting = false;
 
-                    if ($data['result'] === true) {
-                        $appUICommon.showToast('Invite sent to your email');
-                    }
-                };
+                if ($data['result'] === true) {
+                    $appUICommon.showToast('Invite sent to your email');
+                }
+            };
 
-                $appCommon.postURL($appConfig.endpoints.inviteSlack, JSON.stringify(submitted)).then(function(response){
-                    afterRequest(response);
-                });
+            $appCommon.postURL($appConfig.endpoints.inviteSlack, JSON.stringify(submitted), true, false).then(function (response) {
+                afterRequest(response);
+            }, function errorCallback(response) {
+                if (response.code === 500 && response.result === 'already_invited') {
+                    $appUICommon.showToast('Invite already sent, please check your email');
+                }
+            });
         };
 
         $scope.goToSlack = function () {
@@ -52,11 +56,11 @@
         $appCommon.checkLoggedIn(afterLogin);
     }
 
-    function UserCtrl($scope, $stateParams, $appConfig, $appCommon, userManager){
+    function UserCtrl($scope, $stateParams, $appConfig, $appCommon, userManager) {
         $scope.backURL = $appConfig.urls['users'];
 
         var afterLogin = function () {
-            userManager.getUser($stateParams['id']).then(function(user){
+            userManager.getUser($stateParams['id']).then(function (user) {
                 $scope.user = user;
             });
         };
@@ -156,7 +160,7 @@
                         $location.url('/');
                     }
                 };
-                $appCommon.getURL($appConfig.endpoints.validOAuth).then(function(response){
+                $appCommon.getURL($appConfig.endpoints.validOAuth).then(function (response) {
                     afterValidCheck(response);
                 });
             }
