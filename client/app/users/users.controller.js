@@ -27,12 +27,14 @@
         };
 
         $scope.slackInvite = function () {
+            $appCommon.showLoader();
             $scope.waiting = true;
 
             var submitted = $scope.server;
 
             var afterRequest = function ($data, $code) {
                 $scope.waiting = false;
+                $appCommon.hideLoader();
 
                 if ($data['result'] === true) {
                     $appUICommon.showToast('Invite sent to your email');
@@ -42,6 +44,9 @@
             $appCommon.postURL($appConfig.endpoints.inviteSlack, JSON.stringify(submitted), true, false).then(function (response) {
                 afterRequest(response);
             }, function errorCallback(response) {
+                $scope.waiting = false;
+                $appCommon.hideLoader();
+
                 if (response.code === 500 && response.result === 'already_invited') {
                     $appUICommon.showToast('Invite already sent, please check your email');
                 }
