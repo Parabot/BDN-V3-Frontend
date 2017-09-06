@@ -118,6 +118,7 @@
 
             users: '/#!/users/list',
             user: '/#!' + routeUrls.user,
+            user_profile: '/#!/users/profile',
             login: '/#!/users/login',
             register: 'https://www.parabot.org/community/register',
             oauth: base + 'oauth/v2/auth',
